@@ -1,0 +1,466 @@
+<section class="section module-lesson modulo09-lesson">
+
+  <h2 class="section-title">Módulo 09 — Automação, CLP, BMS e Lógicas de Redundância em CAG</h2>
+
+  <p class="section-subtitle">
+    Aula técnica sobre automação aplicada à Central de Água Gelada em ambientes críticos, com foco em CLP, IHM,
+    BMS/supervisório, sinais digitais e analógicos, permissivos, intertravamentos, redundância operacional, lógica N+1,
+    alarmes críticos, operação manual x automático e troubleshooting de automação.
+  </p>
+
+  <nav class="module-nav">
+    <a href="#m9-objetivos">Objetivos</a>
+    <a href="#m9-arquitetura">Arquitetura</a>
+    <a href="#m9-sinais">Sinais</a>
+    <a href="#m9-permissivos">Permissivos</a>
+    <a href="#m9-intertravamentos">Intertravamentos</a>
+    <a href="#m9-redundancia">Redundância</a>
+    <a href="#m9-manualauto">Manual x Auto</a>
+    <a href="#m9-simulador">Simulador</a>
+    <a href="#m9-alarmes">Alarmes</a>
+    <a href="#m9-mop">Testes MOP</a>
+    <a href="#m9-troubleshooting">Troubleshooting</a>
+    <a href="#m9-avaliacao">Avaliação</a>
+  </nav>
+
+  <span id="m9-objetivos" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-bullseye"></i></div>
+      <div>
+        <h3>Objetivos de Aprendizagem</h3>
+        <p class="reading-subtitle">O que o aluno deverá dominar ao final deste módulo</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <ul class="tech-list">
+        <li>Entender a função de cada camada da automação: BMS/supervisório, IHM, CLP e equipamentos de campo.</li>
+        <li>Diferenciar sinais digitais e analógicos e interpretar como eles entram na lógica operacional.</li>
+        <li>Compreender permissivos de partida e intertravamentos aplicados a bombas, válvulas e chillers.</li>
+        <li>Interpretar redundância operacional e lógica N+1 sem depender do tema de transferência entre gerenciadoras.</li>
+        <li>Reconhecer alarmes críticos, desvios de operação e ações seguras de troubleshooting.</li>
+        <li>Aplicar uma sequência organizada de testes em modo MOP para reduzir risco em operação crítica.</li>
+      </ul>
+    </div>
+  </div>
+
+  <span id="m9-arquitetura" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <div>
+        <h3>1. Arquitetura de Automação da CAG</h3>
+        <p class="reading-subtitle">Entenda a automação em camadas: supervisão, operação local, lógica e campo</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Em uma Central de Água Gelada crítica, a automação deve ser lida por camadas. O BMS/supervisório consolida visão global,
+        histórico e alarmes. A IHM faz a ponte operacional local. O CLP decide permissivos, intertravamentos, PIDs e chamadas de reserva.
+        Já o campo executa o comando e devolve a resposta real do processo. Quando o operador entende essa arquitetura, o troubleshooting fica
+        muito mais rápido porque ele consegue separar problema de interface, lógica ou equipamento.
+      </p>
+
+      <div class="m9-architecture-flow">
+        <div class="m9-architecture-card">
+          <div class="m9-architecture-icon"><i class="fa-solid fa-desktop"></i></div>
+          <h4>BMS / Supervisório</h4>
+          <p>Mostra telas, tendências, histórico, alarmes e visão global do sistema. É a camada de supervisão e análise.</p>
+        </div>
+        <div class="m9-architecture-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+        <div class="m9-architecture-card">
+          <div class="m9-architecture-icon"><i class="fa-solid fa-tablet-screen-button"></i></div>
+          <h4>IHM</h4>
+          <p>Permite operação local, leitura de estados, seleção manual/automático e ajustes limitados com segurança.</p>
+        </div>
+        <div class="m9-architecture-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+        <div class="m9-architecture-card">
+          <div class="m9-architecture-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h4>CLP</h4>
+          <p>Executa a lógica: permissivos, intertravamentos, PIDs, sequenciamento, lead/lag, alarmes e reserva.</p>
+        </div>
+        <div class="m9-architecture-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+        <div class="m9-architecture-card">
+          <div class="m9-architecture-icon"><i class="fa-solid fa-gauge-high"></i></div>
+          <h4>Campo</h4>
+          <p>Sensores, VFDs, válvulas, bombas e chillers. Aqui o comando vira ação física e o sistema devolve feedback real.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="mini-card"><h4><i class="fa-solid fa-eye"></i> Ver o sistema</h4><p>Se o BMS enxerga tendência e alarme, o operador identifica desvio mais cedo e toma decisão com base em histórico.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-hand-pointer"></i> Interagir com segurança</h4><p>A IHM ajuda a operar localmente, mas precisa refletir corretamente estados, permissivos e modo de operação.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-code"></i> Decidir logicamente</h4><p>O CLP não “adivinha”: ele depende de sinais válidos para tomar decisões corretas de partida, bloqueio e modulação.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-screwdriver-wrench"></i> Confirmar no campo</h4><p>Se o equipamento não confirma o comando, a falha pode estar em VFD, sensor, cabeamento, proteção ou no próprio equipamento.</p></div>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Conceito operacional</h4>
+        <p>Em diagnóstico, pense em quatro perguntas: o BMS mostra corretamente, a IHM permite corretamente, o CLP está decidindo corretamente e o campo está respondendo corretamente?</p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m9-sinais" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-wave-square"></i></div>
+      <div>
+        <h3>2. Sinais Digitais e Analógicos</h3>
+        <p class="reading-subtitle">A lógica enxerga a planta por meio de estados discretos e variáveis contínuas</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Entradas digitais representam estados binários, como ligado/desligado, aberto/fechado ou normal/falha. Entradas analógicas representam
+        variáveis contínuas, como pressão, temperatura, vazão e nível. Nas saídas, o conceito se repete: saídas digitais fazem comandos discretos,
+        enquanto saídas analógicas modulam atuadores e VFDs.
+      </p>
+      <div class="grid">
+        <div class="mini-card"><h4><i class="fa-solid fa-toggle-off"></i> DI — Entrada digital</h4><p>Usada para run, falha geral, fim de curso, permissivo elétrico e contato de pronto.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-wave-square"></i> AI — Entrada analógica</h4><p>Usada para pressão diferencial, temperatura, vazão, corrente convertida e nível.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-power-off"></i> DO — Saída digital</h4><p>Usada para ligar/desligar, habilitar, resetar e abrir/fechar de forma discreta.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-sliders"></i> AO — Saída analógica</h4><p>Usada para referência de frequência do VFD ou modulação de válvula.</p></div>
+      </div>
+      <br>
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Tipo de sinal</th><th>Exemplo</th><th>Uso típico na lógica</th></tr></thead>
+          <tbody>
+            <tr><td>DI — Entrada digital</td><td>Status run de bomba, falha geral, fim de curso de válvula</td><td>Permissivos, intertravamentos e alarmes</td></tr>
+            <tr><td>AI — Entrada analógica</td><td>Pressão 4-20 mA, temperatura, vazão</td><td>PID, supervisão e plausibilidade de processo</td></tr>
+            <tr><td>DO — Saída digital</td><td>Comando liga/desliga, habilitação, reset</td><td>Acionamento de equipamentos e sequências</td></tr>
+            <tr><td>AO — Saída analógica</td><td>Referência de velocidade ou modulação</td><td>Controle proporcional de VFDs e atuadores</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="m9-permissivos" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-list-check"></i></div>
+      <div>
+        <h3>3. Permissivos de Partida</h3>
+        <p class="reading-subtitle">A partida só deve acontecer quando a lógica confirmar condição segura</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Permissivos são condições mínimas verdadeiras para autorizar a sequência. Eles evitam partida sem proteção, sem fluxo, sem instrumento confiável,
+        sem disponibilidade elétrica ou fora do modo adequado.
+      </p>
+      <div class="m9-step-grid">
+        <div class="mini-card m9-step-card"><span>1</span><h4>Modo correto</h4><p>Equipamento e lógica em AUTO, sem E-Stop e sem bloqueio manual indevido.</p></div>
+        <div class="mini-card m9-step-card"><span>2</span><h4>Proteção disponível</h4><p>Quadro, VFD, relés e permissivos elétricos em condição de operação.</p></div>
+        <div class="mini-card m9-step-card"><span>3</span><h4>Instrumentação válida</h4><p>Sensores coerentes e feedback de processo com plausibilidade.</p></div>
+        <div class="mini-card m9-step-card"><span>4</span><h4>Condição de processo</h4><p>Fluxo, válvula, ΔP e estados associados compatíveis com a sequência.</p></div>
+      </div>
+      <div class="reading-highlight">
+        <h4>Boa prática</h4>
+        <p>Permissivo não é barreira burocrática: é proteção de processo. Se um permissivo falha, a resposta correta é identificar a causa e não apenas forçar a lógica.</p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m9-intertravamentos" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div>
+        <h3>4. Intertravamentos</h3>
+        <p class="reading-subtitle">Intertravamento é a barreira lógica contra condição insegura</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Bomba sem proteção</h4><p>Não deve partir se houver falha elétrica, VFD indisponível ou ausência de status de pronto.</p></div>
+        <div class="mini-card"><h4>Chiller sem fluxo</h4><p>Não deve ser habilitado sem fluxo mínimo no evaporador e sem válvula liberada.</p></div>
+        <div class="mini-card"><h4>Sensor inválido</h4><p>Variável crítica implausível pode bloquear modulação ou forçar fallback.</p></div>
+        <div class="mini-card"><h4>Manual x automático</h4><p>Equipamento travado em manual local pode impedir resposta automática do sistema.</p></div>
+      </div>
+      <br>
+      <p>
+        Em muitos casos, o “sistema não partiu” é apenas um intertravamento correto. O trabalho do técnico é localizar qual condição lógica não foi satisfeita:
+        proteção, modo, fluxo, válvula, status de campo, permissivo elétrico, retorno de operação ou plausibilidade do sinal.
+      </p>
+    </div>
+  </div>
+
+  <span id="m9-redundancia" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+      <div>
+        <h3>5. Redundância Operacional e Lógica N+1</h3>
+        <p class="reading-subtitle">Reserva operacional protege continuidade e reduz risco à carga crítica</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Na filosofia N+1, a central possui capacidade reserva para suportar a perda de um equipamento dentro do critério de projeto.
+        A lógica precisa detectar falha, bloquear condição insegura, emitir alarme e chamar a reserva conforme disponibilidade.
+      </p>
+      <div class="grid">
+        <div class="mini-card"><h4><i class="fa-solid fa-pump-soap"></i> Equipamento ativo</h4><p>Entrega a função principal enquanto a automação monitora run, falha, pressão, corrente e permissivos.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-arrows-spin"></i> Equipamento reserva</h4><p>Permanece apto para assumir automaticamente conforme lead/lag, disponibilidade e estratégia do sistema.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-bolt"></i> Evento de falha</h4><p>Se o principal falha, a automação alarma, confirma bloqueio e chama a reserva se ela estiver apta.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-chart-line"></i> Continuidade</h4><p>O objetivo final é manter pressão, vazão e resfriamento dentro do plano operacional da CAG.</p></div>
+      </div>
+      <br>
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Elemento</th><th>O que a lógica costuma monitorar</th><th>Resposta esperada</th></tr></thead>
+          <tbody>
+            <tr><td>Bomba operante</td><td>Run, falha, pressão, corrente, disponibilidade</td><td>Se falhar, chamar reserva conforme lógica</td></tr>
+            <tr><td>Chiller operante</td><td>Enable, run, alarme, capacidade, permissivos</td><td>Readequar conjunto conforme carga</td></tr>
+            <tr><td>Sensores críticos</td><td>Plausibilidade, desvio, perda de comunicação</td><td>Aplicar exclusão, fallback ou alarme</td></tr>
+            <tr><td>Válvulas / by-pass</td><td>Comando, posição e impacto hidráulico</td><td>Modular sem comprometer o atendimento</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="m9-manualauto" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-toggle-on"></i></div>
+      <div>
+        <h3>6. Operação Manual x Automático</h3>
+        <p class="reading-subtitle">Manual é útil para teste e contingência; automático é o regime esperado da planta</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Automático</h4><p>A lógica decide a sequência, chama reserva, modula VFDs e trata alarmes conforme a estratégia da central.</p></div>
+        <div class="mini-card"><h4>Manual</h4><p>Serve para teste, contingência e validação pontual, sempre com procedimento e controle de risco.</p></div>
+        <div class="mini-card"><h4>Risco comum</h4><p>Esquecer equipamento em manual local e depois esperar reação automática do sistema.</p></div>
+        <div class="mini-card"><h4>Boa prática</h4><p>Ao terminar o teste, retornar para AUTO e validar coerência de telas, permissivos e estados de campo.</p></div>
+      </div>
+      <br>
+      <div class="reading-highlight">
+        <h4>Leitura operacional</h4>
+        <p>Manual significa que o operador assume parte da decisão. Automático significa que a lógica assume. O maior risco acontece quando o sistema está visualmente “normal”, mas algum equipamento ficou preso em manual.</p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m9-simulador" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-laptop-code"></i></div>
+      <div>
+        <h3>7. Simulador Didático — Manual x Automático</h3>
+        <p class="reading-subtitle">Simule a troca de status e observe como a lógica responde</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Neste simulador, a ideia é enxergar o que acontece quando um equipamento sai do modo MANUAL e volta para AUTO.
+        Você pode variar permissivos, demanda, falha e disponibilidade da reserva. O resultado mostra se o CLP consegue assumir o controle,
+        se a sequência é bloqueada ou se a lógica chama a reserva.
+      </p>
+
+      <div class="card calculator-card m9-simulator-card">
+        <div class="calculator-grid">
+          <label>Modo do equipamento
+            <select id="m9-mode-select">
+              <option value="manual">Manual</option>
+              <option value="auto">Automático</option>
+            </select>
+          </label>
+          <label>Demanda de operação
+            <select id="m9-demand-select">
+              <option value="yes">Presente</option>
+              <option value="no">Ausente</option>
+            </select>
+          </label>
+          <label>VFD / proteção elétrica
+            <select id="m9-vfd-select">
+              <option value="ok">Disponível</option>
+              <option value="fail">Indisponível</option>
+            </select>
+          </label>
+          <label>Sensor / instrumento crítico
+            <select id="m9-sensor-select">
+              <option value="ok">Válido</option>
+              <option value="fail">Inválido</option>
+            </select>
+          </label>
+          <label>Fluxo / condição de processo
+            <select id="m9-flow-select">
+              <option value="ok">Confirmado</option>
+              <option value="fail">Não confirmado</option>
+            </select>
+          </label>
+          <label>Falha do equipamento principal
+            <select id="m9-main-fault-select">
+              <option value="no">Não</option>
+              <option value="yes">Sim</option>
+            </select>
+          </label>
+          <label>Reserva disponível
+            <select id="m9-standby-select">
+              <option value="yes">Sim</option>
+              <option value="no">Não</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="hero-buttons">
+          <button id="m9-run-sim" class="btn btn-primary" type="button">Executar simulação</button>
+          <button id="m9-reset-sim" class="btn btn-secondary" type="button">Resetar</button>
+        </div>
+
+        <div class="m9-sim-results-grid">
+          <div class="calc-result"><h4>Status do modo</h4><div id="m9-mode-result" class="calc-value">--</div></div>
+          <div class="calc-result"><h4>Controle do CLP</h4><div id="m9-clp-result" class="calc-value">--</div></div>
+          <div class="calc-result"><h4>Sequência principal</h4><div id="m9-seq-result" class="calc-value">--</div></div>
+          <div class="calc-result"><h4>Reserva / N+1</h4><div id="m9-standby-result" class="calc-value">--</div></div>
+        </div>
+
+        <div id="m9-sim-diagnostic" class="calc-result m9-sim-diagnostic">
+          <h4>Interpretação</h4>
+          <p>Escolha as condições e clique em “Executar simulação”.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m9-alarmes" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-bell"></i></div>
+      <div>
+        <h3>8. Alarmes Críticos</h3>
+        <p class="reading-subtitle">Classificar severidade ajuda a priorizar a resposta operacional</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Nem todo alarme pede a mesma resposta. O operador deve entender o que é apenas tendência, o que já exige intervenção e o que pode impactar diretamente a carga crítica.
+      </p>
+      <div class="m9-severity-grid">
+        <div class="m9-severity-card mild">
+          <h4><i class="fa-solid fa-circle-info"></i> Alerta</h4>
+          <p>Desvio leve ou tendência. Ex.: ruído em sensor, vibração em elevação, ΔP saindo do ideal.</p>
+        </div>
+        <div class="m9-severity-card medium">
+          <h4><i class="fa-solid fa-triangle-exclamation"></i> Alarme</h4>
+          <p>Condição que requer intervenção organizada. Ex.: bomba falhada, perda de fluxo, falha de comunicação.</p>
+        </div>
+        <div class="m9-severity-card high">
+          <h4><i class="fa-solid fa-fire"></i> Crítico</h4>
+          <p>Condição com potencial de impacto à carga crítica. Ex.: sem reserva disponível, múltiplos sensores inválidos, indisponibilidade de produção.</p>
+        </div>
+      </div>
+      <div class="reading-highlight">
+        <h4>Alarmes recorrentes em automação de CAG</h4>
+        <p>Falha de bomba, ausência de status run, perda de fluxo, sensor fora de faixa, falha de VFD, falha de comunicação de campo e desvio persistente de pressão ou temperatura.</p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m9-mop" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+      <div>
+        <h3>9. Testes Operacionais tipo MOP</h3>
+        <p class="reading-subtitle">Testar com método reduz risco e aumenta confiabilidade</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Em testes de lógica ou manutenção de automação, a prática recomendada é seguir uma sequência MOP: avaliar a condição atual,
+        registrar parâmetros, fazer backup, definir contingência, executar o teste de forma controlada e registrar o resultado.
+      </p>
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Etapa</th><th>Objetivo</th><th>Exemplo prático</th></tr></thead>
+          <tbody>
+            <tr><td>1. Pré-checagem</td><td>Entender o estado atual da planta</td><td>Pressões, temperaturas, quantidade de equipamentos e alarmes ativos</td></tr>
+            <tr><td>2. Backup</td><td>Garantir retorno seguro</td><td>Salvar lógica, parâmetros e registros antes da intervenção</td></tr>
+            <tr><td>3. Isolamento / preparação</td><td>Reduzir risco operacional</td><td>Definir manual/auto, travas, permissões e acompanhamento</td></tr>
+            <tr><td>4. Teste controlado</td><td>Validar uma hipótese de forma segura</td><td>Induzir falha de uma bomba e validar alarme + chamada de reserva</td></tr>
+            <tr><td>5. Evidência e fechamento</td><td>Documentar o comportamento e devolver a planta ao normal</td><td>Registrar resultado, remover bloqueios e restaurar automático</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="m9-troubleshooting" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+      <div>
+        <h3>10. Troubleshooting de Automação</h3>
+        <p class="reading-subtitle">Diagnóstico estruturado antes de alterar lógica, setpoints ou componentes</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>1. Ver o sintoma</h4><p>O problema é de partida, modulação, alarme, feedback incoerente ou indisponibilidade?</p></div>
+        <div class="mini-card"><h4>2. Ver o comando</h4><p>O CLP está realmente enviando DO ou AO? O permissivo da sequência está liberado?</p></div>
+        <div class="mini-card"><h4>3. Ver o feedback</h4><p>O campo respondeu? Run status, posição, pressão, temperatura e frequência confirmam a ação?</p></div>
+        <div class="mini-card"><h4>4. Ver a coerência</h4><p>Modo manual, proteção, permissivos, instrumentação e comunicação estão consistentes?</p></div>
+      </div>
+      <br>
+      <div class="reading-highlight">
+        <h4>Sequência prática de análise</h4>
+        <p>Primeiro valide a condição da planta, depois o sinal, depois a lógica e só então altere parâmetro. Trocar componente ou “mexer no CLP” sem evidência costuma aumentar o tempo de indisponibilidade.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-book-open"></i></div>
+      <div>
+        <h3>Resumo do Módulo</h3>
+        <p class="reading-subtitle">Consolidação final</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        A automação da CAG deve ser entendida em camadas: supervisão, operação local, lógica e campo. Um diagnóstico confiável depende de compreender
+        sinais, permissivos, intertravamentos, filosofia N+1, alarmes e comportamento manual/automático. Em ambiente crítico, clareza de raciocínio é tão importante quanto o comando em si.
+      </p>
+    </div>
+  </div>
+
+  <span id="m9-avaliacao" class="anchor-offset"></span>
+
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.</p>
+    <br>
+    <label><input type="checkbox" class="modulo09-check"> Consigo explicar a função de BMS, IHM, CLP e dispositivos de campo.</label>
+    <label><input type="checkbox" class="modulo09-check"> Sei diferenciar sinais DI, DO, AI e AO em uma CAG.</label>
+    <label><input type="checkbox" class="modulo09-check"> Entendo o conceito de permissivos de partida para bombas e chillers.</label>
+    <label><input type="checkbox" class="modulo09-check"> Consigo interpretar intertravamentos sem confundi-los com “falha do sistema”.</label>
+    <label><input type="checkbox" class="modulo09-check"> Compreendo o conceito N+1 e o papel da reserva operacional.</label>
+    <label><input type="checkbox" class="modulo09-check"> Sei a diferença entre operação manual e automática e os riscos de cada modo.</label>
+    <label><input type="checkbox" class="modulo09-check"> Consigo descrever uma sequência básica de teste tipo MOP.</label>
+    <label><input type="checkbox" class="modulo09-check"> Tenho um raciocínio estruturado para troubleshooting de automação.</label>
+
+    <div id="modulo09-checklist-status" class="checklist-status">
+      Conclua o checklist para liberar a avaliação.
+    </div>
+  </div>
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.</p>
+    <br>
+    <button id="go-modulo09-quiz" class="btn btn-primary btn-disabled" type="button" disabled>
+      Ir para avaliação
+    </button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+
+</section>

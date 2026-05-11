@@ -1,0 +1,685 @@
+/* =====================================================
+   EBM ACADEMY — GAMIFICATION CORE V1
+   CSS isolado para XP, níveis, medalhas e Meu Progresso
+===================================================== */
+
+.ebm-overline{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(244,197,66,.10);
+  color:var(--primary);
+  font-weight:900;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  font-size:.78rem;
+  margin-bottom:14px;
+}
+
+.ebm-gamification-portal-panel{
+  padding:34px 60px 0;
+}
+
+.ebm-gamification-hero-card,
+.ebm-gamification-training-card,
+.ebm-level-card{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:30px;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at top right, rgba(244,197,66,.16), transparent 34%),
+    var(--surface);
+  border:1px solid rgba(244,197,66,.18);
+  box-shadow:var(--shadow);
+}
+
+.ebm-gamification-hero-card h2,
+.ebm-gamification-training-card h3,
+.ebm-level-info h2{
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+.ebm-gamification-hero-card p,
+.ebm-gamification-training-card p,
+.ebm-level-info p,
+.ebm-progress-header p{
+  color:var(--soft);
+  line-height:1.7;
+  max-width:840px;
+}
+
+.ebm-hero-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.ebm-progress-summary-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+
+.ebm-summary-card{
+  padding:22px;
+  border-radius:22px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  min-height:150px;
+}
+
+.ebm-summary-card i{
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:16px;
+  background:rgba(244,197,66,.10);
+  color:var(--primary);
+  margin-bottom:14px;
+}
+
+.ebm-summary-card span,
+.ebm-summary-card small{
+  display:block;
+  color:var(--muted);
+  line-height:1.45;
+}
+
+.ebm-summary-card strong{
+  display:block;
+  color:var(--text);
+  font-size:1.45rem;
+  margin-top:8px;
+  line-height:1.25;
+}
+
+.ebm-xp-pill{
+  border:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:linear-gradient(135deg, rgba(244,197,66,.18), rgba(96,165,250,.10));
+  color:var(--text);
+  border:1px solid rgba(244,197,66,.22);
+  font-weight:800;
+  transition:.25s;
+}
+
+.ebm-xp-pill:hover{
+  transform:translateY(-2px);
+}
+
+.ebm-xp-pill i,
+.ebm-xp-pill strong{
+  color:var(--primary);
+}
+
+.ebm-xp-pill small{
+  color:var(--muted);
+  font-size:.76rem;
+}
+
+.ebm-module-menu-badge{
+  display:block;
+  margin-left:auto;
+  padding:5px 8px;
+  border-radius:999px;
+  font-size:.68rem;
+  white-space:nowrap;
+  background:rgba(255,255,255,.06);
+  color:var(--muted);
+}
+
+.menu a.ebm-menu-locked{
+  opacity:.56;
+}
+
+.menu a.ebm-menu-completed .ebm-module-menu-badge{
+  background:rgba(34,197,94,.12);
+  color:var(--success);
+}
+
+.menu a.ebm-menu-current .ebm-module-menu-badge{
+  background:rgba(244,197,66,.12);
+  color:var(--primary);
+}
+
+.ebm-training-home-gamification-panel{
+  padding-bottom:0;
+}
+
+.ebm-xp-track{
+  width:100%;
+  height:12px;
+  margin-top:18px;
+  background:rgba(148,163,184,.18);
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.ebm-xp-track span{
+  display:block;
+  height:100%;
+  background:linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius:999px;
+  transition:.35s;
+}
+
+.ebm-progress-page{
+  padding-top:52px;
+}
+
+.ebm-progress-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:26px;
+}
+
+.ebm-progress-header h1{
+  font-size:2.7rem;
+  margin-bottom:12px;
+}
+
+.ebm-level-card{
+  margin-bottom:24px;
+}
+
+.ebm-level-ring{
+  width:132px;
+  height:132px;
+  flex:0 0 132px;
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle, rgba(244,197,66,.20), rgba(244,197,66,.05));
+  border:1px solid rgba(244,197,66,.30);
+  color:var(--primary);
+}
+
+.ebm-level-ring strong{
+  font-size:3rem;
+  line-height:1;
+}
+
+.ebm-level-ring span{
+  color:var(--soft);
+  font-weight:800;
+}
+
+.ebm-level-info{
+  flex:1;
+}
+
+.ebm-level-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  min-width:330px;
+}
+
+.ebm-level-stats div{
+  padding:18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--border);
+  text-align:center;
+}
+
+body.light-mode .ebm-level-stats div{
+  background:rgba(15,23,42,.035);
+}
+
+.ebm-level-stats strong{
+  display:block;
+  font-size:1.65rem;
+  color:var(--primary);
+}
+
+.ebm-level-stats span{
+  display:block;
+  color:var(--muted);
+  font-size:.86rem;
+  margin-top:5px;
+}
+
+.ebm-progress-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+  margin-bottom:26px;
+}
+
+.ebm-module-progress-card{
+  padding:24px;
+  border-radius:24px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.ebm-module-progress-card.completed{
+  border-color:rgba(34,197,94,.26);
+}
+
+.ebm-module-progress-card.locked{
+  opacity:.68;
+}
+
+.ebm-module-progress-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.ebm-module-progress-top span{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(244,197,66,.10);
+  color:var(--primary);
+  font-weight:800;
+  font-size:.78rem;
+}
+
+.ebm-module-progress-top strong{
+  color:var(--muted);
+  font-size:.88rem;
+}
+
+.ebm-module-progress-card h3{
+  color:var(--text);
+  margin:0;
+  line-height:1.3;
+}
+
+.ebm-module-checks{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.ebm-module-checks span{
+  padding:8px 10px;
+  border-radius:999px;
+  background:rgba(148,163,184,.10);
+  color:var(--muted);
+  font-size:.8rem;
+  font-weight:800;
+}
+
+.ebm-module-checks span.done{
+  background:rgba(34,197,94,.12);
+  color:var(--success);
+}
+
+.ebm-module-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  color:var(--soft);
+  font-size:.9rem;
+}
+
+.ebm-module-meta strong{
+  color:var(--primary);
+}
+
+.ebm-badges-card h3,
+.ebm-attempts-card h3{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.ebm-badges-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
+
+.ebm-badge-card{
+  min-height:210px;
+  padding:22px;
+  border-radius:22px;
+  border:1px solid var(--border);
+  background:var(--surface2);
+}
+
+.ebm-badge-card i{
+  width:52px;
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:18px;
+  margin-bottom:14px;
+  background:rgba(148,163,184,.12);
+  color:var(--muted);
+  font-size:1.3rem;
+}
+
+.ebm-badge-card.earned{
+  border-color:rgba(244,197,66,.24);
+  background:radial-gradient(circle at top right, rgba(244,197,66,.10), transparent 38%), var(--surface2);
+}
+
+.ebm-badge-card.earned i{
+  background:rgba(244,197,66,.14);
+  color:var(--primary);
+}
+
+.ebm-badge-card h4{
+  color:var(--text);
+  margin-bottom:10px;
+}
+
+.ebm-badge-card p{
+  color:var(--soft);
+  line-height:1.55;
+  margin-bottom:12px;
+}
+
+.ebm-badge-card span{
+  color:var(--muted);
+  font-size:.84rem;
+  font-weight:800;
+}
+
+.ebm-result-chip{
+  display:inline-flex;
+  align-items:center;
+  padding:7px 10px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:.82rem;
+}
+
+.ebm-result-chip.success{
+  background:rgba(34,197,94,.12);
+  color:var(--success);
+}
+
+.ebm-result-chip.danger{
+  background:rgba(239,68,68,.12);
+  color:#f87171;
+}
+
+.ebm-locked-section{
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+}
+
+.ebm-locked-card{
+  width:100%;
+  text-align:center;
+}
+
+.ebm-locked-icon{
+  width:86px;
+  height:86px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px;
+  border-radius:28px;
+  background:rgba(244,197,66,.12);
+  color:var(--primary);
+  font-size:2rem;
+}
+
+.ebm-locked-card h2{
+  color:var(--primary);
+  margin-bottom:12px;
+}
+
+@media(max-width:1100px){
+  .ebm-gamification-portal-panel{
+    padding:24px 24px 0;
+  }
+
+  .ebm-gamification-hero-card,
+  .ebm-gamification-training-card,
+  .ebm-level-card,
+  .ebm-progress-header{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .ebm-hero-actions{
+    justify-content:flex-start;
+  }
+
+  .ebm-level-ring{
+    margin:auto;
+  }
+
+  .ebm-level-stats{
+    min-width:0;
+    grid-template-columns:1fr;
+  }
+
+  .ebm-xp-pill{
+    width:100%;
+    justify-content:center;
+  }
+
+  .ebm-module-menu-badge{
+    margin-left:0;
+  }
+}
+
+
+/* =====================================================
+   MODO LIMPO — ÍCONES COMUNS + VISUAL MENOS POLUÍDO
+   Mantém Font Awesome como fonte única de ícones.
+===================================================== */
+
+.ebm-overline{
+  padding:6px 10px;
+  gap:7px;
+  background:transparent;
+  border:1px solid var(--border);
+  font-size:.72rem;
+  margin-bottom:12px;
+}
+
+.ebm-gamification-portal-panel{
+  padding:28px 60px 0;
+}
+
+.ebm-gamification-hero-card,
+.ebm-gamification-training-card,
+.ebm-level-card{
+  padding:24px;
+  border-radius:22px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:none;
+}
+
+.ebm-gamification-hero-card h2,
+.ebm-gamification-training-card h3,
+.ebm-level-info h2{
+  margin-bottom:8px;
+}
+
+.ebm-progress-summary-grid{
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+  margin-top:14px;
+}
+
+.ebm-summary-card{
+  min-height:auto;
+  padding:18px;
+  border-radius:18px;
+  box-shadow:none;
+}
+
+.ebm-summary-card i{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  margin-bottom:10px;
+  background:rgba(148,163,184,.10);
+}
+
+.ebm-summary-card strong{
+  font-size:1.25rem;
+}
+
+.ebm-xp-pill{
+  padding:9px 12px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+}
+
+.ebm-xp-track{
+  height:9px;
+  margin-top:14px;
+}
+
+.ebm-xp-track span{
+  background:var(--primary);
+}
+
+.ebm-progress-page{
+  padding-top:42px;
+}
+
+.ebm-progress-header{
+  margin-bottom:20px;
+}
+
+.ebm-progress-header h1{
+  font-size:2.35rem;
+}
+
+.ebm-level-ring{
+  width:104px;
+  height:104px;
+  flex:0 0 104px;
+  border-radius:24px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+}
+
+.ebm-level-ring strong{
+  font-size:2.35rem;
+}
+
+.ebm-level-stats{
+  gap:10px;
+  min-width:300px;
+}
+
+.ebm-level-stats div{
+  padding:14px;
+  border-radius:14px;
+  background:var(--surface2);
+}
+
+.ebm-level-stats strong{
+  font-size:1.35rem;
+}
+
+.ebm-progress-grid{
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:14px;
+}
+
+.ebm-module-progress-card{
+  padding:20px;
+  border-radius:20px;
+  box-shadow:none;
+  gap:13px;
+}
+
+.ebm-module-progress-card.completed{
+  border-color:rgba(34,197,94,.22);
+}
+
+.ebm-module-progress-top span,
+.ebm-module-checks span,
+.ebm-result-chip{
+  padding:6px 9px;
+  font-size:.76rem;
+}
+
+.ebm-module-menu-badge{
+  padding:4px 7px;
+  font-size:.64rem;
+  background:transparent;
+  border:1px solid var(--border);
+}
+
+.ebm-badges-grid{
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
+
+.ebm-badge-card{
+  min-height:auto;
+  padding:18px;
+  border-radius:18px;
+  background:var(--surface2);
+}
+
+.ebm-badge-card.earned{
+  background:var(--surface2);
+  border-color:rgba(244,197,66,.22);
+}
+
+.ebm-badge-card i{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  margin-bottom:12px;
+  font-size:1.08rem;
+}
+
+.ebm-badge-card h4{
+  margin-bottom:8px;
+}
+
+.ebm-badge-card p{
+  margin-bottom:10px;
+}
+
+.ebm-locked-icon{
+  width:72px;
+  height:72px;
+  border-radius:20px;
+}
+
+@media(max-width:1100px){
+  .ebm-gamification-portal-panel{ padding:22px 24px 0; }
+  .ebm-progress-header h1{ font-size:2rem; }
+}

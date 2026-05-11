@@ -1,0 +1,300 @@
+<section class="section module-lesson modulo10-lesson">
+
+  <h2 class="section-title">Módulo 10 — Alarmes, Falhas Operacionais e Troubleshooting em CAG</h2>
+
+  <p class="section-subtitle">
+    Módulo aplicado ao diagnóstico operacional da Central de Água Gelada e dos fancoils de precisão,
+    com foco em alarmes, falhas recorrentes, análise de sintomas, tomada de decisão e raciocínio estruturado de troubleshooting.
+  </p>
+
+  <nav class="module-nav">
+    <a href="#m10-objetivos">Objetivos</a>
+    <a href="#m10-classificacao">Alarmes</a>
+    <a href="#m10-cag">Falhas na CAG</a>
+    <a href="#m10-fancoils">Fancoils</a>
+    <a href="#m10-sequencia">Sequência</a>
+    <a href="#m10-desafios">Desafios</a>
+    <a href="#m10-resumo">Resumo</a>
+    <a href="#m10-avaliacao">Avaliação</a>
+  </nav>
+
+  <span id="m10-objetivos" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-bullseye"></i></div>
+      <div>
+        <h3>Objetivos de Aprendizagem</h3>
+        <p class="reading-subtitle">Competências esperadas ao final do módulo</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <ul class="tech-list">
+        <li>Classificar corretamente alertas, alarmes e eventos críticos na CAG.</li>
+        <li>Interpretar sintomas hidráulicos e térmicos como baixa pressão diferencial, alto ΔP, baixo ΔT e indisponibilidade de equipamentos.</li>
+        <li>Relacionar alarmes da CAG com impactos em fancoils de precisão e na climatização do ambiente crítico.</li>
+        <li>Diagnosticar falhas comuns em fancoils de precisão, incluindo fluxo de ar insuficiente, falha de ventilador, válvula sem resposta, alta temperatura e alta umidade.</li>
+        <li>Executar uma sequência segura de troubleshooting antes de alterar parâmetros, intertravamentos ou setpoints.</li>
+        <li>Responder a mini-desafios operacionais com justificativa técnica.</li>
+      </ul>
+    </div>
+  </div>
+
+  <span id="m10-classificacao" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-bell"></i></div>
+      <div>
+        <h3>1. Classificação de Alarmes</h3>
+        <p class="reading-subtitle">Nem todo alarme tem o mesmo peso operacional</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Em troubleshooting, o primeiro passo é classificar corretamente a severidade do evento. Isso evita tanto o excesso de reação quanto a subestimação de uma condição crítica.
+        Em centrais críticas, a severidade geralmente cresce de informativo para alerta, alarme e crítico.
+      </p>
+      <div class="m10-severity-grid">
+        <div class="m10-severity-card neutral">
+          <h4><i class="fa-solid fa-circle-info"></i> Informativo</h4>
+          <p>Evento sem impacto imediato. Ex.: troca de modo, retorno de comunicação, atualização de status.</p>
+        </div>
+        <div class="m10-severity-card mild pulse-amber">
+          <h4><i class="fa-solid fa-bell"></i> Alerta</h4>
+          <p>Desvio ou tendência. Ex.: vibração subindo, filtro começando a saturar, ΔT se afastando do esperado.</p>
+        </div>
+        <div class="m10-severity-card medium pulse-orange">
+          <h4><i class="fa-solid fa-triangle-exclamation"></i> Alarme</h4>
+          <p>Evento que requer ação organizada. Ex.: falha de bomba, falha de sensor, perda de fluxo ou EC fan fault.</p>
+        </div>
+        <div class="m10-severity-card high pulse-red">
+          <h4><i class="fa-solid fa-fire"></i> Crítico</h4>
+          <p>Condição com risco de perda de controle térmico no ambiente crítico. Ex.: sem reserva disponível ou múltiplos equipamentos em falha.</p>
+        </div>
+      </div>
+      <div class="reading-highlight">
+        <h4>Leitura prática</h4>
+        <p>O troubleshooting começa melhor quando o operador pergunta: isso é apenas tendência, exige intervenção ou ameaça diretamente a continuidade da refrigeração?</p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m10-cag" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-water"></i></div>
+      <div>
+        <h3>2. Falhas Operacionais na CAG</h3>
+        <p class="reading-subtitle">Sintomas clássicos da central e o que eles costumam indicar</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4><i class="fa-solid fa-gauge"></i> Baixa pressão diferencial</h4><p>Pode indicar demanda elevada, bomba insuficiente, restrição hidráulica, sensor inadequado ou perda de desempenho no conjunto.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-gauge-high"></i> Alta pressão diferencial</h4><p>Pode sugerir baixa demanda, válvulas fechadas, setpoint alto ou by-pass pouco aliviado.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-temperature-low"></i> Baixo ΔT</h4><p>É comum em excesso de vazão, by-pass elevado, válvulas muito abertas, baixa carga ou troca térmica ruim nos consumidores.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-temperature-high"></i> Chiller habilita e não entra em carga</h4><p>Pode ocorrer por baixa demanda real, fluxo inadequado, permissivo incompleto, controle travado ou leitura incorreta de processo.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-fan"></i> Falha de bomba / VFD</h4><p>Gera perda de vazão e, dependendo da filosofia N+1, chamada de reserva. Sem reserva, o risco operacional cresce rapidamente.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-wave-square"></i> Falha de sensor</h4><p>Pressão, temperatura ou fluxo inválidos podem confundir a lógica e levar a bloqueios ou modulação incorreta.</p></div>
+      </div>
+
+      <div class="m10-symptom-board">
+        <div class="m10-symptom-indicator hot">
+          <span class="label">Aquecimento</span>
+          <strong>Alto</strong>
+          <small>Ambientes subindo de temperatura</small>
+        </div>
+        <div class="m10-symptom-indicator cold positive">
+          <span class="label">Água gelada</span>
+          <strong>Disponível</strong>
+          <small>Condição positiva quando há fluxo e capacidade</small>
+        </div>
+        <div class="m10-symptom-indicator negative">
+          <span class="label">ΔP</span>
+          <strong>Baixo</strong>
+          <small>Sinal clássico de investigação hidráulica</small>
+        </div>
+        <div class="m10-symptom-indicator warning">
+          <span class="label">Reserva</span>
+          <strong>Em uso</strong>
+          <small>Monitorar se ainda há contingência restante</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m10-fancoils" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-fan"></i></div>
+      <div>
+        <h3>3. Alarmes e Falhas em Fancoils de Precisão</h3>
+        <p class="reading-subtitle">A ponta do sistema revela muitos problemas da central e do próprio terminal</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Em ambientes críticos, o fancoil de precisão é um excelente “sensor operacional” da saúde da CAG. Válvula em 100%, temperatura de retorno subindo, alta umidade, falha de ventilador,
+        filtro sujo e alarmes de drenagem são sinais que ajudam a separar problema local de problema de produção de água gelada.
+      </p>
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Alarme / sintoma</th><th>Leitura inicial</th><th>O que verificar primeiro</th></tr></thead>
+          <tbody>
+            <tr><td>High Return Air Temperature</td><td>A sala está aquecendo ou o terminal perdeu capacidade</td><td>Fluxo de ar, válvula de água gelada, temperatura da água, carga térmica e filtros</td></tr>
+            <tr><td>High Humidity</td><td>Baixa remoção latente ou água gelada quente demais</td><td>Temperatura da água gelada, posição da válvula, vazão de água, controle de ventilador e condições da sala</td></tr>
+            <tr><td>EC Fan Fault / Fan Alarm</td><td>Perda ou degradação de fluxo de ar</td><td>Status do ventilador, drive EC, filtros, obstruções e comando de velocidade</td></tr>
+            <tr><td>Dirty Filter</td><td>Maior perda de carga e menor vazão de ar</td><td>Filtro, ΔP do filtro, limpeza e impacto na troca térmica</td></tr>
+            <tr><td>Condensate / High Level</td><td>Risco de transbordo ou proteção ativa</td><td>Bandeja, drenagem, sifão, inclinação e sensor de nível</td></tr>
+            <tr><td>Valve 100% e ambiente não cai</td><td>Capacidade térmica insuficiente ou água indisponível</td><td>Água gelada real, fluxo de ar, obstrução de serpentina, válvula travada e ΔT local</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid">
+        <div class="mini-card"><h4><i class="fa-solid fa-filter"></i> Filtro saturado</h4><p>Diminui o fluxo de ar, piora a troca térmica e pode disparar alta temperatura de retorno mesmo com válvula aberta.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-droplet"></i> Água gelada insuficiente</h4><p>Se a água chega quente ou com pouca vazão, vários fancoils tendem a alarmar quase ao mesmo tempo.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-wind"></i> Ventilador / EC fan fault</h4><p>Sem fluxo de ar, a serpentina pode até estar fria, mas a sala não troca calor adequadamente.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-sliders"></i> Válvula de água gelada</h4><p>Se não modula ou fica travada, o terminal perde capacidade mesmo com CAG disponível.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m10-sequencia" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-route"></i></div>
+      <div>
+        <h3>4. Sequência Segura de Troubleshooting</h3>
+        <p class="reading-subtitle">Evite pular direto para setpoints ou troca de peças</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="m10-step-grid">
+        <div class="mini-card m10-step-card"><span>1</span><h4>Definir o sintoma</h4><p>É aquecimento, umidade, falta de fluxo, falha de equipamento, modulação ruim ou alarme de proteção?</p></div>
+        <div class="mini-card m10-step-card"><span>2</span><h4>Definir o alcance</h4><p>O problema ocorre em um terminal, em vários fancoils ou em toda a central?</p></div>
+        <div class="mini-card m10-step-card"><span>3</span><h4>Conferir sinais e permissivos</h4><p>Antes de alterar algo, valide sensores, estados, alarmes, modo manual/auto e disponibilidade elétrica.</p></div>
+        <div class="mini-card m10-step-card"><span>4</span><h4>Correlacionar causa e efeito</h4><p>Um mesmo sintoma pode ter origem hidráulica, elétrica, lógica ou mecânica. Procure evidência antes de concluir.</p></div>
+        <div class="mini-card m10-step-card"><span>5</span><h4>Agir com critério</h4><p>Ajuste setpoints e parâmetros somente depois de excluir falhas de campo e permissivos perdidos.</p></div>
+      </div>
+      <div class="reading-highlight">
+        <h4>Regra prática</h4>
+        <p>Se vários fancoils reclamam ao mesmo tempo, pense primeiro na produção/distribuição de água gelada. Se apenas um terminal alarma, pense primeiro em fluxo de ar, válvula, sensor ou drenagem local.</p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m10-desafios" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-stethoscope"></i></div>
+      <div>
+        <h3>5. Desafios Rápidos de Troubleshooting</h3>
+        <p class="reading-subtitle">Mini-quizzes dentro do módulo com feedback imediato</p>
+      </div>
+    </div>
+    <div class="reading-content">
+
+      <div class="m10-case-quiz" data-case="c1">
+        <div class="m10-case-header">
+          <h4>Desafio 1 — Baixa ΔP na CAG</h4>
+          <div class="m10-case-badges">
+            <span class="case-badge negative pulse-red">Bomba 100%</span>
+            <span class="case-badge negative">ΔP baixo</span>
+            <span class="case-badge hot">Demanda alta</span>
+          </div>
+        </div>
+        <p>Durante horário crítico, a bomba está a 100%, o ΔP do anel está abaixo do setpoint e o by-pass não parece ser a principal causa. Qual leitura inicial é a mais coerente?</p>
+        <label><input type="radio" name="m10case1" value="A"> A) Reduzir imediatamente o setpoint de pressão para “forçar estabilidade”.</label>
+        <label><input type="radio" name="m10case1" value="B"> B) Investigar falta de capacidade hidráulica, restrição ou demanda elevada demais para o arranjo atual.</label>
+        <label><input type="radio" name="m10case1" value="C"> C) Considerar que o ΔP baixo sempre significa sensor de temperatura defeituoso.</label>
+        <label><input type="radio" name="m10case1" value="D"> D) Fechar ainda mais o by-pass sem validar o restante do sistema.</label>
+        <button class="btn btn-secondary m10-check-case" type="button">Verificar resposta</button>
+        <div class="m10-case-feedback"></div>
+      </div>
+
+      <div class="m10-case-quiz" data-case="c2">
+        <div class="m10-case-header">
+          <h4>Desafio 2 — Fancoil de precisão aquecendo</h4>
+          <div class="m10-case-badges">
+            <span class="case-badge hot pulse-orange">High Return Air Temp</span>
+            <span class="case-badge warning">Valve 100%</span>
+            <span class="case-badge negative">Dirty Filter</span>
+          </div>
+        </div>
+        <p>Um fancoil de precisão está com alarme de alta temperatura de retorno, válvula de água gelada em 100% e fluxo de ar aparentemente reduzido. O alarme de filtro sujo também está ativo. Qual hipótese inicial é a mais provável?</p>
+        <label><input type="radio" name="m10case2" value="A"> A) Baixa vazão de ar no terminal por filtro saturado e/ou problema de ventilação.</label>
+        <label><input type="radio" name="m10case2" value="B"> B) Excesso de água gelada na serpentina.</label>
+        <label><input type="radio" name="m10case2" value="C"> C) Umidade relativa baixa na sala.</label>
+        <label><input type="radio" name="m10case2" value="D"> D) Falha exclusiva do condensador do chiller.</label>
+        <button class="btn btn-secondary m10-check-case" type="button">Verificar resposta</button>
+        <div class="m10-case-feedback"></div>
+      </div>
+
+      <div class="m10-case-quiz" data-case="c3">
+        <div class="m10-case-header">
+          <h4>Desafio 3 — Umidade alta no ambiente</h4>
+          <div class="m10-case-badges">
+            <span class="case-badge warning pulse-amber">High Humidity</span>
+            <span class="case-badge positive">Temperatura estável</span>
+            <span class="case-badge negative">Água gelada mais quente</span>
+          </div>
+        </div>
+        <p>O ambiente mantém temperatura próxima do setpoint, mas o fancoil de precisão gera alarme de alta umidade. A válvula está muito aberta e a água gelada chega mais quente do que o ideal. Qual interpretação inicial é a mais coerente?</p>
+        <label><input type="radio" name="m10case3" value="A"> A) A remoção latente está prejudicada por insuficiência de água gelada fria/capacidade na serpentina.</label>
+        <label><input type="radio" name="m10case3" value="B"> B) O melhor é aumentar o reheat sem investigar a serpentina.</label>
+        <label><input type="radio" name="m10case3" value="C"> C) Isso sempre indica apenas erro do sensor de umidade.</label>
+        <label><input type="radio" name="m10case3" value="D"> D) A causa mais provável é sujeira no condensador de um sistema DX local.</label>
+        <button class="btn btn-secondary m10-check-case" type="button">Verificar resposta</button>
+        <div class="m10-case-feedback"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <span id="m10-resumo" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-book-open"></i></div>
+      <div>
+        <h3>Resumo do Módulo</h3>
+        <p class="reading-subtitle">Conceitos-chave para consolidar o troubleshooting</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Troubleshooting eficiente depende de contexto. Um terminal com problema isolado sugere olhar primeiro para o próprio fancoil: ventilação, filtro, válvula, drenagem e sensores.
+        Já múltiplos terminais alarmando ao mesmo tempo sugerem perda de capacidade da CAG, distribuição hidráulica deficiente ou problema de automação. O melhor técnico não é o que “mexe mais rápido”,
+        mas o que confirma melhor a causa antes de agir.
+      </p>
+    </div>
+  </div>
+
+  <span id="m10-avaliacao" class="anchor-offset"></span>
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.</p>
+    <br>
+    <label><input type="checkbox" class="modulo10-check"> Sei classificar informativo, alerta, alarme e evento crítico.</label>
+    <label><input type="checkbox" class="modulo10-check"> Consigo interpretar sinais de baixa ΔP, alto ΔP e baixo ΔT na CAG.</label>
+    <label><input type="checkbox" class="modulo10-check"> Entendo o impacto de falha de bomba, VFD, sensor e válvula no comportamento da central.</label>
+    <label><input type="checkbox" class="modulo10-check"> Consigo relacionar sintomas da CAG com alarmes em fancoils de precisão.</label>
+    <label><input type="checkbox" class="modulo10-check"> Sei analisar alta temperatura de retorno, alta umidade e falhas de ventilação em fancoils.</label>
+    <label><input type="checkbox" class="modulo10-check"> Consigo seguir uma sequência segura de troubleshooting sem pular direto para setpoints.</label>
+    <label><input type="checkbox" class="modulo10-check"> Consigo justificar tecnicamente uma hipótese inicial de falha.</label>
+
+    <div id="modulo10-checklist-status" class="checklist-status">
+      Conclua o checklist para liberar a avaliação.
+    </div>
+  </div>
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>O sistema sorteará 5 perguntas aleatórias. Neste módulo, respostas erradas recebem justificativa técnica abaixo da questão.</p>
+    <br>
+    <button id="go-modulo10-quiz" class="btn btn-primary btn-disabled" type="button" disabled>
+      Ir para avaliação
+    </button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+
+</section>

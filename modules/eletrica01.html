@@ -1,0 +1,251 @@
+<section class="section module-lesson eletrica01-lesson">
+
+  <h2 class="section-title">Módulo E01 — Fundamentos Elétricos para HVAC</h2>
+
+  <p class="section-subtitle">
+    Primeiro módulo da trilha <strong>Elétrica Aplicada a HVAC</strong>. O foco é criar base segura para leitura de painéis,
+    comandos, alimentação trifásica, componentes elétricos e medições iniciais em equipamentos de climatização crítica.
+    A tensão de trabalho deve sempre ser confirmada em placa, diagrama e procedimento do site; nos exemplos práticos,
+    usamos sistemas trifásicos típicos de equipamentos HVAC industriais.
+  </p>
+
+  <nav class="module-nav">
+    <a href="#e01-seguranca">Segurança</a>
+    <a href="#e01-grandezas">Grandezas</a>
+    <a href="#e01-sistema3f">Sistema 3~</a>
+    <a href="#e01-potencia-comando">Potência x Comando</a>
+    <a href="#e01-componentes">Componentes</a>
+    <a href="#e01-instrumentos">Instrumentos</a>
+    <a href="#e01-diagnostico">Diagnóstico</a>
+    <a href="#e01-cases">Cases</a>
+    <a href="#e01-avaliacao">Avaliação</a>
+  </nav>
+
+  <span id="e01-seguranca" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div>
+        <h3>1. Segurança Elétrica Aplicada a HVAC</h3>
+        <p class="reading-subtitle">Antes de medir, o técnico precisa controlar a energia perigosa</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Equipamentos HVAC críticos combinam circuitos de potência, comando, automação, motores, ventiladores EC, resistências,
+        umidificadores, válvulas e comunicação com BMS. O primeiro diagnóstico nunca deve ser “mexer no painel”; deve ser confirmar
+        condição segura, documentação correta, procedimento aplicável e instrumento adequado.
+      </p>
+      <div class="grid">
+        <div class="mini-card"><h4><i class="fa-solid fa-lock"></i> Isolamento</h4><p>Quando a intervenção exigir contato com partes internas, desligue a fonte adequada, bloqueie, etiquete e confirme ausência de tensão.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-user-shield"></i> Profissional qualificado</h4><p>Medições em painel energizado, VFD, soft-starter, ATS ou comando de equipamento crítico devem ser feitas por profissional habilitado e autorizado.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-gauge-high"></i> Instrumento correto</h4><p>Verifique categoria, pontas, escala e função antes da medição. Instrumento errado pode causar leitura falsa ou acidente.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-rotate"></i> Teste antes/depois</h4><p>Confirme o instrumento em uma fonte conhecida, execute a medição e confirme o instrumento novamente após o teste.</p></div>
+      </div>
+      <div class="reading-highlight">
+        <h4>Regra didática</h4>
+        <p>O botão “Off” do controlador não é garantia de painel desenergizado. Controle desligado e potência isolada são coisas diferentes.</p>
+      </div>
+    </div>
+  </div>
+
+  <span id="e01-grandezas" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-bolt"></i></div>
+      <div>
+        <h3>2. Grandezas Elétricas Essenciais</h3>
+        <p class="reading-subtitle">A base para interpretar medições em motores, resistências, comandos e eletrônica de potência</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Tensão — V</h4><p>Diferença de potencial. Deve ser medida nos pontos corretos: entrada do equipamento, saída de proteção, entrada/saída do contator e comando.</p></div>
+        <div class="mini-card"><h4>Corrente — A</h4><p>Consumo da carga. Corrente alta pode indicar sobrecarga, travamento mecânico, baixa tensão, falha de fase ou parametrização inadequada.</p></div>
+        <div class="mini-card"><h4>Resistência — Ω</h4><p>Ajuda a avaliar bobinas, resistências de aquecimento, cabos e circuitos abertos. Deve ser medida com circuito desenergizado.</p></div>
+        <div class="mini-card"><h4>Potência — W / VA / kVA</h4><p>Relaciona tensão, corrente e fator de potência. É importante para interpretar carga de motores, transformadores e aquecimento elétrico.</p></div>
+        <div class="mini-card"><h4>Frequência — Hz</h4><p>Na rede é fixa conforme o sistema. Em inversores, a frequência de saída varia para controlar a rotação do motor.</p></div>
+        <div class="mini-card"><h4>Terra — PE</h4><p>Elemento de proteção. Terra não é neutro e não deve ser usado como retorno improvisado de comando.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e01-sistema3f" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+      <div>
+        <h3>3. Alimentação Trifásica em HVAC</h3>
+        <p class="reading-subtitle">Como ler as três fases sem transformar o valor nominal em regra cega</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Muitos equipamentos industriais e críticos usam alimentação trifásica. Em campo, o técnico deve confirmar o valor nominal na placa e no diagrama,
+        e depois comparar as três medições fase-fase. O objetivo não é decorar um número, mas verificar se a alimentação está presente, equilibrada e coerente com o equipamento.
+      </p>
+      <div class="e01-meter-grid">
+        <div class="e01-meter-card ok"><span>L1-L2</span><strong>V~</strong><small>Medição fase-fase</small></div>
+        <div class="e01-meter-card ok"><span>L2-L3</span><strong>V~</strong><small>Medição fase-fase</small></div>
+        <div class="e01-meter-card ok"><span>L1-L3</span><strong>V~</strong><small>Medição fase-fase</small></div>
+        <div class="e01-meter-card warn"><span>Comparação</span><strong>Equilíbrio</strong><small>Valores próximos entre si</small></div>
+      </div>
+      <div class="reading-highlight">
+        <h4>Interpretação prática</h4>
+        <p>Se uma combinação fase-fase está ausente ou muito diferente das outras, investigue fusível aberto, mau contato, disjuntor parcial, borne aquecido, cabo rompido ou problema upstream.</p>
+      </div>
+    </div>
+  </div>
+
+  <span id="e01-potencia-comando" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <div>
+        <h3>4. Circuito de Potência x Circuito de Comando</h3>
+        <p class="reading-subtitle">Separar os dois caminhos é o segredo do diagnóstico em painel</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        O circuito de potência alimenta a carga: motor, resistência, compressor, bomba ou ventilador. O circuito de comando decide se a carga pode ligar.
+        Quando um equipamento não parte, o técnico precisa descobrir se falta potência, falta comando ou se alguma proteção/intertravamento está abrindo a sequência.
+      </p>
+      <div class="e01-diagram">
+        <div class="e01-diagram-row power"><div>Rede 3~</div><i class="fa-solid fa-arrow-right-long"></i><div>Disjuntor / Fusíveis</div><i class="fa-solid fa-arrow-right-long"></i><div>Contator / Soft-starter / VFD</div><i class="fa-solid fa-arrow-right-long"></i><div>Proteção</div><i class="fa-solid fa-arrow-right-long"></i><div>Motor / Carga</div></div>
+        <div class="e01-diagram-row command"><div>Comando</div><i class="fa-solid fa-arrow-right-long"></i><div>Permissivos</div><i class="fa-solid fa-arrow-right-long"></i><div>Bobina / Enable</div><i class="fa-solid fa-arrow-right-long"></i><div>Contato auxiliar</div><i class="fa-solid fa-arrow-right-long"></i><div>Status CLP/BMS</div></div>
+      </div>
+      <p class="figure-caption"><strong>Leitura didática:</strong> se há potência na entrada, mas a carga não opera, investigue comando, proteção e elemento de manobra. Se não há potência nem na entrada, investigue upstream.</p>
+    </div>
+  </div>
+
+  <span id="e01-componentes" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-microchip"></i></div>
+      <div>
+        <h3>5. Componentes Elétricos de Equipamentos HVAC</h3>
+        <p class="reading-subtitle">O que o aluno precisa reconhecer antes de diagnosticar</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Disjuntor / Seccionadora</h4><p>Isola e protege o circuito. Em manutenção, o ponto de isolamento deve ser conhecido e confirmado.</p></div>
+        <div class="mini-card"><h4>Fusíveis</h4><p>Podem abrir uma fase e deixar o equipamento com alimentação incompleta. Sempre compare as três fases.</p></div>
+        <div class="mini-card"><h4>Contator</h4><p>Fecha o circuito de potência quando a bobina recebe comando correto e os intertravamentos permitem.</p></div>
+        <div class="mini-card"><h4>Relé térmico / proteção</h4><p>Protege motores contra sobrecarga e pode abrir o comando até reset e correção da causa.</p></div>
+        <div class="mini-card"><h4>Soft-starter</h4><p>Controla partida de motores, reduzindo impactos mecânicos e surtos de corrente. Pode fornecer leituras de corrente, frequência, status e erros.</p></div>
+        <div class="mini-card"><h4>VFD / inversor</h4><p>Controla velocidade e possui potência de entrada, saída para motor, comandos digitais/analógicos, alarmes e parâmetros.</p></div>
+        <div class="mini-card"><h4>Resistência elétrica</h4><p>Usada para reaquecimento ou controle de umidade. Pode ter chaves térmicas automáticas e manuais no circuito de proteção.</p></div>
+        <div class="mini-card"><h4>ATS / transferência</h4><p>Em aplicações críticas, pode transferir a alimentação entre fontes conforme sensoriamento e lógica do equipamento.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e01-instrumentos" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-gauge-high"></i></div>
+      <div>
+        <h3>6. Instrumentos de Medição</h3>
+        <p class="reading-subtitle">Escolher o instrumento certo evita erro de diagnóstico e risco operacional</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Instrumento</th><th>Uso típico</th><th>Atenção didática</th></tr></thead>
+          <tbody>
+            <tr><td>Multímetro</td><td>Tensão AC/DC, resistência, continuidade e testes básicos de circuito</td><td>Função e escala corretas; continuidade/resistência só com circuito desenergizado</td></tr>
+            <tr><td>Alicate amperímetro</td><td>Corrente de motor, bomba, ventilador, resistência ou umidificador</td><td>Medir apenas um condutor por vez; comparar fases quando aplicável</td></tr>
+            <tr><td>Detector de tensão</td><td>Triagem rápida de presença de tensão</td><td>Não substitui confirmação com multímetro adequado</td></tr>
+            <tr><td>Megômetro</td><td>Isolamento de motor, cabos e cargas resistivas conforme procedimento</td><td>Usar somente com circuito isolado e eletrônicos protegidos/desconectados conforme procedimento</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="reading-highlight"><h4>Erro comum</h4><p>Medir continuidade em circuito energizado é perigoso e pode danificar o instrumento. Continuidade não é teste para painel energizado.</p></div>
+    </div>
+  </div>
+
+  <span id="e01-diagnostico" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-stethoscope"></i></div>
+      <div>
+        <h3>7. Raciocínio Inicial de Diagnóstico Elétrico</h3>
+        <p class="reading-subtitle">Uma sequência simples para não se perder no painel</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="e01-step-grid">
+        <div class="mini-card e01-step-card"><span>1</span><h4>Confirmar sintoma</h4><p>Não parte, desarma, opera com corrente alta, falha de comunicação ou alarme de proteção?</p></div>
+        <div class="mini-card e01-step-card"><span>2</span><h4>Verificar potência</h4><p>Há alimentação correta no equipamento? As fases estão presentes e equilibradas?</p></div>
+        <div class="mini-card e01-step-card"><span>3</span><h4>Verificar comando</h4><p>A bobina, enable, permissivos e intertravamentos estão liberando a partida?</p></div>
+        <div class="mini-card e01-step-card"><span>4</span><h4>Verificar carga</h4><p>Motor, resistência, ventilador, bomba ou atuador estão íntegros e sem bloqueio mecânico?</p></div>
+        <div class="mini-card e01-step-card"><span>5</span><h4>Fechar hipótese</h4><p>Somente depois das medições, conclua se é falha de alimentação, comando, proteção, carga ou controle.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e01-cases" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-clipboard-question"></i></div>
+      <div>
+        <h3>8. Cases Didáticos de Campo</h3>
+        <p class="reading-subtitle">Aplicações rápidas para preparar a futura ferramenta de diagnóstico elétrico</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Motor não parte</h4><p>Meça alimentação na entrada, saída do elemento de manobra, comando da bobina/enable e estado das proteções.</p></div>
+        <div class="mini-card"><h4>Soft-starter em erro</h4><p>Verifique status, último erro, corrente do motor, frequência da rede e correntes por fase quando disponíveis.</p></div>
+        <div class="mini-card"><h4>Resistência não aquece</h4><p>Confira comando, tensão na carga, proteções térmicas automáticas/manuais e continuidade com circuito isolado.</p></div>
+        <div class="mini-card"><h4>Ventilador EC parado</h4><p>Separe alimentação, comando, feedback, alarme do drive integrado e condição mecânica do rotor.</p></div>
+      </div>
+      <div class="reading-highlight"><h4>Preparação para ferramenta</h4><p>Esses cases serão a base do futuro <strong>Assistente de Diagnóstico Elétrico HVAC</strong>, que receberá sintoma, medições e estado dos componentes para sugerir hipóteses e próximos passos.</p></div>
+    </div>
+  </div>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-book-open"></i></div>
+      <div>
+        <h3>Resumo do Módulo</h3>
+        <p class="reading-subtitle">O que deve ficar claro antes de avançar para comandos elétricos</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        O diagnóstico elétrico começa com segurança, documentação e medição correta. Em HVAC, o técnico deve separar potência e comando,
+        comparar fases, entender proteções e reconhecer que equipamentos como soft-starters, VFDs, EC fans, resistências e ATS possuem lógica própria.
+        O próximo módulo aprofunda os comandos elétricos: contatores, selo, intertravamentos, relés e circuitos de partida.
+      </p>
+    </div>
+  </div>
+
+  <span id="e01-avaliacao" class="anchor-offset"></span>
+
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.</p>
+    <br>
+    <label><input type="checkbox" class="eletrica01-check"> Entendi que desligar pelo controlador não garante painel desenergizado.</label>
+    <label><input type="checkbox" class="eletrica01-check"> Sei diferenciar tensão, corrente, resistência, potência, frequência e terra.</label>
+    <label><input type="checkbox" class="eletrica01-check"> Sei comparar medições fase-fase em um sistema trifásico.</label>
+    <label><input type="checkbox" class="eletrica01-check"> Consigo diferenciar circuito de potência e circuito de comando.</label>
+    <label><input type="checkbox" class="eletrica01-check"> Sei escolher instrumento básico para tensão, corrente, continuidade e isolamento.</label>
+    <label><input type="checkbox" class="eletrica01-check"> Consigo iniciar diagnóstico de motor que não parte, resistência sem aquecimento e soft-starter em erro.</label>
+    <div id="eletrica01-checklist-status" class="checklist-status">Conclua o checklist para liberar a avaliação.</div>
+  </div>
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.</p>
+    <br>
+    <button id="go-eletrica01-quiz" class="btn btn-primary btn-disabled" type="button" disabled>Ir para avaliação</button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+
+</section>

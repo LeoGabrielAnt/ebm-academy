@@ -1,0 +1,167 @@
+<section class="section module-lesson eletrica02-lesson">
+  <h2 class="section-title">Módulo E02 — Comandos Elétricos Aplicados a HVAC</h2>
+  <p class="section-subtitle">
+    Neste módulo, a base elétrica evolui para o circuito de comando: contatores, relés, intertravamentos,
+    bobinas, contatos auxiliares, selo, permissivos e comandos típicos de equipamentos HVAC. O objetivo é aprender a “ler”
+    por que uma carga liga, não liga, desarma ou perde o comando.
+  </p>
+
+  <nav class="module-nav">
+    <a href="#e02-conceito">Conceito</a>
+    <a href="#e02-componentes">Componentes</a>
+    <a href="#e02-ladder">Ladder</a>
+    <a href="#e02-permissivos">Permissivos</a>
+    <a href="#e02-hvac">Aplicações HVAC</a>
+    <a href="#e02-falhas">Falhas Comuns</a>
+    <a href="#e02-avaliacao">Avaliação</a>
+  </nav>
+
+  <span id="e02-conceito" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-diagram-project"></i></div><div><h3>1. O que é um circuito de comando?</h3><p class="reading-subtitle">É ele que decide se a potência pode ou não chegar à carga</p></div></div>
+    <div class="reading-content">
+      <p>
+        O circuito de comando é a parte lógica e funcional do painel. Ele não precisa carregar a potência do motor ou da resistência;
+        ele precisa autorizar a ação. Em HVAC, esse caminho pode passar por botoeira, contato de selo, relé térmico, pressostato,
+        fluxostato, termostato, contato auxiliar, CLP, IHM ou placa eletrônica.
+      </p>
+      <div class="grid">
+        <div class="mini-card"><h4><i class="fa-solid fa-play"></i> Partida</h4><p>Uma partida ocorre quando o comando encontra caminho elétrico completo até a bobina ou até o sinal de enable.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-stop"></i> Parada</h4><p>Uma parada ocorre quando o caminho é interrompido por botão de stop, proteção, permissivo perdido ou lógica externa.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-link"></i> Intertravamento</h4><p>Serve para impedir ação insegura ou sequência indevida: pressões erradas, falta de fluxo, portas abertas, falha térmica etc.</p></div>
+        <div class="mini-card"><h4><i class="fa-solid fa-shield-halved"></i> Proteção</h4><p>Relés térmicos, fusíveis, disjuntores de comando e contatos de falha protegem pessoas, painel e carga.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e02-componentes" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-microchip"></i></div><div><h3>2. Principais componentes de comando</h3><p class="reading-subtitle">Reconhecer o papel de cada elemento acelera muito o diagnóstico</p></div></div>
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Componente</th><th>Função</th><th>Observação prática</th></tr></thead>
+          <tbody>
+            <tr><td>Botoeira NA/NF</td><td>Comandar partida, parada, reset ou seleção</td><td>Contatos podem falhar mecanicamente ou apresentar mau contato</td></tr>
+            <tr><td>Contator</td><td>Acionar potência por meio de bobina</td><td>Se a bobina energiza e a força não fecha, o defeito pode estar no próprio contator</td></tr>
+            <tr><td>Contato auxiliar</td><td>Realizar selo, intertravamento ou feedback de estado</td><td>É muito usado no circuito de retenção da partida</td></tr>
+            <tr><td>Relé térmico</td><td>Abrir o comando em caso de sobrecarga do motor</td><td>É comum encontrar contato NF em série com a bobina</td></tr>
+            <tr><td>Transformador de comando</td><td>Gerar tensão de comando adequada</td><td>Se ele falha, todo o comando pode desaparecer mesmo com potência disponível</td></tr>
+            <tr><td>Soft-starter / VFD</td><td>Receber sinal de start/enable e comandar a carga</td><td>O diagnóstico passa por bornes de comando, parâmetros e estados internos</td></tr>
+            <tr><td>ATS</td><td>Transferir alimentação entre fontes</td><td>Opera com lógica própria de monitoramento, permissivos e contatos auxiliares</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="electric-component-strip">
+        <div class="electric-node pulse-blue"><i class="fa-solid fa-plug-circle-check"></i><span>Fonte de comando</span></div>
+        <div class="electric-arrow"></div>
+        <div class="electric-node pulse-gold"><i class="fa-solid fa-hand-pointer"></i><span>Botoeira / Start</span></div>
+        <div class="electric-arrow"></div>
+        <div class="electric-node pulse-red"><i class="fa-solid fa-shield-halved"></i><span>Proteções / NF</span></div>
+        <div class="electric-arrow"></div>
+        <div class="electric-node pulse-green"><i class="fa-solid fa-magnet"></i><span>Bobina / Enable</span></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e02-ladder" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-project-diagram"></i></div><div><h3>3. Leitura didática de ladder e selo</h3><p class="reading-subtitle">O caminho elétrico é o melhor mapa mental para o diagnóstico</p></div></div>
+    <div class="reading-content">
+      <p>O esquema abaixo representa de forma didática um comando de partida com botão de parada, botão de partida, contato de selo e relé térmico no caminho da bobina do contator.</p>
+      <div class="e02-ladder-card">
+        <div class="ladder-rail left"></div>
+        <div class="ladder-rail right"></div>
+        <div class="ladder-rung animated-rung">
+          <div class="ladder-contact nc">STOP NF</div>
+          <div class="ladder-contact nc">TÉRMICO NF</div>
+          <div class="ladder-branch">
+            <div class="ladder-branch-row">
+              <div class="ladder-contact no pulse-gold">START NA</div>
+            </div>
+            <div class="ladder-branch-row parallel">
+              <div class="ladder-contact no pulse-green">K1 AUX</div>
+            </div>
+          </div>
+          <div class="ladder-coil pulse-blue">BOBINA K1</div>
+        </div>
+      </div>
+      <div class="reading-highlight">
+        <h4>Como interpretar</h4>
+        <p>Se qualquer contato NF abrir, a bobina perde energia. Se o START momentâneo energiza a bobina, o contato auxiliar K1 fecha e “segura” a condição de ligado. Se o selo não fechar, o equipamento parte e solta imediatamente.</p>
+      </div>
+    </div>
+  </div>
+
+  <span id="e02-permissivos" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-list-check"></i></div><div><h3>4. Permissivos e intertravamentos em HVAC</h3><p class="reading-subtitle">O comando elétrico precisa conversar com a segurança do processo</p></div></div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Pressostato</h4><p>Pode liberar ou bloquear a partida conforme a pressão do sistema. É comum em DX, bombas e circuitos de segurança.</p></div>
+        <div class="mini-card"><h4>Fluxostato</h4><p>Impede operação sem vazão mínima, protegendo trocadores e chillers.</p></div>
+        <div class="mini-card"><h4>Termostato / limite</h4><p>Usado para controle e proteção, incluindo limites altos e baixos.</p></div>
+        <div class="mini-card"><h4>Porta / manutenção</h4><p>Chaves de porta e manutenção podem inibir partidas com objetivo de segurança.</p></div>
+      </div>
+      <div class="e02-flow-grid">
+        <div class="e02-flow-box source pulse-blue">Demanda</div>
+        <div class="e02-flow-box">Permissivos</div>
+        <div class="e02-flow-box">Bobina / Enable</div>
+        <div class="e02-flow-box result pulse-green">Partida liberada</div>
+        <div class="e02-flow-box fault pulse-red">Proteção abriu</div>
+      </div>
+      <p class="figure-caption"><strong>Leitura didática:</strong> o sistema só chega ao resultado positivo quando os permissivos e proteções permanecem coerentes ao longo da sequência.</p>
+    </div>
+  </div>
+
+  <span id="e02-hvac" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-fan"></i></div><div><h3>5. Aplicações em equipamentos HVAC</h3><p class="reading-subtitle">Onde esse comando aparece no dia a dia de campo</p></div></div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Bomba</h4><p>Partida direta, soft-starter ou VFD. O comando pode depender de pressão diferencial, demanda e proteção térmica.</p></div>
+        <div class="mini-card"><h4>Ventilador / EC fan</h4><p>O sinal de enable pode vir de placa controladora, intertravamentos e alarmes do próprio ventilador.</p></div>
+        <div class="mini-card"><h4>Resistência elétrica</h4><p>Normalmente depende de contatores, limites térmicos e permissivos de fluxo de ar.</p></div>
+        <div class="mini-card"><h4>Chiller / CAG</h4><p>Enable, run permissive e intertravamentos de fluxo, bombas, alarme e disponibilidade elétrica são comuns.</p></div>
+        <div class="mini-card"><h4>ATS</h4><p>Monitora fontes, temporiza e transfere cargas críticas quando a lógica entende que a fonte principal falhou.</p></div>
+        <div class="mini-card"><h4>Soft-starter</h4><p>Recebe comando de start/stop e entrega rampa de aceleração controlada, além de proteção e diagnóstico.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e02-falhas" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div><div><h3>6. Falhas típicas de comando</h3><p class="reading-subtitle">Quando a potência existe, mas o equipamento continua parado</p></div></div>
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Sintoma</th><th>Hipótese inicial</th><th>O que checar primeiro</th></tr></thead>
+          <tbody>
+            <tr><td>Bobina não energiza</td><td>Falta de tensão de comando ou permissivo aberto</td><td>Trajeto do comando, tensão na bobina, NF de proteção e botões</td></tr>
+            <tr><td>Parte e solta</td><td>Contato de selo não fechando</td><td>Contato auxiliar K1, montagem e continuidade do ramo de retenção</td></tr>
+            <tr><td>Contator puxa mas carga não parte</td><td>Falha na potência</td><td>Tensão na entrada/saída do contator, fusíveis e circuito da carga</td></tr>
+            <tr><td>Relé térmico desarmado</td><td>Sobrecarga, travamento ou parametrização inadequada</td><td>Corrente do motor, acoplamento mecânico e ajuste do relé</td></tr>
+            <tr><td>Soft-starter em ready sem start</td><td>Sinal de comando ausente ou lógica externa não liberou</td><td>Bornes de start/stop, tensão de comando e permissivos</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="reading-highlight"><h4>Mensagem-chave</h4><p>O circuito de comando é uma sequência lógica. Quando o equipamento não liga, procure o ponto do caminho em que a energia do comando deixa de existir.</p></div>
+    </div>
+  </div>
+
+  <div class="card technical-reading"><div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-book-open"></i></div><div><h3>Resumo do Módulo</h3><p class="reading-subtitle">Base necessária antes de avançar para instrumentos de medição</p></div></div><div class="reading-content"><p>Comando elétrico é lógica aplicada à partida e parada. Ao compreender bobinas, contatores, contatos auxiliares, proteção e permissivos, o técnico deixa de “adivinhar” o defeito e passa a seguir o caminho elétrico com método.</p></div></div>
+
+  <span id="e02-avaliacao" class="anchor-offset"></span>
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.</p><br>
+    <label><input type="checkbox" class="eletrica02-check"> Entendi a diferença entre potência e comando dentro do circuito elétrico.</label>
+    <label><input type="checkbox" class="eletrica02-check"> Sei identificar a função de botoeira, contator, relé térmico e contato auxiliar.</label>
+    <label><input type="checkbox" class="eletrica02-check"> Consigo interpretar um comando de partida com selo.</label>
+    <label><input type="checkbox" class="eletrica02-check"> Entendo o papel de permissivos e intertravamentos em equipamentos HVAC.</label>
+    <label><input type="checkbox" class="eletrica02-check"> Consigo iniciar o diagnóstico quando a bobina não energiza ou quando o equipamento parte e solta.</label>
+    <div id="eletrica02-checklist-status" class="checklist-status">Conclua o checklist para liberar a avaliação.</div>
+  </div>
+  <div class="card assessment-callout"><h3>Avaliação do Módulo</h3><p>O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.</p><br><button id="go-eletrica02-quiz" class="btn btn-primary btn-disabled" type="button" disabled>Ir para avaliação</button></div>
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+</section>

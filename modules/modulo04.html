@@ -1,0 +1,641 @@
+<section class="section module-lesson">
+
+  <h2 class="section-title">
+    Módulo 04 — Self Contained DX
+  </h2>
+
+  <p class="section-subtitle">
+    Aula teórica completa sobre equipamentos Self Contained de expansão direta, com foco em arquitetura,
+    componentes, fluxo de ar, ciclo frigorífico embarcado, compressor, condensação, evaporação,
+    alarmes e troubleshooting aplicado.
+  </p>
+
+  <!-- NAVEGAÇÃO INTERNA -->
+
+  <nav class="module-nav">
+    <a href="#m4-conceito">Conceito</a>
+    <a href="#m4-arquitetura">Arquitetura</a>
+    <a href="#m4-compressor">Compressor</a>
+    <a href="#m4-evaporador">Evaporador</a>
+    <a href="#m4-condensacao">Condensação</a>
+    <a href="#m4-controle">Controle</a>
+    <a href="#m4-troubleshooting">Troubleshooting</a>
+    <a href="#m4-avaliacao">Avaliação</a>
+  </nav>
+
+  <!-- OBJETIVOS -->
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-bullseye"></i>
+      </div>
+
+      <div>
+        <h3>Objetivos de Aprendizagem</h3>
+        <p class="reading-subtitle">
+          O que o aluno deverá compreender ao final deste módulo
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <ul class="tech-list">
+        <li>Compreender o conceito de Self Contained DX e sua aplicação em HVAC crítico.</li>
+        <li>Identificar os principais componentes: evaporador, compressor, condensador, expansão e controle.</li>
+        <li>Relacionar o ciclo frigorífico com o fluxo de ar do equipamento.</li>
+        <li>Interpretar sintomas de baixa capacidade, alta pressão, baixa pressão e falha de compressor.</li>
+        <li>Aplicar uma sequência lógica de troubleshooting antes de substituir componentes.</li>
+        <li>Compreender a importância de operação estável, registros, alarmes e histórico técnico.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONCEITO -->
+
+  <span id="m4-conceito" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-box"></i>
+      </div>
+
+      <div>
+        <h3>1. Conceito de Self Contained DX</h3>
+        <p class="reading-subtitle">
+          Unidade de expansão direta com ciclo frigorífico embarcado
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O Self Contained DX é um equipamento de climatização que possui circuito frigorífico de
+        expansão direta integrado ao próprio conjunto. Diferente de um fancoil de água gelada,
+        no Self DX o refrigerante evapora diretamente na serpentina evaporadora, absorvendo calor
+        do ar de retorno.
+      </p>
+
+      <br>
+
+      <p>
+        Em aplicações críticas, esse tipo de equipamento pode atender salas técnicas, ambientes
+        de telecom, áreas industriais, pequenas salas de TI e locais onde se deseja um sistema
+        relativamente compacto com circuito frigorífico próprio.
+      </p>
+
+      <div class="reading-highlight">
+        <h4>Leitura técnica importante</h4>
+        <p>
+          O Self DX deve ser analisado como um sistema integrado: lado do ar, circuito frigorífico,
+          elétrica, controle, condensação e carga térmica. Trocar componentes sem fechar diagnóstico
+          aumenta risco de reincidência.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARQUITETURA -->
+
+  <span id="m4-arquitetura" class="anchor-offset"></span>
+
+  <div class="card technical-reading selfdx-architecture-card">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-diagram-project"></i>
+      </div>
+
+      <div>
+        <h3>2. Arquitetura Funcional do Self DX</h3>
+        <p class="reading-subtitle">
+          Fluxo de ar, fluxo de refrigerante e rejeição de calor
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O diagrama abaixo mostra a lógica simplificada do equipamento. O ar quente retorna da sala,
+        passa pela serpentina evaporadora, entrega calor ao refrigerante e retorna ao ambiente em
+        menor temperatura. O calor absorvido é transportado pelo refrigerante até a condensação.
+      </p>
+
+      <div class="selfdx-system-diagram">
+
+        <div class="selfdx-zone indoor-zone">
+          <span class="zone-label">Ambiente climatizado</span>
+          <div class="air-card warm-air">
+            <i class="fa-solid fa-temperature-high"></i>
+            <h4>Ar de retorno</h4>
+            <p>Ar quente vindo da sala</p>
+          </div>
+        </div>
+
+        <div class="selfdx-arrow air-in">
+          <span></span>
+        </div>
+
+        <div class="selfdx-unit">
+          <div class="unit-title">
+            <i class="fa-solid fa-box"></i>
+            Self Contained DX
+          </div>
+
+          <div class="unit-grid">
+            <div class="unit-component evaporator-comp">
+              <i class="fa-solid fa-snowflake"></i>
+              <h4>Evaporador</h4>
+              <p>Absorve calor do ar</p>
+            </div>
+
+            <div class="unit-component compressor-comp">
+              <i class="fa-solid fa-gears"></i>
+              <h4>Compressor</h4>
+              <p>Eleva pressão e temperatura</p>
+            </div>
+
+            <div class="unit-component expansion-comp">
+              <i class="fa-solid fa-filter"></i>
+              <h4>Expansão</h4>
+              <p>Reduz pressão</p>
+            </div>
+
+            <div class="unit-component control-comp">
+              <i class="fa-solid fa-microchip"></i>
+              <h4>Controle</h4>
+              <p>Sensores e alarmes</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="selfdx-arrow heat-out">
+          <span></span>
+        </div>
+
+        <div class="selfdx-zone outdoor-zone">
+          <span class="zone-label">Rejeição térmica</span>
+          <div class="air-card hot-air">
+            <i class="fa-solid fa-fan"></i>
+            <h4>Condensação</h4>
+            <p>Calor rejeitado ao meio externo</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="selfdx-refrigerant-flow">
+        <div class="flow-item low">
+          <span>Baixa pressão</span>
+          Evaporador → Compressor
+        </div>
+
+        <div class="flow-item high">
+          <span>Alta pressão</span>
+          Compressor → Condensador
+        </div>
+
+        <div class="flow-item high">
+          <span>Líquido alta pressão</span>
+          Condensador → Expansão
+        </div>
+
+        <div class="flow-item low">
+          <span>Mistura baixa pressão</span>
+          Expansão → Evaporador
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COMPRESSOR -->
+
+  <span id="m4-compressor" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-gears"></i>
+      </div>
+
+      <div>
+        <h3>3. Compressor no Self DX</h3>
+        <p class="reading-subtitle">
+          Componente crítico para movimentação e elevação de pressão do refrigerante
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O compressor é responsável por aspirar vapor refrigerante em baixa pressão e elevar sua
+        pressão e temperatura, permitindo que o condensador rejeite calor. Ele deve receber vapor,
+        nunca líquido. Por isso, Superheat adequado e boa alimentação do evaporador são essenciais.
+      </p>
+
+      <div class="compressor-visual-block">
+
+        <div class="compressor-illustration">
+          <div class="compressor-body">
+            <div class="compressor-head"></div>
+            <div class="compressor-label">COMPRESSOR</div>
+            <div class="compressor-port suction-port">
+              <span>Sucção</span>
+            </div>
+            <div class="compressor-port discharge-port">
+              <span>Descarga</span>
+            </div>
+            <div class="compressor-pulse"></div>
+          </div>
+        </div>
+
+        <div class="compressor-explanation">
+          <h4>O que observar</h4>
+          <ul class="tech-list">
+            <li>Corrente elétrica e comparação com nominal.</li>
+            <li>Temperatura de descarga.</li>
+            <li>Superheat na sucção.</li>
+            <li>Ruído, vibração e histórico de alarmes.</li>
+            <li>Condição de óleo, quando aplicável.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="reading-highlight compressor-attention">
+        <h4>Pontos técnicos de atenção</h4>
+        <p>
+          Antes de concluir falha de compressor, verifique alimentação elétrica, contator,
+          pressostatos, sensores, carga térmica, estado das serpentinas, vazão de ar, Superheat,
+          Subcooling e histórico de alarmes. Compressor é consequência em muitos cenários, não a
+          causa inicial.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Retorno líquido</h4>
+          <p>
+            Pode causar danos mecânicos graves. Investigue SH baixo, válvula de expansão e baixa carga térmica.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Sobrecorrente</h4>
+          <p>
+            Pode envolver alta pressão, travamento mecânico, tensão inadequada, falha elétrica ou carga anormal.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Alta descarga</h4>
+          <p>
+            Pode indicar alta razão de compressão, condensação deficiente, superaquecimento alto ou baixa carga.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EVAPORADOR -->
+
+  <span id="m4-evaporador" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-snowflake"></i>
+      </div>
+
+      <div>
+        <h3>4. Evaporador e Troca de Calor</h3>
+        <p class="reading-subtitle">
+          Onde o sistema remove calor do ambiente
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        No evaporador, o ar de retorno passa pela serpentina fria e entrega calor ao refrigerante.
+        A eficiência desse processo depende da vazão de ar, limpeza da serpentina, condição dos
+        filtros, carga térmica e alimentação correta do refrigerante.
+      </p>
+
+      <div class="evaporator-heat-diagram">
+        <div class="air-stream warm">
+          <i class="fa-solid fa-arrow-right"></i>
+          <span>Ar quente de retorno</span>
+        </div>
+
+        <div class="coil-block">
+          <div class="coil-line"></div>
+          <div class="coil-line"></div>
+          <div class="coil-line"></div>
+          <div class="coil-line"></div>
+          <div class="coil-label">Serpentina evaporadora</div>
+        </div>
+
+        <div class="air-stream cold">
+          <i class="fa-solid fa-arrow-right"></i>
+          <span>Ar resfriado para insuflamento</span>
+        </div>
+
+        <div class="heat-transfer-label">
+          Calor do ar → refrigerante
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Condição no evaporador</th>
+              <th>Possível consequência</th>
+              <th>O que verificar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Filtro sujo</td>
+              <td>Baixa vazão de ar, baixa capacidade e risco de congelamento</td>
+              <td>Pressão diferencial, inspeção visual e histórico de troca</td>
+            </tr>
+            <tr>
+              <td>Serpentina obstruída</td>
+              <td>Redução de troca térmica e instabilidade de Superheat</td>
+              <td>Limpeza, acesso, bandeja e condição do dreno</td>
+            </tr>
+            <tr>
+              <td>Baixa carga térmica</td>
+              <td>Evaporação instável e risco de retorno líquido</td>
+              <td>Condição real da sala, setpoint e carga operacional</td>
+            </tr>
+            <tr>
+              <td>Baixa alimentação de refrigerante</td>
+              <td>Superheat alto e baixa capacidade</td>
+              <td>Válvula de expansão, filtro secador, carga e restrições</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONDENSAÇÃO -->
+
+  <span id="m4-condensacao" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-fan"></i>
+      </div>
+
+      <div>
+        <h3>5. Condensação e Rejeição de Calor</h3>
+        <p class="reading-subtitle">
+          A capacidade do sistema depende também de rejeitar calor corretamente
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O condensador tem a função de rejeitar o calor absorvido no evaporador, somado ao calor
+        de compressão. Quando a condensação é deficiente, a pressão de descarga sobe, a corrente
+        pode aumentar e o sistema pode parar por proteção de alta pressão.
+      </p>
+
+      <div class="condenser-rejection-diagram">
+        <div class="condenser-card">
+          <i class="fa-solid fa-fan"></i>
+          <h4>Condensador</h4>
+          <p>Recebe vapor quente em alta pressão</p>
+        </div>
+
+        <div class="heat-wave">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="ambient-card">
+          <i class="fa-solid fa-sun"></i>
+          <h4>Ambiente externo</h4>
+          <p>Recebe o calor rejeitado</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Condensador sujo</h4>
+          <p>
+            Aumenta pressão de descarga e reduz eficiência. Pode gerar alarme de alta pressão.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Ventilação deficiente</h4>
+          <p>
+            Falhas em ventiladores, sentido de rotação ou obstruções prejudicam rejeição térmica.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Temperatura externa alta</h4>
+          <p>
+            Eleva a condição de condensação e exige atenção à margem operacional do sistema.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Excesso de refrigerante</h4>
+          <p>
+            Pode elevar subcooling e pressão de condensação, dependendo da condição do sistema.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTROLE -->
+
+  <span id="m4-controle" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-microchip"></i>
+      </div>
+
+      <div>
+        <h3>6. Controle, Permissivos e Alarmes</h3>
+        <p class="reading-subtitle">
+          O equipamento só opera se as condições de segurança forem atendidas
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O controlador do Self DX monitora sensores, pressostatos, temporizações, demanda térmica,
+        estágios e alarmes. Antes de acionar um compressor, normalmente existem permissivos de
+        segurança que precisam estar atendidos.
+      </p>
+
+      <div class="control-flow">
+        <div class="control-step">
+          <span>1</span>
+          <h4>Demanda</h4>
+          <p>Temperatura acima do setpoint ou lógica de controle solicitando refrigeração.</p>
+        </div>
+
+        <div class="control-step">
+          <span>2</span>
+          <h4>Permissivos</h4>
+          <p>Pressostatos, temporização, proteções elétricas e sensores sem bloqueio.</p>
+        </div>
+
+        <div class="control-step">
+          <span>3</span>
+          <h4>Acionamento</h4>
+          <p>Compressor, ventiladores e demais componentes são acionados conforme lógica.</p>
+        </div>
+
+        <div class="control-step">
+          <span>4</span>
+          <h4>Monitoramento</h4>
+          <p>O controlador acompanha alarmes, temperatura, proteção e operação contínua.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+
+  <span id="m4-troubleshooting" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </div>
+
+      <div>
+        <h3>7. Troubleshooting Aplicado</h3>
+        <p class="reading-subtitle">
+          Raciocínio técnico antes de intervenção
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Sintoma</th>
+              <th>Possíveis causas</th>
+              <th>Verificações iniciais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alta pressão</td>
+              <td>Condensador sujo, ventilador parado, obstrução, excesso de carga</td>
+              <td>Ventilação, limpeza, corrente, temperatura externa e subcooling</td>
+            </tr>
+            <tr>
+              <td>Baixa pressão</td>
+              <td>Baixa carga, restrição, baixa vazão no evaporador, baixa carga térmica</td>
+              <td>Filtro, serpentina, SH, SC, vazamento e temperatura de retorno</td>
+            </tr>
+            <tr>
+              <td>Baixa capacidade</td>
+              <td>Baixa troca térmica, compressor ineficiente, alimentação insuficiente</td>
+              <td>Delta T de ar, pressões, SH/SC, filtros, alarmes e histórico</td>
+            </tr>
+            <tr>
+              <td>Compressor não parte</td>
+              <td>Falha elétrica, proteção aberta, temporização, alarme ativo ou contator</td>
+              <td>Tensão, comando, pressostatos, relés, alarmes e permissivos</td>
+            </tr>
+            <tr>
+              <td>Congelamento do evaporador</td>
+              <td>Baixa vazão de ar, baixa carga, expansão inadequada ou setpoint incorreto</td>
+              <td>Filtro, ventilação, SH, temperatura de evaporação e carga térmica</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Boa prática de campo</h4>
+        <p>
+          Sempre registre antes e depois: pressões, temperaturas, SH, SC, corrente, tensão,
+          condição de filtros, limpeza de serpentinas, alarmes e ações realizadas. Isso evita
+          diagnósticos repetitivos e melhora a rastreabilidade.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMO -->
+
+  <div class="card module-summary">
+    <h3>Resumo do Módulo</h3>
+    <p>
+      O Self Contained DX reúne ciclo frigorífico, fluxo de ar, controle e proteção em um único
+      equipamento. Para diagnosticar corretamente, o técnico deve correlacionar lado do ar,
+      lado frigorífico, elétrica, alarmes, controle e histórico operacional. Pressão isolada não
+      é diagnóstico; é apenas parte da leitura.
+    </p>
+  </div>
+
+  <!-- CHECKLIST -->
+
+  <span id="m4-avaliacao" class="anchor-offset"></span>
+
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>
+      Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.
+    </p>
+
+    <br>
+
+    <label><input type="checkbox" class="modulo04-check"> Entendi o conceito de Self Contained DX.</label>
+    <label><input type="checkbox" class="modulo04-check"> Compreendi a função do compressor, evaporador, condensador e expansão.</label>
+    <label><input type="checkbox" class="modulo04-check"> Entendi como o fluxo de ar impacta a capacidade do equipamento.</label>
+    <label><input type="checkbox" class="modulo04-check"> Sei relacionar alta pressão, baixa pressão e baixa capacidade com possíveis causas.</label>
+    <label><input type="checkbox" class="modulo04-check"> Compreendi a importância de permissivos, alarmes e histórico operacional.</label>
+
+    <div id="modulo04-checklist-status" class="checklist-status">
+      Conclua o checklist para liberar a avaliação.
+    </div>
+  </div>
+
+  <!-- BOTÃO QUIZ -->
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>
+      O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.
+    </p>
+
+    <br>
+
+    <button id="go-modulo04-quiz" class="btn btn-primary btn-disabled" type="button" disabled>
+      Ir para avaliação
+    </button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+</section>

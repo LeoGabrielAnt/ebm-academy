@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520">
+  <defs>
+    <style>
+      .bg{fill:#0f172a}.title{font:700 28px Arial;fill:#e2e8f0}.sub{font:400 16px Arial;fill:#94a3b8}
+      .box{fill:#111827;stroke:#38bdf8;stroke-width:3;rx:18}.box2{fill:#172554;stroke:#60a5fa;stroke-width:3;rx:18}
+      .box3{fill:#052e16;stroke:#34d399;stroke-width:3;rx:18}.box4{fill:#3f1d2e;stroke:#f472b6;stroke-width:3;rx:18}
+      .txt{font:700 22px Arial;fill:#f8fafc}.small{font:400 16px Arial;fill:#cbd5e1}.line{stroke:#94a3b8;stroke-width:5;fill:none;marker-end:url(#a)}
+      .dash{stroke-dasharray:10 8}.lbl{font:700 15px Arial;fill:#facc15}
+    </style>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="520"/>
+  <text x="40" y="45" class="title">Arquitetura didática da automação da CAG</text>
+  <text x="40" y="72" class="sub">BMS/Supervisório, IHM, CLP e equipamentos de campo trabalhando em camadas</text>
+
+  <rect class="box2" x="80" y="120" width="260" height="110" rx="18"/>
+  <text x="210" y="165" text-anchor="middle" class="txt">BMS / Supervisório</text>
+  <text x="210" y="193" text-anchor="middle" class="small">Tendências, alarmes, telas, histórico</text>
+
+  <rect class="box" x="470" y="120" width="260" height="110" rx="18"/>
+  <text x="600" y="165" text-anchor="middle" class="txt">IHM / Operação Local</text>
+  <text x="600" y="193" text-anchor="middle" class="small">Modo manual/auto, setpoints, comandos</text>
+
+  <rect class="box3" x="860" y="120" width="260" height="110" rx="18"/>
+  <text x="990" y="165" text-anchor="middle" class="txt">CLP / Controlador</text>
+  <text x="990" y="193" text-anchor="middle" class="small">Permissivos, intertravamentos, lógica</text>
+
+  <path class="line" d="M340 175 H468"/>
+  <path class="line" d="M730 175 H858"/>
+  <text x="405" y="162" class="lbl">dados / comandos</text>
+  <text x="792" y="162" class="lbl">controle</text>
+
+  <rect class="box4" x="95" y="315" width="210" height="120" rx="18"/>
+  <text x="200" y="358" text-anchor="middle" class="txt">Sensores</text>
+  <text x="200" y="385" text-anchor="middle" class="small">temperatura, pressão, fluxo, status</text>
+
+  <rect class="box4" x="355" y="315" width="210" height="120" rx="18"/>
+  <text x="460" y="358" text-anchor="middle" class="txt">Bombas / VFDs</text>
+  <text x="460" y="385" text-anchor="middle" class="small">partida, frequência, falha, corrente</text>
+
+  <rect class="box4" x="615" y="315" width="210" height="120" rx="18"/>
+  <text x="720" y="358" text-anchor="middle" class="txt">Chillers</text>
+  <text x="720" y="385" text-anchor="middle" class="small">habilitação, run, alarme, capacidade</text>
+
+  <rect class="box4" x="875" y="315" width="210" height="120" rx="18"/>
+  <text x="980" y="358" text-anchor="middle" class="txt">Válvulas / By-pass</text>
+  <text x="980" y="385" text-anchor="middle" class="small">abrir, fechar, modular, posição</text>
+
+  <path class="line dash" d="M990 230 V302"/>
+  <path class="line dash" d="M900 260 C900 285, 260 285, 200 302"/>
+  <path class="line dash" d="M940 245 C940 285, 460 285, 460 302"/>
+  <path class="line dash" d="M980 240 C980 285, 720 285, 720 302"/>
+  <text x="1035" y="272" class="lbl">saídas</text>
+  <text x="65" y="475" class="sub">Conceito-chave: a automação só toma boas decisões quando os sinais de campo são confiáveis e os permissivos estão corretos.</text>
+</svg>

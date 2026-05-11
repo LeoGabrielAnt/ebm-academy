@@ -1,0 +1,92 @@
+<section class="section module-quiz">
+
+  <h2 class="section-title">
+    Avaliação — Módulo 04
+  </h2>
+
+  <p class="section-subtitle">
+    Quiz técnico sobre Self Contained DX. O sistema sorteará 5 perguntas aleatórias.
+    Para concluir o módulo, é necessário acertar pelo menos 3 de 5 perguntas.
+  </p>
+
+  <form id="modulo04-quiz-form" class="quiz-form" onsubmit="return false;">
+
+    <div id="modulo04-quiz-questions"></div>
+
+    <div class="quiz-actions">
+
+      <button
+        type="button"
+        id="submit-modulo04-quiz"
+        class="btn btn-primary"
+      >
+        Enviar avaliação
+      </button>
+
+      <button
+        type="button"
+        id="retry-modulo04-quiz"
+        class="btn btn-secondary"
+      >
+        Refazer respostas
+      </button>
+
+      <button
+        type="button"
+        onclick="loadTrainingPage('modulo04')"
+        class="btn btn-secondary"
+      >
+        Voltar para teoria
+      </button>
+
+    </div>
+
+  </form>
+
+  <div id="modulo04-quiz-result"></div>
+
+  <div class="card module-completion-card">
+
+    <h3>Conclusão do Módulo</h3>
+
+    <p>
+      O botão abaixo será liberado somente após aprovação no quiz com pelo menos 3 acertos.
+    </p>
+
+    <br>
+
+    <button
+      id="complete-modulo04"
+      data-module="modulo04"
+      class="btn btn-primary btn-disabled"
+      disabled
+    >
+      Concluir Módulo 04
+    </button>
+
+    <div
+      id="modulo04-certificate"
+      class="certificate-card hidden"
+    >
+
+      <div class="certificate-seal">
+        <i class="fa-solid fa-award"></i>
+      </div>
+
+      <h3>Certificado de Conclusão</h3>
+
+      <p>
+        O aluno concluiu com êxito o Módulo 04 — Self Contained DX.
+      </p>
+
+      <div class="certificate-meta">
+        <span>EBM Academy</span>
+        <span>HVAC Crítico</span>
+        <span>Módulo 04</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

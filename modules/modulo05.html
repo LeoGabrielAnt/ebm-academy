@@ -1,0 +1,631 @@
+<section class="section module-lesson">
+
+  <h2 class="section-title">
+    Módulo 05 — Selfs de Precisão
+  </h2>
+
+  <p class="section-subtitle">
+    Aula teórica completa sobre unidades Self de Precisão aplicadas a ambientes críticos, com foco em
+    controle ambiental, sensores, setpoints, alarmes, umidade, reheat, operação contínua, integração BMS
+    e boas práticas de diagnóstico.
+  </p>
+
+  <!-- NAVEGAÇÃO INTERNA -->
+
+  <nav class="module-nav">
+    <a href="#m5-conceito">Conceito</a>
+    <a href="#m5-arquitetura">Arquitetura</a>
+    <a href="#m5-controle">Controle</a>
+    <a href="#m5-umidade">Umidade</a>
+    <a href="#m5-alarmes">Alarmes</a>
+    <a href="#m5-bms">BMS</a>
+    <a href="#m5-troubleshooting">Troubleshooting</a>
+    <a href="#m5-avaliacao">Avaliação</a>
+  </nav>
+
+  <!-- OBJETIVOS -->
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-bullseye"></i>
+      </div>
+
+      <div>
+        <h3>Objetivos de Aprendizagem</h3>
+        <p class="reading-subtitle">
+          O que o aluno deverá compreender ao final deste módulo
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <ul class="tech-list">
+        <li>Compreender o conceito de Self de Precisão e sua diferença em relação a equipamentos de conforto.</li>
+        <li>Identificar os principais subsistemas: refrigeração, ventilação, sensores, controle, reheat e alarmes.</li>
+        <li>Entender setpoints, bandas de controle, zona morta, sensores de retorno, insuflamento e remoto.</li>
+        <li>Relacionar temperatura, umidade, ponto de orvalho e confiabilidade em ambientes críticos.</li>
+        <li>Interpretar alarmes recorrentes sem apenas resetar o controlador.</li>
+        <li>Aplicar uma sequência lógica de troubleshooting usando histórico, tendência e medições.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONCEITO -->
+
+  <span id="m5-conceito" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-microchip"></i>
+      </div>
+
+      <div>
+        <h3>1. Conceito de Self de Precisão</h3>
+        <p class="reading-subtitle">
+          Climatização dedicada para ambientes críticos
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Um Self de Precisão é projetado para manter condições ambientais estáveis em ambientes onde
+        equipamentos, processos ou infraestrutura dependem de controle térmico confiável. Diferente
+        de sistemas voltados apenas para conforto humano, a climatização de precisão prioriza
+        estabilidade, disponibilidade, monitoramento e controle refinado.
+      </p>
+
+      <br>
+
+      <p>
+        Em salas técnicas, data centers, telecom, laboratórios e ambientes de missão crítica, pequenas
+        variações de temperatura e umidade podem impactar a operação. Por isso, o equipamento deve
+        ser analisado em conjunto com carga térmica, distribuição de ar, sensores, alarmes, redundância
+        e estratégia de controle.
+      </p>
+
+      <div class="reading-highlight">
+        <h4>Leitura técnica importante</h4>
+        <p>
+          Em climatização de precisão, o objetivo não é apenas “gelar a sala”. O objetivo é manter
+          o ambiente dentro de limites operacionais, com estabilidade, rastreabilidade e resposta adequada
+          a falhas.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARQUITETURA -->
+
+  <span id="m5-arquitetura" class="anchor-offset"></span>
+
+  <div class="card technical-reading precision-architecture-card">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-diagram-project"></i>
+      </div>
+
+      <div>
+        <h3>2. Arquitetura Funcional</h3>
+        <p class="reading-subtitle">
+          Sensores, controlador, atuadores, alarmes e ambiente crítico
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        A arquitetura de um Self de Precisão pode ser entendida como um sistema em malha fechada:
+        sensores medem o ambiente, o controlador compara os valores medidos com os setpoints e os
+        atuadores corrigem a condição térmica ou psicrométrica.
+      </p>
+
+      <div class="precision-control-diagram">
+
+        <div class="precision-block sensor-block">
+          <i class="fa-solid fa-satellite-dish"></i>
+          <h4>Sensores</h4>
+          <p>Retorno, insuflamento, umidade, fluxo de ar e sensores remotos.</p>
+        </div>
+
+        <div class="precision-arrow blue">
+          <span></span>
+        </div>
+
+        <div class="precision-block controller-block">
+          <i class="fa-solid fa-microchip"></i>
+          <h4>Controlador</h4>
+          <p>Compara setpoints, banda morta, alarmes, histórico e lógica operacional.</p>
+        </div>
+
+        <div class="precision-arrow yellow">
+          <span></span>
+        </div>
+
+        <div class="precision-block actuator-block">
+          <i class="fa-solid fa-sliders"></i>
+          <h4>Atuadores</h4>
+          <p>Compressor, ventiladores, válvulas, reheat, umidificação e desumidificação.</p>
+        </div>
+
+      </div>
+
+      <div class="precision-feedback-line">
+        <span></span>
+        <p>Feedback contínuo: o ambiente responde, os sensores medem novamente e o controle ajusta a operação.</p>
+      </div>
+
+      <div class="figure-explainer-grid">
+        <div class="figure-explainer-card">
+          <h4>Sensor incorreto</h4>
+          <p>
+            Sensor mal posicionado ou descalibrado pode induzir atuação errada e gerar instabilidade.
+          </p>
+        </div>
+
+        <div class="figure-explainer-card">
+          <h4>Controle instável</h4>
+          <p>
+            Bandas muito estreitas ou parâmetros inadequados podem gerar liga/desliga excessivo e alarmes.
+          </p>
+        </div>
+
+        <div class="figure-explainer-card">
+          <h4>Atuação limitada</h4>
+          <p>
+            Mesmo com controle correto, ventilador, compressor, válvula ou reheat com falha limitam a resposta.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTROLE -->
+
+  <span id="m5-controle" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-sliders"></i>
+      </div>
+
+      <div>
+        <h3>3. Controle de Temperatura, Setpoints e Bandas</h3>
+        <p class="reading-subtitle">
+          O comportamento do equipamento depende da estratégia de controle
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O controlador compara a temperatura medida com o setpoint configurado. A partir dessa diferença,
+        ele decide quando resfriar, aquecer, modular ventilação, acionar estágios ou manter a unidade em espera.
+        A banda morta evita alternância excessiva entre modos.
+      </p>
+
+      <div class="setpoint-diagram">
+        <div class="setpoint-scale">
+          <div class="scale-zone cool-zone">
+            <span>Resfriamento</span>
+          </div>
+          <div class="scale-zone dead-zone">
+            <span>Banda morta</span>
+          </div>
+          <div class="scale-zone heat-zone">
+            <span>Aquecimento / Reheat</span>
+          </div>
+          <div class="setpoint-marker">
+            <i class="fa-solid fa-location-dot"></i>
+            <strong>Setpoint</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Parâmetro</th>
+              <th>Função</th>
+              <th>Atenção técnica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Setpoint</td>
+              <td>Valor alvo de controle do ambiente</td>
+              <td>Alterações devem ser justificadas e registradas</td>
+            </tr>
+            <tr>
+              <td>Banda morta</td>
+              <td>Evita atuação simultânea ou alternância excessiva</td>
+              <td>Banda muito estreita pode causar instabilidade</td>
+            </tr>
+            <tr>
+              <td>Sensor de retorno</td>
+              <td>Lê condição média do ar retornando ao equipamento</td>
+              <td>Pode mascarar hotspots no ambiente</td>
+            </tr>
+            <tr>
+              <td>Sensor de insuflamento</td>
+              <td>Lê condição do ar entregue à sala</td>
+              <td>Útil para proteger contra ar excessivamente frio</td>
+            </tr>
+            <tr>
+              <td>Sensor remoto</td>
+              <td>Lê ponto crítico da sala</td>
+              <td>Exige posicionamento e calibração adequados</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- UMIDADE -->
+
+  <span id="m5-umidade" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-droplet"></i>
+      </div>
+
+      <div>
+        <h3>4. Controle de Umidade, Reheat e Desumidificação</h3>
+        <p class="reading-subtitle">
+          Temperatura e umidade devem ser analisadas em conjunto
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Em equipamentos de precisão, a umidade relativa é parte do controle ambiental. A desumidificação
+        pode exigir resfriamento abaixo do ponto de orvalho para condensar vapor d’água e, em seguida,
+        reheat para evitar que o ambiente fique frio demais.
+      </p>
+
+      <div class="humidity-process-diagram">
+
+        <div class="humidity-step">
+          <span>1</span>
+          <i class="fa-solid fa-cloud"></i>
+          <h4>Ar úmido</h4>
+          <p>O ar retorna com umidade elevada.</p>
+        </div>
+
+        <div class="humidity-line cold">
+          <span></span>
+        </div>
+
+        <div class="humidity-step">
+          <span>2</span>
+          <i class="fa-solid fa-snowflake"></i>
+          <h4>Resfriamento</h4>
+          <p>A serpentina remove calor e condensa parte da umidade.</p>
+        </div>
+
+        <div class="humidity-line hot">
+          <span></span>
+        </div>
+
+        <div class="humidity-step">
+          <span>3</span>
+          <i class="fa-solid fa-fire"></i>
+          <h4>Reheat</h4>
+          <p>O ar pode ser reaquecido para estabilizar temperatura.</p>
+        </div>
+
+      </div>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Umidade alta</h4>
+          <p>
+            Pode gerar condensação, corrosão, alarmes e risco para componentes sensíveis.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Umidade baixa</h4>
+          <p>
+            Pode favorecer eletricidade estática e instabilidade em ambientes eletrônicos.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Reheat</h4>
+          <p>
+            Ajuda a controlar temperatura após processo de desumidificação.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Ponto de orvalho</h4>
+          <p>
+            Indica risco de condensação em superfícies frias.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALARMES -->
+
+  <span id="m5-alarmes" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+
+      <div>
+        <h3>5. Alarmes e Proteções</h3>
+        <p class="reading-subtitle">
+          Alarmes indicam sintomas; o diagnóstico busca a causa raiz
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Alarmes em equipamentos de precisão não devem ser tratados apenas com reset. Eles indicam que
+        uma proteção foi acionada, uma condição operacional saiu da faixa esperada ou um sensor/controlador
+        detectou comportamento anormal.
+      </p>
+
+      <div class="alarm-grid">
+        <div class="alarm-card critical">
+          <i class="fa-solid fa-temperature-arrow-up"></i>
+          <h4>Alta temperatura</h4>
+          <p>Verificar carga térmica, capacidade, airflow, setpoint, sensor e alarmes ativos.</p>
+        </div>
+
+        <div class="alarm-card critical">
+          <i class="fa-solid fa-wind"></i>
+          <h4>Fluxo de ar</h4>
+          <p>Verificar filtro, ventilador, obstrução, sensor de fluxo e pressostato diferencial.</p>
+        </div>
+
+        <div class="alarm-card warning">
+          <i class="fa-solid fa-filter"></i>
+          <h4>Filtro</h4>
+          <p>Verificar saturação, perda de carga, diferencial e histórico de troca.</p>
+        </div>
+
+        <div class="alarm-card warning">
+          <i class="fa-solid fa-droplet"></i>
+          <h4>Umidade</h4>
+          <p>Verificar UR, ponto de orvalho, reheat, desumidificação e infiltração de ar externo.</p>
+        </div>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Regra prática</h4>
+        <p>
+          Alarmes recorrentes exigem análise de histórico, tendência, sequência de eventos, medições e
+          causa raiz. Resetar sem investigar pode ocultar o problema e aumentar o risco operacional.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BMS -->
+
+  <span id="m5-bms" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-network-wired"></i>
+      </div>
+
+      <div>
+        <h3>6. Integração BMS, Redundância e Operação Contínua</h3>
+        <p class="reading-subtitle">
+          Monitoramento e disponibilidade em ambientes críticos
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Em ambientes críticos, a integração com BMS permite supervisão de alarmes, tendências,
+        estados operacionais e condições ambientais. A operação pode envolver unidade principal,
+        unidade standby, rodízio, failover e lógica de redundância.
+      </p>
+
+      <div class="bms-diagram">
+        <div class="bms-node unit-a">
+          <i class="fa-solid fa-server"></i>
+          <h4>Self A</h4>
+          <p>Operação principal</p>
+        </div>
+
+        <div class="bms-link">
+          <span></span>
+        </div>
+
+        <div class="bms-node central">
+          <i class="fa-solid fa-desktop"></i>
+          <h4>BMS / Supervisório</h4>
+          <p>Alarmes, tendência e comando</p>
+        </div>
+
+        <div class="bms-link">
+          <span></span>
+        </div>
+
+        <div class="bms-node unit-b">
+          <i class="fa-solid fa-server"></i>
+          <h4>Self B</h4>
+          <p>Standby / redundância</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Standby</h4>
+          <p>
+            Unidade reserva pronta para assumir em falha, rodízio ou aumento de carga.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Failover</h4>
+          <p>
+            Transferência automática para unidade reserva quando a principal falha.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Tendência</h4>
+          <p>
+            Histórico de temperatura, umidade, alarmes e estados ajuda na análise de causa raiz.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Escalonamento</h4>
+          <p>
+            Alarmes críticos devem ter procedimento de resposta e responsáveis definidos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+
+  <span id="m5-troubleshooting" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </div>
+
+      <div>
+        <h3>7. Troubleshooting Aplicado</h3>
+        <p class="reading-subtitle">
+          Correlação entre ambiente, controle, sensores e equipamento
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Sintoma / Alarme</th>
+              <th>Possíveis causas</th>
+              <th>Verificações iniciais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alta temperatura ambiente</td>
+              <td>Baixa capacidade, sensor incorreto, airflow baixo, carga térmica elevada</td>
+              <td>Retorno, insuflamento, filtros, ventiladores, setpoint, alarmes e tendência</td>
+            </tr>
+            <tr>
+              <td>Umidade alta</td>
+              <td>Desumidificação insuficiente, infiltração, reheat inoperante, sensor com erro</td>
+              <td>UR, ponto de orvalho, serpentina, dreno, reheat, ar externo e histórico</td>
+            </tr>
+            <tr>
+              <td>Fluxo de ar baixo</td>
+              <td>Filtro saturado, ventilador falhando, obstrução, sensor diferencial</td>
+              <td>Filtro, rotação, corrente, pressostato, dutos, piso elevado e grelhas</td>
+            </tr>
+            <tr>
+              <td>Alarmes recorrentes</td>
+              <td>Causa raiz não tratada, sensor instável, controle mal ajustado ou condição externa</td>
+              <td>Histórico, tendência, sequência de eventos, medições e logs do controlador</td>
+            </tr>
+            <tr>
+              <td>Oscilação de temperatura</td>
+              <td>Banda estreita, sensor mal posicionado, carga variável ou atuação lenta</td>
+              <td>Setpoint, banda morta, posição dos sensores, distribuição de ar e resposta da unidade</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Boa prática de campo</h4>
+        <p>
+          Em sistemas de precisão, o técnico deve registrar condição ambiente, setpoints, sensores ativos,
+          alarmes, estados de operação, medições e tendência. A leitura isolada do display raramente é
+          suficiente para fechar diagnóstico.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESUMO -->
+
+  <div class="card module-summary">
+    <h3>Resumo do Módulo</h3>
+    <p>
+      Selfs de Precisão são equipamentos projetados para estabilidade ambiental e disponibilidade operacional.
+      O diagnóstico correto exige correlação entre sensores, setpoints, alarmes, controle, airflow, umidade,
+      circuito frigorífico, histórico e integração supervisória.
+    </p>
+  </div>
+
+  <!-- CHECKLIST -->
+
+  <span id="m5-avaliacao" class="anchor-offset"></span>
+
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>
+      Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.
+    </p>
+
+    <br>
+
+    <label><input type="checkbox" class="modulo05-check"> Entendi o conceito de Self de Precisão.</label>
+    <label><input type="checkbox" class="modulo05-check"> Compreendi a função de sensores, setpoints e bandas de controle.</label>
+    <label><input type="checkbox" class="modulo05-check"> Entendi a relação entre temperatura, umidade, reheat e desumidificação.</label>
+    <label><input type="checkbox" class="modulo05-check"> Compreendi que alarmes recorrentes exigem análise de causa raiz.</label>
+    <label><input type="checkbox" class="modulo05-check"> Compreendi a importância de histórico, tendência, BMS e operação contínua.</label>
+
+    <div id="modulo05-checklist-status" class="checklist-status">
+      Conclua o checklist para liberar a avaliação.
+    </div>
+  </div>
+
+  <!-- BOTÃO QUIZ -->
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>
+      O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.
+    </p>
+
+    <br>
+
+    <button id="go-modulo05-quiz" class="btn btn-primary btn-disabled" type="button" disabled>
+      Ir para avaliação
+    </button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+</section>

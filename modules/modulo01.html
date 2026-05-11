@@ -1,0 +1,601 @@
+<section class="section module-lesson">
+
+  <h2 class="section-title">
+    Módulo 01 — Fundamentos do Ciclo Frigorífico
+  </h2>
+
+  <p class="section-subtitle">
+    Aula teórica completa sobre o ciclo de refrigeração, comportamento do refrigerante,
+    transferência térmica e aplicação em sistemas HVAC críticos.
+  </p>
+
+  <!-- NAVEGAÇÃO INTERNA -->
+
+  <nav class="module-nav">
+    <a href="#conceito">Conceito</a>
+    <a href="#termodinamica">Termodinâmica</a>
+    <a href="#ciclo">Ciclo</a>
+    <a href="#componentes">Componentes</a>
+    <a href="#troubleshooting">Troubleshooting</a>
+    <a href="#glossario">Glossário</a>
+    <a href="#avaliacao">Avaliação</a>
+  </nav>
+
+  <!-- OBJETIVOS -->
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-bullseye"></i>
+      </div>
+
+      <div>
+        <h3>Objetivos de Aprendizagem</h3>
+        <p class="reading-subtitle">
+          O que o aluno deverá compreender ao final deste módulo
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <ul class="tech-list">
+        <li>Entender a finalidade do ciclo frigorífico em sistemas de climatização DX.</li>
+        <li>Compreender os quatro processos principais: compressão, condensação, expansão e evaporação.</li>
+        <li>Diferenciar calor sensível, calor latente, saturação, evaporação e condensação.</li>
+        <li>Interpretar o comportamento básico do refrigerante em alta e baixa pressão.</li>
+        <li>Relacionar falhas operacionais iniciais com os componentes principais do ciclo.</li>
+        <li>Compreender por que o diagnóstico técnico exige correlação entre pressão, temperatura e condição operacional.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONCEITO -->
+
+  <span id="conceito" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-book-open"></i>
+      </div>
+
+      <div>
+        <h3>1. Conceito do Ciclo Frigorífico</h3>
+        <p class="reading-subtitle">
+          Fundamento da climatização mecânica
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O ciclo frigorífico é um processo termodinâmico utilizado para remover calor de um ambiente
+        e rejeitá-lo para outro local. Em sistemas HVAC de expansão direta (DX), essa transferência
+        de calor é realizada por um fluido refrigerante que circula continuamente pelos principais
+        componentes do sistema.
+      </p>
+
+      <br>
+
+      <p>
+        Em termos práticos, o refrigerante absorve calor no evaporador, é comprimido pelo compressor,
+        rejeita calor no condensador e passa por uma redução de pressão no dispositivo de expansão
+        para reiniciar o processo. Esse comportamento é a base técnica de praticamente toda análise
+        operacional em refrigeração.
+      </p>
+
+      <div class="reading-highlight">
+        <h4>Leitura técnica importante</h4>
+        <p>
+          O sistema não “gera frio”; ele remove calor de um ponto e o transporta para outro.
+          Essa é uma das ideias mais importantes para o técnico de HVAC.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMODINÂMICA -->
+
+  <span id="termodinamica" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-temperature-half"></i>
+      </div>
+
+      <div>
+        <h3>2. Fundamentos Termodinâmicos</h3>
+        <p class="reading-subtitle">
+          Pressão, temperatura e mudança de estado
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O comportamento do refrigerante depende diretamente da relação entre pressão e temperatura.
+        Quando a pressão aumenta, a temperatura de saturação também aumenta. Quando a pressão diminui,
+        a temperatura de saturação também cai. Essa relação é essencial para interpretar o ciclo.
+      </p>
+
+      <br>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Alta pressão</h4>
+          <p>
+            Região do ciclo onde o refrigerante circula após a compressão e antes da expansão.
+            Normalmente associada à descarga do compressor e à linha de líquido.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Baixa pressão</h4>
+          <p>
+            Região onde o refrigerante evapora e retorna ao compressor.
+            Associada ao evaporador e à linha de sucção.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Evaporação</h4>
+          <p>
+            Processo no qual o refrigerante absorve calor e muda de líquido para vapor,
+            principalmente no evaporador.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Condensação</h4>
+          <p>
+            Processo no qual o refrigerante rejeita calor e muda de vapor para líquido,
+            principalmente no condensador.
+          </p>
+        </div>
+      </div>
+
+      <br>
+
+      <p>
+        Todo técnico que deseja evoluir em diagnóstico deve entender que o refrigerante muda de estado
+        físico em função da transferência de calor e da diferença de pressão existente no circuito.
+      </p>
+    </div>
+  </div>
+
+  <!-- ANIMAÇÃO DO CICLO -->
+
+  <span id="ciclo" class="anchor-offset"></span>
+
+  <div class="card technical-reading cycle-lesson-card">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-rotate"></i>
+      </div>
+
+      <div>
+        <h3>3. Ciclo Frigorífico Ilustrado</h3>
+        <p class="reading-subtitle">
+          Visualização simplificada e animada do fluxo do refrigerante
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Abaixo está uma representação didática do ciclo frigorífico. O objetivo desta ilustração é
+        ajudar na fixação visual da sequência operacional e da mudança das condições do refrigerante
+        ao longo do percurso.
+      </p>
+
+      <div class="cycle-visual-simple">
+
+  <div class="cycle-flow-row">
+
+    <div class="cycle-node compressor active-stage">
+      <div class="cycle-node-icon">
+        <i class="fa-solid fa-gears"></i>
+      </div>
+
+      <h4>Compressor</h4>
+
+      <p>
+        Eleva a pressão e a temperatura do vapor refrigerante.
+      </p>
+
+      <div class="cycle-badge high">
+        Vapor quente / alta pressão
+      </div>
+    </div>
+
+    <div class="cycle-connector hot">
+      <span></span>
+    </div>
+
+    <div class="cycle-node condenser">
+      <div class="cycle-node-icon">
+        <i class="fa-solid fa-fan"></i>
+      </div>
+
+      <h4>Condensador</h4>
+
+      <p>
+        Rejeita calor para o meio externo e condensa o refrigerante.
+      </p>
+
+      <div class="cycle-badge high">
+        Rejeição de calor
+      </div>
+    </div>
+
+    <div class="cycle-connector hot-to-cold">
+      <span></span>
+    </div>
+
+    <div class="cycle-node expansion">
+      <div class="cycle-node-icon">
+        <i class="fa-solid fa-filter"></i>
+      </div>
+
+      <h4>Expansão</h4>
+
+      <p>
+        Reduz a pressão e controla a alimentação do evaporador.
+      </p>
+
+      <div class="cycle-badge low">
+        Queda de pressão
+      </div>
+    </div>
+
+    <div class="cycle-connector cold">
+      <span></span>
+    </div>
+
+    <div class="cycle-node evaporator">
+      <div class="cycle-node-icon">
+        <i class="fa-solid fa-snowflake"></i>
+      </div>
+
+      <h4>Evaporador</h4>
+
+      <p>
+        Absorve calor do ambiente e vaporiza o refrigerante.
+      </p>
+
+      <div class="cycle-badge low">
+        Absorção de calor
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cycle-return-line">
+    <span></span>
+    <p>Retorno do vapor ao compressor — reinício do ciclo</p>
+  </div>
+
+  <div class="cycle-info-panel">
+    <h4 id="module01-cycle-status-title">Compressor</h4>
+
+    <p id="module01-cycle-status-text">
+      O compressor é responsável por aspirar o vapor de baixa pressão vindo do evaporador
+      e elevá-lo para uma condição de alta pressão e alta temperatura.
+    </p>
+
+    <div id="module01-cycle-status-badge" class="cycle-info-badge high">
+      Alta pressão / alta temperatura
+    </div>
+  </div>
+
+</div>
+
+      <div class="figure-explainer-grid">
+        <div class="figure-explainer-card">
+          <h4>Compressão</h4>
+          <p>
+            O vapor refrigerante sai do evaporador e entra no compressor em baixa pressão.
+            Após a compressão, sua energia aumenta significativamente.
+          </p>
+        </div>
+
+        <div class="figure-explainer-card">
+          <h4>Condensação</h4>
+          <p>
+            O refrigerante quente rejeita calor no condensador. Com isso, ocorre a mudança
+            gradual de vapor para líquido.
+          </p>
+        </div>
+
+        <div class="figure-explainer-card">
+          <h4>Expansão</h4>
+          <p>
+            O dispositivo de expansão provoca uma redução brusca de pressão, preparando o
+            refrigerante para absorver calor novamente.
+          </p>
+        </div>
+
+        <div class="figure-explainer-card">
+          <h4>Evaporação</h4>
+          <p>
+            O refrigerante absorve calor do ar que passa pelo evaporador e tende a sair como
+            vapor superaquecido em direção ao compressor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPONENTES -->
+
+  <span id="componentes" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-diagram-project"></i>
+      </div>
+
+      <div>
+        <h3>4. Componentes Principais</h3>
+        <p class="reading-subtitle">
+          O papel técnico de cada elemento do sistema
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Compressor</h4>
+          <p>
+            Considerado o “coração” do sistema. É responsável por movimentar o refrigerante
+            e elevar sua condição energética.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Condensador</h4>
+          <p>
+            Responsável pela rejeição térmica. Sua eficiência depende de limpeza, vazão de ar
+            ou troca adequada com o meio de condensação.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Dispositivo de expansão</h4>
+          <p>
+            Controla a alimentação do evaporador e cria a redução de pressão necessária para o
+            processo de evaporação.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Evaporador</h4>
+          <p>
+            Local onde ocorre a principal absorção de calor do ambiente climatizado.
+            Sua performance depende fortemente de vazão de ar e limpeza da serpentina.
+          </p>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Componente</th>
+              <th>Função principal</th>
+              <th>Sintoma de falha comum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Compressor</td>
+              <td>Elevar pressão e movimentar o refrigerante</td>
+              <td>Baixa capacidade, falha de partida, sobrecorrente</td>
+            </tr>
+            <tr>
+              <td>Condensador</td>
+              <td>Rejeitar calor</td>
+              <td>Alta pressão, alta temperatura de descarga</td>
+            </tr>
+            <tr>
+              <td>Expansão</td>
+              <td>Controlar alimentação do evaporador</td>
+              <td>Baixa alimentação, SH alto, instabilidade</td>
+            </tr>
+            <tr>
+              <td>Evaporador</td>
+              <td>Absorver calor do ambiente</td>
+              <td>Baixa troca térmica, congelamento, baixa pressão</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+
+  <span id="troubleshooting" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </div>
+
+      <div>
+        <h3>5. Leitura Inicial de Troubleshooting</h3>
+        <p class="reading-subtitle">
+          Como começar um raciocínio técnico
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Um dos maiores erros em refrigeração é diagnosticar uma falha somente com base em pressão.
+        A leitura correta exige a correlação entre:
+      </p>
+
+      <ul class="tech-list">
+        <li>pressão de sucção e descarga;</li>
+        <li>temperaturas reais nas linhas;</li>
+        <li>superaquecimento e subresfriamento;</li>
+        <li>vazão de ar no evaporador e condensador;</li>
+        <li>carga térmica do ambiente;</li>
+        <li>histórico operacional e alarmes.</li>
+      </ul>
+
+      <div class="reading-highlight">
+        <h4>Boas práticas</h4>
+        <p>
+          Antes de concluir “baixa carga” ou “falha de compressor”, verifique condições de serpentina,
+          filtros, ventilação, sensores, alimentação elétrica e sequência operacional.
+        </p>
+      </div>
+
+      <br>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Baixa pressão</h4>
+          <p>
+            Pode estar relacionada a baixa carga, baixa vazão de ar, restrição ou baixa carga térmica.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Alta pressão</h4>
+          <p>
+            Pode indicar condensador sujo, ventilação deficiente, excesso de refrigerante ou alta temperatura externa.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Retorno líquido</h4>
+          <p>
+            Condição crítica para o compressor. Normalmente associada a SH muito baixo e alimentação excessiva do evaporador.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Baixa capacidade</h4>
+          <p>
+            Exige análise completa de fluxo de ar, trocadores, circuito frigorífico, setpoints e condição real de carga.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLOSSÁRIO -->
+
+  <span id="glossario" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-book"></i>
+      </div>
+
+      <div>
+        <h3>6. Glossário Técnico Essencial</h3>
+        <p class="reading-subtitle">
+          Termos fundamentais do módulo
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Saturação</h4>
+          <p>
+            Condição em que líquido e vapor coexistem em equilíbrio para determinada pressão.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Superheat</h4>
+          <p>
+            Diferença entre a temperatura real do vapor e a temperatura de saturação na sucção.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Subcooling</h4>
+          <p>
+            Diferença entre a temperatura de saturação na condensação e a temperatura real da linha de líquido.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Delta T</h4>
+          <p>
+            Diferença de temperatura entre dois pontos, muito utilizada em ar e em água gelada.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMO -->
+
+  <div class="card module-summary">
+    <h3>Resumo do Módulo</h3>
+    <p>
+      O ciclo frigorífico é a base da refrigeração mecânica. O técnico deve compreender a função de cada
+      componente, a circulação do refrigerante, a diferença entre alta e baixa pressão e a lógica da
+      troca térmica. Essa base será indispensável para os próximos módulos, principalmente Superheat,
+      Subcooling e troubleshooting avançado.
+    </p>
+  </div>
+
+  <!-- CHECKLIST -->
+
+  <span id="avaliacao" class="anchor-offset"></span>
+
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>
+      Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.
+    </p>
+
+    <br>
+
+   <label><input type="checkbox" class="module01-check"> Entendi a finalidade do ciclo frigorífico.</label>
+<label><input type="checkbox" class="module01-check"> Compreendi os processos de compressão, condensação, expansão e evaporação.</label>
+<label><input type="checkbox" class="module01-check"> Sei diferenciar região de alta pressão e baixa pressão.</label>
+<label><input type="checkbox" class="module01-check"> Entendi a função dos quatro principais componentes.</label>
+<label><input type="checkbox" class="module01-check"> Compreendi por que o diagnóstico não deve ser feito apenas pela pressão.</label>
+
+<div id="module01-checklist-status" class="checklist-status">
+  Conclua o checklist para liberar a avaliação.
+</div>
+  </div>
+
+  <!-- BOTÃO QUIZ -->
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>
+      O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.
+    </p>
+
+    <br>
+
+    <button id="go-module01-quiz" class="btn btn-primary btn-disabled" type="button" disabled>
+  Ir para avaliação
+</button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+</section>

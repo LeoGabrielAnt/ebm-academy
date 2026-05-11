@@ -1,0 +1,488 @@
+<section class="section module-lesson modulo07-lesson">
+
+  <h2 class="section-title">
+    Módulo 07 — Central de Água Gelada
+  </h2>
+
+  <p class="section-subtitle">
+    Aula técnica sobre centrais de água gelada aplicadas a HVAC crítico, com foco em chiller,
+    bombas, evaporador, circuito hidráulico, Delta T, Delta P, vazão, válvulas, freecooling,
+    sequência de operação, manutenção e troubleshooting.
+  </p>
+
+  <nav class="module-nav">
+    <a href="#m7-objetivos">Objetivos</a>
+    <a href="#m7-conceito">Conceito</a>
+    <a href="#m7-arquitetura">Arquitetura</a>
+    <a href="#m7-chiller">Chiller</a>
+    <a href="#m7-hidraulica">Hidráulica</a>
+    <a href="#m7-deltat">Delta T</a>
+    <a href="#m7-valvulas">Válvulas</a>
+    <a href="#m7-controle">Controle</a>
+    <a href="#m7-freecooling">Freecooling</a>
+    <a href="#m7-manutencao">Manutenção</a>
+    <a href="#m7-troubleshooting">Troubleshooting</a>
+    <a href="#m7-avaliacao">Avaliação</a>
+  </nav>
+
+  <span id="m7-objetivos" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-bullseye"></i>
+      </div>
+      <div>
+        <h3>Objetivos de Aprendizagem</h3>
+        <p class="reading-subtitle">O que o aluno deverá compreender ao final deste módulo</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <ul class="tech-list">
+        <li>Compreender a função da Central de Água Gelada dentro de uma arquitetura HVAC crítica.</li>
+        <li>Identificar os principais componentes: chiller, evaporador, condensador, bombas, headers, válvulas, sensores e unidades consumidoras.</li>
+        <li>Diferenciar circuito frigorífico do chiller e circuito hidráulico de água gelada.</li>
+        <li>Interpretar Delta T, Delta P, vazão, LWT, EWT, posição de válvula e demanda térmica.</li>
+        <li>Reconhecer a sequência básica de habilitação, fluxo, recirculação, partida, modulação e staging.</li>
+        <li>Aplicar diagnóstico estruturado em baixa capacidade, perda de fluxo, baixo Delta T, congelamento e falhas de controle.</li>
+      </ul>
+    </div>
+  </div>
+
+  <span id="m7-conceito" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-industry"></i></div>
+      <div>
+        <h3>1. Conceito de Central de Água Gelada</h3>
+        <p class="reading-subtitle">A fonte térmica que alimenta fancoils, CRAHs e serpentinas CW</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        A Central de Água Gelada é o conjunto responsável por produzir, distribuir e controlar água gelada
+        para os consumidores térmicos de uma instalação. Em vez de cada unidade terminal possuir seu próprio
+        circuito frigorífico, o resfriamento é concentrado no chiller e a energia térmica é transportada por água
+        ou mistura água/glicol até fancoils, CRAHs, serpentinas de tratamento de ar ou outros trocadores.
+      </p>
+      <br>
+      <p>
+        Em HVAC crítico, a central precisa entregar capacidade com estabilidade, redundância, controle e
+        disponibilidade. Por isso, o diagnóstico não deve olhar apenas para a temperatura de água: é necessário
+        correlacionar carga térmica, vazão, Delta T, pressão diferencial, sequência de bombas, status do chiller,
+        válvulas, filtros, tratamento de água, alarmes e histórico operacional.
+      </p>
+
+      <div class="reading-highlight">
+        <h4>Ideia-chave</h4>
+        <p>
+          A central não “resfria a sala” diretamente. Ela entrega água gelada em condição adequada. Quem remove
+          calor do ambiente é a unidade terminal, desde que exista vazão, troca térmica e controle corretos.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m7-arquitetura" class="anchor-offset"></span>
+
+  <div class="card technical-reading chilled-plant-card">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <div>
+        <h3>2. Arquitetura Funcional da Central</h3>
+        <p class="reading-subtitle">Produção, bombeamento, distribuição, consumo e retorno</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        A lógica básica da central é circular água gelada entre a planta e os consumidores. O chiller remove calor
+        da água no evaporador; as bombas garantem circulação; os headers distribuem vazão; as válvulas modulam
+        a demanda nos consumidores; e a água retorna mais quente após absorver calor do ambiente.
+      </p>
+
+      <div class="chw-plant-diagram" aria-label="Diagrama didático de central de água gelada">
+        <div class="chw-node chiller-node">
+          <i class="fa-solid fa-snowflake"></i>
+          <h4>Chiller</h4>
+          <p>Remove calor da água no evaporador.</p>
+        </div>
+
+        <div class="chw-flow cold"><span></span></div>
+
+        <div class="chw-node pump-node">
+          <i class="fa-solid fa-arrows-spin"></i>
+          <h4>Bombas</h4>
+          <p>Geram vazão e vencem perdas de carga.</p>
+        </div>
+
+        <div class="chw-flow cold"><span></span></div>
+
+        <div class="chw-node header-node">
+          <i class="fa-solid fa-grip-lines"></i>
+          <h4>Header / Rede</h4>
+          <p>Distribui água gelada para os circuitos.</p>
+        </div>
+
+        <div class="chw-flow mixed"><span></span></div>
+
+        <div class="chw-node load-node">
+          <i class="fa-solid fa-fan"></i>
+          <h4>Fancoils / CRAHs</h4>
+          <p>Recebem água e removem calor do ar.</p>
+        </div>
+
+        <div class="chw-return-line">
+          <span></span>
+          <p>Retorno mais quente volta ao chiller para novo resfriamento.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="mini-card"><h4>Produção</h4><p>Chillers produzem água gelada dentro dos limites operacionais e de setpoint.</p></div>
+        <div class="mini-card"><h4>Distribuição</h4><p>Bombas, headers e tubulações conduzem vazão até as cargas térmicas.</p></div>
+        <div class="mini-card"><h4>Consumo</h4><p>Unidades terminais transferem calor do ar para a água.</p></div>
+        <div class="mini-card"><h4>Controle</h4><p>Sensores, válvulas e BMS coordenam temperatura, vazão, pressão e alarmes.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m7-chiller" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-snowflake"></i></div>
+      <div>
+        <h3>3. Chiller: Produção de Água Gelada</h3>
+        <p class="reading-subtitle">O lado frigorífico que remove calor do circuito hidráulico</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O chiller usa um ciclo frigorífico para remover calor da água. No evaporador, o refrigerante absorve calor
+        do circuito de água gelada. No condensador, esse calor é rejeitado para o ar externo ou para outro meio,
+        dependendo da tecnologia da máquina. Em chillers a ar, ventiladores e serpentinas de condensação rejeitam
+        calor para a atmosfera.
+      </p>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Componente</th>
+              <th>Função</th>
+              <th>Leitura técnica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Evaporador</td><td>Resfria a água do circuito</td><td>Observar EWT, LWT, fluxo e proteção anticongelamento</td></tr>
+            <tr><td>Compressor</td><td>Eleva pressão e temperatura do refrigerante</td><td>Observar carga, corrente, descarga e alarmes</td></tr>
+            <tr><td>Condensador</td><td>Rejeita calor para o ambiente externo ou circuito de rejeição</td><td>Observar limpeza, ventilação e pressão de condensação</td></tr>
+            <tr><td>Dispositivo de expansão / EXV</td><td>Controla alimentação do evaporador</td><td>Impacta superaquecimento, pressão de evaporação e estabilidade</td></tr>
+            <tr><td>Controlador</td><td>Coordena habilitação, estágios, setpoints e proteções</td><td>Histórico de alarmes e tendência são essenciais</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>LWT e EWT</h4>
+        <p>
+          LWT é a temperatura de água gelada saindo do evaporador. EWT é a temperatura entrando no evaporador.
+          A diferença entre elas ajuda a entender carga térmica, vazão e desempenho do chiller.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m7-hidraulica" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-water"></i></div>
+      <div>
+        <h3>4. Circuito Hidráulico da Central</h3>
+        <p class="reading-subtitle">Bombas, fluxo, perda de carga e distribuição</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        A hidráulica define se a água gelada chega às unidades consumidoras em vazão suficiente. Mesmo com o chiller
+        disponível, a carga pode não ser atendida se houver baixa vazão, ar na linha, filtro obstruído, válvula travada,
+        bomba fora de curva, sensor incorreto ou desbalanceamento entre ramais.
+      </p>
+
+      <div class="hydraulic-diagram modulo07-hydraulic">
+        <div class="hydraulic-card supply"><i class="fa-solid fa-arrow-right"></i><h4>Alimentação</h4><p>Água gelada segue para os consumidores.</p></div>
+        <div class="hydraulic-line cold"><span></span></div>
+        <div class="hydraulic-card coil"><i class="fa-solid fa-gauge-high"></i><h4>Delta P</h4><p>Pressão diferencial orienta vazão e bombeamento.</p></div>
+        <div class="hydraulic-line warm"><span></span></div>
+        <div class="hydraulic-card return"><i class="fa-solid fa-arrow-left"></i><h4>Retorno</h4><p>Água retorna aquecida pela carga térmica.</p></div>
+      </div>
+
+      <div class="grid">
+        <div class="mini-card"><h4>Bombas primárias</h4><p>Garantem circulação no evaporador ou no circuito principal, conforme a arquitetura.</p></div>
+        <div class="mini-card"><h4>Bombas secundárias</h4><p>Distribuem água para consumidores em sistemas primário-secundário.</p></div>
+        <div class="mini-card"><h4>Vazão variável</h4><p>Modula bombeamento e válvulas conforme demanda, exigindo controle de Delta P.</p></div>
+        <div class="mini-card"><h4>Strainers e filtros</h4><p>Protegem trocadores, válvulas e sensores contra partículas e obstruções.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m7-deltat" class="anchor-offset"></span>
+
+  <div class="card technical-reading chw-calculator-card">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-calculator"></i></div>
+      <div>
+        <h3>5. Delta T, Vazão e Capacidade Térmica</h3>
+        <p class="reading-subtitle">Leitura prática para avaliar desempenho da água gelada</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O Delta T hidráulico é a diferença entre a temperatura de retorno e a temperatura de alimentação da água gelada.
+        Em água pura, uma estimativa didática da capacidade é: <strong>kW ≈ vazão em m³/h × 1,163 × Delta T</strong>.
+        Em misturas com glicol, fatores de correção devem ser aplicados conforme concentração e fabricante.
+      </p>
+
+      <div class="chw-calc-grid">
+        <label>Vazão de água <span>m³/h</span><input id="m7-flow" type="number" step="0.1" value="18"></label>
+        <label>Temperatura de ida <span>°C</span><input id="m7-supply-temp" type="number" step="0.1" value="7"></label>
+        <label>Temperatura de retorno <span>°C</span><input id="m7-return-temp" type="number" step="0.1" value="12"></label>
+        <button id="m7-calc-btn" type="button" class="btn btn-primary"><i class="fa-solid fa-calculator"></i> Calcular</button>
+      </div>
+
+      <div class="chw-result-grid">
+        <div class="calc-result"><span>Delta T</span><strong id="m7-dt-result">--</strong></div>
+        <div class="calc-result"><span>Capacidade estimada</span><strong id="m7-kw-result">--</strong></div>
+        <div class="calc-result"><span>Equivalente aproximado</span><strong id="m7-tr-result">--</strong></div>
+      </div>
+
+      <div id="m7-calc-diagnostic" class="reading-highlight">
+        <h4>Interpretação</h4>
+        <p>Preencha os dados e calcule para obter uma leitura didática de Delta T e capacidade.</p>
+      </div>
+
+      <div class="grid">
+        <div class="mini-card"><h4>Delta T alto</h4><p>Pode indicar baixa vazão, restrição, válvula limitada ou alta carga térmica.</p></div>
+        <div class="mini-card"><h4>Delta T baixo</h4><p>Pode indicar excesso de vazão, baixa transferência, válvulas abertas demais ou baixa carga.</p></div>
+        <div class="mini-card"><h4>Vazão baixa</h4><p>Limita a capacidade mesmo com água em temperatura correta.</p></div>
+        <div class="mini-card"><h4>Vazão alta</h4><p>Pode reduzir Delta T e aumentar consumo de bombeamento.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m7-valvulas" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-sliders"></i></div>
+      <div>
+        <h3>6. Válvulas, Balanceamento e Baixo Delta T</h3>
+        <p class="reading-subtitle">Controle de vazão e aproveitamento real da água gelada</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        As válvulas modulantes controlam a vazão que passa nas serpentinas. Em centrais modernas, válvulas independentes
+        de pressão e válvulas com medição de energia ajudam a manter vazão, potência térmica e Delta T dentro de limites
+        esperados. O objetivo não é apenas “abrir mais”, mas entregar a vazão necessária com troca térmica eficiente.
+      </p>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Leitura</th><th>Interpretação provável</th><th>Ação de diagnóstico</th></tr></thead>
+          <tbody>
+            <tr><td>Válvula 100% e pouca capacidade</td><td>Falta de vazão, água quente, filtro obstruído ou serpentina suja</td><td>Medir Delta P, Delta T, vazão e temperatura de água</td></tr>
+            <tr><td>Válvula muito aberta com Delta T baixo</td><td>Baixa transferência ou excesso de vazão</td><td>Verificar airflow, limpeza, carga e controle</td></tr>
+            <tr><td>Válvula fechada com passagem de água</td><td>Vazamento, atuador desalinhado ou válvula travada</td><td>Testar comando, posição física e temperatura antes/depois</td></tr>
+            <tr><td>Ramais com capacidades diferentes</td><td>Desbalanceamento hidráulico</td><td>Balancear vazões e conferir válvulas de controle</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="m7-controle" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-microchip"></i></div>
+      <div>
+        <h3>7. Sequência de Operação e Controle</h3>
+        <p class="reading-subtitle">Habilitação, fluxo, recirculação, carga e estágio</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Uma sequência típica de operação verifica se a unidade está habilitada, ativa a bomba do evaporador,
+        confirma fluxo, aguarda recirculação do circuito e avalia se há carga suficiente para iniciar o chiller.
+        Depois, o controle modula ou carrega/descarrega compressores para manter a LWT próxima do setpoint ativo.
+      </p>
+
+      <div class="chw-sequence-grid">
+        <div><span>1</span><h4>Habilitar</h4><p>Chave local/remota/BMS e ausência de alarmes críticos.</p></div>
+        <div><span>2</span><h4>Bombear</h4><p>Saída de bomba ativa e água circulando no evaporador.</p></div>
+        <div><span>3</span><h4>Confirmar fluxo</h4><p>Fluxóstato ou sensor confirma circulação adequada.</p></div>
+        <div><span>4</span><h4>Recircular</h4><p>Tempo para leitura estável da temperatura de saída.</p></div>
+        <div><span>5</span><h4>Avaliar carga</h4><p>LWT acima do setpoint ativo + diferencial de partida.</p></div>
+        <div><span>6</span><h4>Modular / Estagiar</h4><p>Controle ajusta capacidade e chama circuitos conforme demanda.</p></div>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Integração com BMS</h4>
+        <p>
+          O BMS pode habilitar a central, ajustar setpoints, aplicar limites de demanda e monitorar alarmes.
+          Porém, o comando remoto não substitui as proteções locais do chiller, como fluxo, congelamento e alarmes de circuito.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m7-freecooling" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-leaf"></i></div>
+      <div>
+        <h3>8. Freecooling e Economização</h3>
+        <p class="reading-subtitle">Uso das condições externas para reduzir trabalho dos compressores</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Em determinadas condições externas, o freecooling pode pré-resfriar o fluido de retorno e reduzir ou até eliminar
+        a necessidade de compressão mecânica. A operação depende da temperatura externa, temperatura de retorno,
+        válvulas de desvio, ventiladores, proteção anticongelamento e percentual correto de água/glicol quando aplicável.
+      </p>
+
+      <div class="grid">
+        <div class="mini-card"><h4>Condição favorável</h4><p>Ar externo suficientemente frio em relação ao retorno de água.</p></div>
+        <div class="mini-card"><h4>Válvula de desvio</h4><p>Direciona fluxo para bobinas ou trocadores de freecooling.</p></div>
+        <div class="mini-card"><h4>Proteção</h4><p>Glicol, filtros e intertravamentos evitam congelamento e danos.</p></div>
+        <div class="mini-card"><h4>Eficiência</h4><p>Compressores descarregam ou desligam quando a troca externa atende a carga.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m7-manutencao" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+      <div>
+        <h3>9. Manutenção e Confiabilidade</h3>
+        <p class="reading-subtitle">Disponibilidade depende de rotina, limpeza, água e registros</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Uma central de água gelada precisa de manutenção preventiva estruturada. O operador deve acompanhar
+        limpeza, tratamento de água, filtros/strainers, bombas, válvulas, sensores, painéis elétricos, condensadores,
+        alarmes, tendência de temperaturas e histórico de intervenções.
+      </p>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Item</th><th>Por que importa</th><th>Boa prática</th></tr></thead>
+          <tbody>
+            <tr><td>Tratamento da água</td><td>Evita incrustação, corrosão e perda de troca térmica</td><td>Monitorar qualidade, concentração e plano químico</td></tr>
+            <tr><td>Filtros / strainers</td><td>Protegem evaporador, válvulas e sensores</td><td>Inspecionar diferencial, limpar e registrar</td></tr>
+            <tr><td>Bombas</td><td>Garantem vazão e pressão diferencial</td><td>Verificar corrente, ruído, vibração, selo, rotação e reserva</td></tr>
+            <tr><td>Sensores</td><td>Baseiam decisões de controle e alarme</td><td>Comparar leituras com instrumentos confiáveis</td></tr>
+            <tr><td>Condensadores externos</td><td>Influenciam pressão de condensação e eficiência</td><td>Limpeza e inspeção de ventiladores/serpentinas</td></tr>
+            <tr><td>Histórico</td><td>Mostra tendência antes da falha</td><td>Registrar alarmes, setpoints, medições e alterações</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="m7-troubleshooting" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div>
+        <h3>10. Troubleshooting Aplicado</h3>
+        <p class="reading-subtitle">Diagnóstico por sintoma, causa provável e verificação inicial</p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Sintoma / Alarme</th><th>Possíveis causas</th><th>Verificações iniciais</th></tr></thead>
+          <tbody>
+            <tr><td>Baixa capacidade na sala</td><td>Água quente, baixa vazão, válvula limitada, filtro sujo ou airflow baixo</td><td>EWT/LWT, Delta T, Delta P, válvulas, fancoils e tendência</td></tr>
+            <tr><td>Perda de fluxo no evaporador</td><td>Bomba parada, fluxóstato aberto, ar, filtro obstruído ou válvula fechada</td><td>Status da bomba, fluxo, pressão, strainer e intertravamentos</td></tr>
+            <tr><td>Proteção anticongelamento</td><td>Baixa vazão, setpoint muito baixo, sensor incorreto ou glicol inadequado</td><td>LWT, EWT, concentração de glicol, fluxo e sensor</td></tr>
+            <tr><td>Baixo Delta T na planta</td><td>Excesso de vazão, bypass, válvulas abertas, baixa troca nos consumidores</td><td>Válvulas, bypass, vazão, retorno e consumidores críticos</td></tr>
+            <tr><td>Alta pressão de condensação</td><td>Condensador sujo, ventilação deficiente, ventiladores falhando ou recirculação de ar</td><td>Serpentina, ventiladores, obstruções e temperatura externa</td></tr>
+            <tr><td>Oscilação de temperatura</td><td>Controle PID, sensor mal posicionado, baixo volume de água ou staging agressivo</td><td>Histórico, setpoints, banda, tanque de inércia e sequência</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Sequência recomendada de diagnóstico</h4>
+        <p>
+          Comece pela demanda e alarmes, confirme se a central está habilitada, valide fluxo e bombas,
+          compare EWT/LWT, calcule Delta T, confira válvulas e consumidores, e só então conclua sobre falha
+          de chiller, controle ou componente.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card module-summary">
+    <h3>Resumo do Módulo</h3>
+    <p>
+      A Central de Água Gelada integra produção, bombeamento, distribuição, controle e manutenção. O diagnóstico
+      correto depende da correlação entre temperatura, vazão, Delta T, Delta P, setpoints, alarmes, válvulas, consumidores
+      e histórico operacional.
+    </p>
+  </div>
+
+  <span id="m7-avaliacao" class="anchor-offset"></span>
+
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.</p>
+    <br>
+
+    <label><input type="checkbox" class="modulo07-check"> Entendi o papel da Central de Água Gelada na arquitetura HVAC crítica.</label>
+    <label><input type="checkbox" class="modulo07-check"> Sei diferenciar circuito frigorífico do chiller e circuito hidráulico de água gelada.</label>
+    <label><input type="checkbox" class="modulo07-check"> Compreendi a relação entre vazão, Delta T, Delta P e capacidade térmica.</label>
+    <label><input type="checkbox" class="modulo07-check"> Entendi a função de bombas, válvulas, sensores, filtros e intertravamentos de fluxo.</label>
+    <label><input type="checkbox" class="modulo07-check"> Sei aplicar troubleshooting básico para baixa capacidade, baixo Delta T e perda de fluxo.</label>
+
+    <div id="modulo07-checklist-status" class="checklist-status">
+      Conclua o checklist para liberar a avaliação.
+    </div>
+  </div>
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.</p>
+    <br>
+    <button id="go-modulo07-quiz" class="btn btn-primary btn-disabled" type="button" disabled>
+      Ir para avaliação
+    </button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+</section>

@@ -1,0 +1,141 @@
+<section class="section module-lesson eletrica04-lesson">
+  <h2 class="section-title">Módulo E04 — Diagnóstico Elétrico em Equipamentos HVAC</h2>
+  <p class="section-subtitle">
+    Este módulo consolida a trilha elétrica: sintomas, sequência de investigação, evidências elétricas,
+    interpretação de proteções e casos práticos em motores, ventiladores EC, resistências, soft-starters,
+    ATS, painéis de comando e componentes de equipamentos HVAC.
+  </p>
+
+  <nav class="module-nav">
+    <a href="#e04-logica">Lógica</a>
+    <a href="#e04-sequencia">Sequência</a>
+    <a href="#e04-falhas">Falhas típicas</a>
+    <a href="#e04-cases">Cases</a>
+    <a href="#e04-desafios">Desafios</a>
+    <a href="#e04-avaliacao">Avaliação</a>
+  </nav>
+
+  <span id="e04-logica" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-brain"></i></div><div><h3>1. Lógica do diagnóstico elétrico</h3><p class="reading-subtitle">O objetivo não é trocar peças; é localizar a causa</p></div></div>
+    <div class="reading-content">
+      <p>Diagnóstico elétrico maduro segue um raciocínio disciplinado: definir sintoma, medir alimentação, seguir o comando, confirmar a carga, correlacionar proteção e então concluir a hipótese mais provável.</p>
+      <div class="diag-logic-flow">
+        <div class="diag-logic-step pulse-blue">Sintoma</div>
+        <div class="diag-logic-step pulse-gold">Potência</div>
+        <div class="diag-logic-step pulse-green">Comando</div>
+        <div class="diag-logic-step pulse-blue">Carga</div>
+        <div class="diag-logic-step pulse-red">Proteção / causa</div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e04-sequencia" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-route"></i></div><div><h3>2. Sequência segura de troubleshooting</h3><p class="reading-subtitle">A mesma disciplina serve para bomba, fan coil, resistência, ATS ou soft-starter</p></div></div>
+    <div class="reading-content">
+      <div class="e04-step-grid">
+        <div class="mini-card e04-step-card"><span>1</span><h4>Definir o sintoma</h4><p>Não liga, desarma, parte e solta, corrente alta, falha de alarme, ausência de transferência?</p></div>
+        <div class="mini-card e04-step-card"><span>2</span><h4>Conferir energia</h4><p>Há alimentação coerente no ponto onde ela deveria existir?</p></div>
+        <div class="mini-card e04-step-card"><span>3</span><h4>Seguir o comando</h4><p>O caminho elétrico chega à bobina, enable ou entrada lógica?</p></div>
+        <div class="mini-card e04-step-card"><span>4</span><h4>Confirmar resposta</h4><p>A carga realmente respondeu? Há corrente? Há fechamento do contator? Há movimento?</p></div>
+        <div class="mini-card e04-step-card"><span>5</span><h4>Fechar diagnóstico</h4><p>Associe proteção, medição e sintoma antes de substituir componente.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e04-falhas" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-bug"></i></div><div><h3>3. Falhas típicas em HVAC</h3><p class="reading-subtitle">O que costuma aparecer no campo elétrico</p></div></div>
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Sintoma</th><th>Leitura provável</th><th>Pontos iniciais de verificação</th></tr></thead>
+          <tbody>
+            <tr><td>Motor não parte</td><td>Falta potência ou comando</td><td>Entrada, saída de proteção, bobina/enable, proteção térmica</td></tr>
+            <tr><td>Soft-starter em falha</td><td>Erro interno, perda de fase ou sobrecarga</td><td>Status, último erro, tensão de linha e corrente do motor</td></tr>
+            <tr><td>Ventilador EC parado</td><td>Enable ausente, alarme do drive ou falha do próprio ventilador</td><td>Alimentação, sinal de comando, status/alarmes e feedback</td></tr>
+            <tr><td>Resistência sem aquecimento</td><td>Falta tensão, limite aberto ou elemento interrompido</td><td>Comando, tensão na carga, limites térmicos e continuidade</td></tr>
+            <tr><td>ATS não transfere</td><td>Fonte sem monitoramento coerente ou lógica bloqueada</td><td>Tensões das fontes, entradas de sensoriamento, permissivos e temporizações</td></tr>
+            <tr><td>Relé térmico desarma</td><td>Sobrecarga, travamento mecânico ou ajuste incorreto</td><td>Corrente, ajuste do relé, mancais, bomba, ventilador e acoplamento</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="e04-cases" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-fan"></i></div><div><h3>4. Cases práticos</h3><p class="reading-subtitle">Aplicação direta em equipamentos da rotina HVAC</p></div></div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Bomba não liga</h4><p>Se a alimentação está correta, siga o comando até a bobina ou start digital. Depois valide corrente, acoplamento e proteção.</p></div>
+        <div class="mini-card"><h4>EC fan alarm</h4><p>Separar alimentação, enable, limite de velocidade, alarme do drive integrado e condição mecânica do ventilador.</p></div>
+        <div class="mini-card"><h4>Reheat não aquece</h4><p>O defeito pode estar no comando, nos limites térmicos ou no próprio elemento resistivo.</p></div>
+        <div class="mini-card"><h4>ATS sem resposta</h4><p>A lógica de sensoriamento das fontes e o estado dos contatos auxiliares precisam ser verificados antes de concluir falha do mecanismo.</p></div>
+      </div>
+      <div class="reading-highlight"><h4>Mensagem-chave</h4><p>Equipamentos HVAC podem misturar comando eletromecânico, eletrônica de potência e automação. O diagnóstico precisa respeitar essas camadas.</p></div>
+    </div>
+  </div>
+
+  <span id="e04-desafios" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-stethoscope"></i></div><div><h3>5. Desafios rápidos de diagnóstico</h3><p class="reading-subtitle">Feedback imediato para treinar raciocínio elétrico</p></div></div>
+    <div class="reading-content">
+      <div class="m10-case-quiz e04-case-quiz" data-case="e4c1">
+        <div class="m10-case-header">
+          <h4>Desafio 1 — Bobina sem tensão</h4>
+          <div class="m10-case-badges"><span class="case-badge negative pulse-red">Contator não fecha</span><span class="case-badge warning">Potência presente</span></div>
+        </div>
+        <p>Em um ventilador de HVAC, a potência de alimentação chega ao painel, mas a bobina do contator está sem tensão. Qual é a leitura inicial mais coerente?</p>
+        <label><input type="radio" name="e04case1" value="A"> A) O problema está necessariamente no motor.</label>
+        <label><input type="radio" name="e04case1" value="B"> B) O problema está no circuito de comando ou em permissivos/intertravamentos abertos.</label>
+        <label><input type="radio" name="e04case1" value="C"> C) O contator precisa ser trocado sem outras medições.</label>
+        <label><input type="radio" name="e04case1" value="D"> D) A falta de tensão na bobina prova sobrecarga mecânica.</label>
+        <button class="btn btn-secondary e04-check-case" type="button">Verificar resposta</button>
+        <div class="m10-case-feedback"></div>
+      </div>
+      <div class="m10-case-quiz e04-case-quiz" data-case="e4c2">
+        <div class="m10-case-header">
+          <h4>Desafio 2 — Corrente desequilibrada</h4>
+          <div class="m10-case-badges"><span class="case-badge negative pulse-orange">Fase C baixa</span><span class="case-badge hot">Motor aquecendo</span></div>
+        </div>
+        <p>Um motor de bomba apresenta corrente muito menor em uma fase do que nas outras, e o conjunto aquece. Qual hipótese inicial merece prioridade?</p>
+        <label><input type="radio" name="e04case2" value="A"> A) Perda parcial de fase, mau contato ou problema de alimentação em uma perna do circuito.</label>
+        <label><input type="radio" name="e04case2" value="B"> B) O sistema está com umidade relativa alta.</label>
+        <label><input type="radio" name="e04case2" value="C"> C) Isso prova falha exclusiva do pressostato.</label>
+        <label><input type="radio" name="e04case2" value="D"> D) A corrente menor significa sempre operação normal.</label>
+        <button class="btn btn-secondary e04-check-case" type="button">Verificar resposta</button>
+        <div class="m10-case-feedback"></div>
+      </div>
+      <div class="m10-case-quiz e04-case-quiz" data-case="e4c3">
+        <div class="m10-case-header">
+          <h4>Desafio 3 — Reheat sem aquecimento</h4>
+          <div class="m10-case-badges"><span class="case-badge warning">Comando presente</span><span class="case-badge negative">Sem aquecimento</span></div>
+        </div>
+        <p>Uma resistência elétrica recebe comando, mas não aquece. Qual sequência inicial de verificação é mais coerente?</p>
+        <label><input type="radio" name="e04case3" value="A"> A) Confirmar tensão na carga, estado dos limites térmicos e continuidade do elemento com circuito isolado.</label>
+        <label><input type="radio" name="e04case3" value="B"> B) Trocar imediatamente o CLP.</label>
+        <label><input type="radio" name="e04case3" value="C"> C) Considerar o defeito resolvido sem medir nada.</label>
+        <label><input type="radio" name="e04case3" value="D"> D) Ajustar setpoints de temperatura sem avaliar o circuito elétrico.</label>
+        <button class="btn btn-secondary e04-check-case" type="button">Verificar resposta</button>
+        <div class="m10-case-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card technical-reading"><div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-book-open"></i></div><div><h3>Resumo do Módulo</h3><p class="reading-subtitle">Fechamento da trilha elétrica</p></div></div><div class="reading-content"><p>Diagnóstico elétrico confiável depende de segurança, método e evidência. Com base, comando, instrumentos e raciocínio, o técnico consegue avançar para a futura ferramenta de diagnóstico elétrico com muito mais maturidade.</p></div></div>
+
+  <span id="e04-avaliacao" class="anchor-offset"></span>
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3><p>Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.</p><br>
+    <label><input type="checkbox" class="eletrica04-check"> Sei iniciar troubleshooting elétrico por sintoma, potência, comando e carga.</label>
+    <label><input type="checkbox" class="eletrica04-check"> Consigo interpretar falhas típicas em motores, soft-starters, EC fans, resistências e ATS.</label>
+    <label><input type="checkbox" class="eletrica04-check"> Entendo a relação entre proteção elétrica e causa raiz da falha.</label>
+    <label><input type="checkbox" class="eletrica04-check"> Consigo propor medições iniciais coerentes para fechar hipótese de defeito.</label>
+    <label><input type="checkbox" class="eletrica04-check"> Estou preparado para usar futuramente uma ferramenta de apoio ao diagnóstico elétrico HVAC.</label>
+    <div id="eletrica04-checklist-status" class="checklist-status">Conclua o checklist para liberar a avaliação.</div>
+  </div>
+  <div class="card assessment-callout"><h3>Avaliação do Módulo</h3><p>O sistema sorteará 5 perguntas aleatórias. Respostas incorretas exibirão justificativa técnica abaixo da questão. Para avançar, é necessário acertar pelo menos 3 de 5.</p><br><button id="go-eletrica04-quiz" class="btn btn-primary btn-disabled" type="button" disabled>Ir para avaliação</button></div>
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+</section>
