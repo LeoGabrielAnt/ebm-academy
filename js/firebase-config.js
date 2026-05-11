@@ -27,11 +27,26 @@
   ],
   "configuration_version": "1"
 
-window.EBM_FIREBASE_CONFIG = {
-  apiKey: "COLE_AQUI_API_KEY",
-  authDomain: "COLE_AQUI_AUTH_DOMAIN",
-  projectId: "COLE_AQUI_PROJECT_ID",
-  storageBucket: "COLE_AQUI_STORAGE_BUCKET",
-  messagingSenderId: "COLE_AQUI_MESSAGING_SENDER_ID",
-  appId: "COLE_AQUI_APP_ID"
-};
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQp7N4E1crXMjhHi8ECRpC3IluPthAgL4",
+    authDomain: "ebm-academy.firebaseapp.com",
+    projectId: "ebm-academy",
+    storageBucket: "ebm-academy.firebasestorage.app",
+    messagingSenderId: "867364791338",
+    appId: "1:867364791338:web:90ce68fb801c8540c54f53",
+    measurementId: "G-YEN6Q9YNEP"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
