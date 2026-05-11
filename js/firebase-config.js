@@ -1,10 +1,31 @@
-// EBM Academy — Configuração Firebase
-// 1) Crie um projeto em https://console.firebase.google.com/
-// 2) Ative Authentication > Sign-in method > Email/Password
-// 2.1) Ative Firestore Database em modo Production ou Teste controlado
-// 3) Em Project settings > Your apps > Web app, copie o objeto firebaseConfig abaixo
-// 4) Para teste no GitHub Pages, adicione seu domínio autorizado:
-//    Authentication > Settings > Authorized domains > seu-usuario.github.io
+{
+  "project_info": {
+    "project_number": "867364791338",
+    "project_id": "ebm-academy",
+    "storage_bucket": "ebm-academy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867364791338:android:06d05bf4986a5b92c54f53",
+        "android_client_info": {
+          "package_name": "app.ebm_academy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmgWqrU8nQNeYUp5e8oyRlo7me-dSD4R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
 
 window.EBM_FIREBASE_CONFIG = {
   apiKey: "COLE_AQUI_API_KEY",
