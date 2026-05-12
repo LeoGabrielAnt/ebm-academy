@@ -1,0 +1,567 @@
+<section class="section module-lesson">
+
+  <h2 class="section-title">
+    Módulo 02 — Superaquecimento e Subresfriamento
+  </h2>
+
+  <p class="section-subtitle">
+    Aula teórica completa sobre Superheat e Subcooling, com foco em interpretação técnica,
+    segurança do compressor, alimentação do evaporador, estabilidade da linha de líquido
+    e diagnóstico aplicado em sistemas HVAC críticos.
+  </p>
+
+  <!-- NAVEGAÇÃO INTERNA -->
+
+  <nav class="module-nav">
+    <a href="#m2-conceito">Conceito</a>
+    <a href="#m2-superheat">Superheat</a>
+    <a href="#m2-subcooling">Subcooling</a>
+    <a href="#m2-interpretacao">Interpretação</a>
+    <a href="#m2-procedimento">Procedimento</a>
+    <a href="#m2-casos">Casos</a>
+    <a href="#m2-glossario">Glossário</a>
+    <a href="#m2-avaliacao">Avaliação</a>
+  </nav>
+
+  <!-- OBJETIVOS -->
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-bullseye"></i>
+      </div>
+
+      <div>
+        <h3>Objetivos de Aprendizagem</h3>
+        <p class="reading-subtitle">
+          O que o aluno deverá compreender ao final deste módulo
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <ul class="tech-list">
+        <li>Compreender o que é Superheat e por que ele protege o compressor.</li>
+        <li>Compreender o que é Subcooling e por que ele indica estabilidade da linha de líquido.</li>
+        <li>Relacionar pressão, temperatura de saturação e temperatura real medida em campo.</li>
+        <li>Interpretar combinações de SH e SC sem diagnosticar apenas por pressão.</li>
+        <li>Aplicar um procedimento de medição com método, registro e validação operacional.</li>
+        <li>Reconhecer sintomas de baixa carga, excesso de refrigerante, restrição e baixa alimentação do evaporador.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CONCEITO GERAL -->
+
+  <span id="m2-conceito" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-temperature-high"></i>
+      </div>
+
+      <div>
+        <h3>1. Conceito Geral</h3>
+        <p class="reading-subtitle">
+          Superheat e Subcooling como leitura do comportamento do refrigerante
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Superheat e Subcooling são dois dos principais indicadores técnicos para avaliar
+        como o refrigerante está se comportando dentro do ciclo frigorífico. Eles não substituem
+        a análise completa do sistema, mas ajudam o técnico a entender se o evaporador está sendo
+        alimentado corretamente e se a linha de líquido está estável.
+      </p>
+
+      <br>
+
+      <p>
+        O ponto central é comparar a temperatura real medida em campo com a temperatura de saturação
+        correspondente à pressão do refrigerante. A partir dessa comparação, o técnico consegue
+        interpretar se o fluido está superaquecido, subresfriado ou em condição inadequada para
+        operação segura.
+      </p>
+
+      <div class="reading-highlight">
+        <h4>Leitura técnica importante</h4>
+        <p>
+          Pressão sozinha não fecha diagnóstico. Sempre correlacione pressão, temperatura,
+          SH, SC, vazão de ar, condição de carga térmica, limpeza de serpentinas e histórico operacional.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPERHEAT -->
+
+  <span id="m2-superheat" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-fire-flame-simple"></i>
+      </div>
+
+      <div>
+        <h3>2. Superheat — Superaquecimento</h3>
+        <p class="reading-subtitle">
+          Proteção do compressor e leitura da alimentação do evaporador
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Superheat é a diferença entre a temperatura real do vapor na linha de sucção e a
+        temperatura de saturação de evaporação obtida pela pressão de sucção. Em operação correta,
+        o refrigerante deve sair do evaporador como vapor, evitando retorno líquido ao compressor.
+      </p>
+
+      <div class="shsc-formula-card">
+        <div>
+          <span class="formula-label">Fórmula</span>
+          <h4>Superheat = Temperatura da linha de sucção − Temperatura de saturação de evaporação</h4>
+        </div>
+        <div class="formula-example">
+          Exemplo: 12 °C − 6 °C = <strong>6 K</strong>
+        </div>
+      </div>
+
+      <div class="shsc-diagram sh-diagram">
+        <div class="shsc-stage evaporator-stage">
+          <i class="fa-solid fa-snowflake"></i>
+          <h4>Evaporador</h4>
+          <p>Absorção de calor</p>
+        </div>
+
+        <div class="shsc-line suction-line">
+          <span class="moving-dot"></span>
+          <div class="line-label">Linha de sucção — vapor de baixa pressão</div>
+        </div>
+
+        <div class="shsc-measure-point">
+          <i class="fa-solid fa-thermometer-half"></i>
+          <h4>Medição</h4>
+          <p>Temperatura real da sucção</p>
+        </div>
+
+        <div class="shsc-stage compressor-stage">
+          <i class="fa-solid fa-gears"></i>
+          <h4>Compressor</h4>
+          <p>Recebe vapor</p>
+        </div>
+      </div>
+
+      <div class="figure-explainer-grid">
+        <div class="figure-explainer-card">
+          <h4>Superheat baixo</h4>
+          <p>
+            Pode indicar excesso de alimentação no evaporador e risco de retorno líquido ao compressor.
+          </p>
+        </div>
+
+        <div class="figure-explainer-card">
+          <h4>Superheat alto</h4>
+          <p>
+            Pode indicar baixa alimentação do evaporador, baixa carga, restrição ou baixa vazão de refrigerante.
+          </p>
+        </div>
+
+        <div class="figure-explainer-card">
+          <h4>Boa prática</h4>
+          <p>
+            Antes de concluir carga incorreta, verifique vazão de ar, filtro, serpentina, carga térmica e sensores.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBCOOLING -->
+
+  <span id="m2-subcooling" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-droplet"></i>
+      </div>
+
+      <div>
+        <h3>3. Subcooling — Subresfriamento</h3>
+        <p class="reading-subtitle">
+          Estabilidade da linha de líquido e condição de alimentação da expansão
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Subcooling é a diferença entre a temperatura de saturação de condensação e a temperatura
+        real da linha de líquido. Ele indica se o refrigerante líquido está resfriado abaixo da
+        condição de saturação, ajudando a garantir alimentação estável ao dispositivo de expansão.
+      </p>
+
+      <div class="shsc-formula-card">
+        <div>
+          <span class="formula-label">Fórmula</span>
+          <h4>Subcooling = Temperatura de saturação de condensação − Temperatura da linha de líquido</h4>
+        </div>
+        <div class="formula-example">
+          Exemplo: 42 °C − 36 °C = <strong>6 K</strong>
+        </div>
+      </div>
+
+      <div class="shsc-diagram sc-diagram">
+        <div class="shsc-stage condenser-stage">
+          <i class="fa-solid fa-fan"></i>
+          <h4>Condensador</h4>
+          <p>Rejeição de calor</p>
+        </div>
+
+        <div class="shsc-line liquid-line">
+          <span class="moving-dot"></span>
+          <div class="line-label">Linha de líquido — alta pressão</div>
+        </div>
+
+        <div class="shsc-measure-point">
+          <i class="fa-solid fa-thermometer-three-quarters"></i>
+          <h4>Medição</h4>
+          <p>Temperatura real do líquido</p>
+        </div>
+
+        <div class="shsc-stage expansion-stage">
+          <i class="fa-solid fa-filter"></i>
+          <h4>Expansão</h4>
+          <p>Alimentação do evaporador</p>
+        </div>
+      </div>
+
+      <div class="figure-explainer-grid">
+        <div class="figure-explainer-card">
+          <h4>Subcooling baixo</h4>
+          <p>
+            Pode indicar baixa carga, flash gas na linha de líquido ou instabilidade na alimentação da expansão.
+          </p>
+        </div>
+
+        <div class="figure-explainer-card">
+          <h4>Subcooling alto</h4>
+          <p>
+            Pode indicar excesso de refrigerante, restrição, condensador com líquido acumulado ou condição anormal.
+          </p>
+        </div>
+
+        <div class="figure-explainer-card">
+          <h4>Boa prática</h4>
+          <p>
+            Avalie também condensação, limpeza do condensador, temperatura externa, ventilação e histórico de intervenção.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERPRETAÇÃO -->
+
+  <span id="m2-interpretacao" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-chart-simple"></i>
+      </div>
+
+      <div>
+        <h3>4. Interpretação Técnica de SH e SC</h3>
+        <p class="reading-subtitle">
+          Como cruzar leituras sem cair em diagnóstico precipitado
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        A interpretação de SH e SC deve ser feita como parte de um raciocínio maior.
+        A tabela abaixo apresenta leituras didáticas comuns, mas não substitui o procedimento
+        de medição, validação e análise de campo.
+      </p>
+
+      <br>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Condição observada</th>
+              <th>Possível interpretação</th>
+              <th>O que verificar antes de concluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SH alto + SC baixo</td>
+              <td>Baixa carga refrigerante ou baixa alimentação do evaporador</td>
+              <td>Vazamentos, restrição, filtro secador, vazão de ar e carga térmica</td>
+            </tr>
+            <tr>
+              <td>SH baixo</td>
+              <td>Risco de retorno líquido ao compressor</td>
+              <td>Válvula de expansão, sensor/bulbo, carga térmica e fluxo de ar</td>
+            </tr>
+            <tr>
+              <td>SC alto</td>
+              <td>Possível excesso de refrigerante ou restrição na linha</td>
+              <td>Condensador, linha de líquido, filtro secador e histórico de carga</td>
+            </tr>
+            <tr>
+              <td>SH alto + SC alto</td>
+              <td>Possível restrição ou alimentação deficiente após líquido acumulado</td>
+              <td>Filtro secador, válvula de expansão, queda de pressão e temperatura na linha</td>
+            </tr>
+            <tr>
+              <td>SH normal + SC normal</td>
+              <td>Condição aparentemente estável</td>
+              <td>Confirmar capacidade, Delta T de ar, carga térmica e tendência operacional</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Regra prática do diagnóstico</h4>
+        <p>
+          SH e SC indicam comportamento do refrigerante, mas o diagnóstico correto exige
+          avaliar também o lado do ar, lado elétrico, controle, setpoints, carga térmica e alarmes.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCEDIMENTO -->
+
+  <span id="m2-procedimento" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-list-check"></i>
+      </div>
+
+      <div>
+        <h3>5. Procedimento Recomendado de Medição</h3>
+        <p class="reading-subtitle">
+          Sequência segura para medições em campo
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card">
+          <h4>1. Estabilize o sistema</h4>
+          <p>
+            Aguarde operação estável antes de registrar dados. Evite medir logo após partida, degelo ou alteração de setpoint.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>2. Meça pressões</h4>
+          <p>
+            Converta pressão em temperatura de saturação usando refrigerante correto e tabela/PT chart confiável.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>3. Meça temperaturas reais</h4>
+          <p>
+            Use bom contato térmico, isolamento do sensor e ponto de medição adequado na linha.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>4. Calcule e interprete</h4>
+          <p>
+            Calcule SH e SC, compare com projeto/fabricante e correlacione com condição operacional.
+          </p>
+        </div>
+      </div>
+
+      <br>
+
+      <ul class="tech-list">
+        <li>Confirme se o refrigerante selecionado no manifold/app está correto.</li>
+        <li>Verifique se o equipamento está em carga real e com fluxo de ar adequado.</li>
+        <li>Registre temperatura ambiente, retorno, insuflamento e condição dos filtros.</li>
+        <li>Evite completar carga refrigerante sem evidência técnica consistente.</li>
+        <li>Documente medições antes e depois de qualquer intervenção.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CASOS -->
+
+  <span id="m2-casos" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-magnifying-glass-chart"></i>
+      </div>
+
+      <div>
+        <h3>6. Mini Estudos de Caso</h3>
+        <p class="reading-subtitle">
+          Aplicação prática para fixação
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card case-card danger-case">
+          <h4>Caso A — SH muito baixo</h4>
+          <p>
+            O sistema apresenta sucção fria, compressor suando e Superheat abaixo do esperado.
+            O risco principal é retorno líquido. Verifique válvula de expansão, carga térmica, sensor/bulbo e fluxo de ar.
+          </p>
+        </div>
+
+        <div class="mini-card case-card warning-case">
+          <h4>Caso B — SH alto + SC baixo</h4>
+          <p>
+            Pode haver baixa carga, restrição ou evaporador subalimentado. Antes de completar gás,
+            procure vazamento, confira filtro secador, fluxo de ar e histórico de manutenção.
+          </p>
+        </div>
+
+        <div class="mini-card case-card info-case">
+          <h4>Caso C — SC alto</h4>
+          <p>
+            Pode indicar excesso de refrigerante ou restrição na linha de líquido. Avalie condensador,
+            temperatura externa, filtro secador e diferenças de temperatura antes/depois da restrição.
+          </p>
+        </div>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Ambientes críticos</h4>
+        <p>
+          Em salas técnicas e ambientes de missão crítica, alterações de carga, setpoint ou carga refrigerante
+          devem ser documentadas e acompanhadas por tendência operacional. A estabilidade é mais importante
+          do que uma leitura isolada em um único momento.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLOSSÁRIO -->
+
+  <span id="m2-glossario" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-book"></i>
+      </div>
+
+      <div>
+        <h3>7. Glossário Técnico</h3>
+        <p class="reading-subtitle">
+          Termos essenciais para leitura de SH e SC
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Temperatura de saturação</h4>
+          <p>
+            Temperatura correspondente à pressão do refrigerante em condição de mudança de estado.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Superheat</h4>
+          <p>
+            Quanto o vapor está acima da temperatura de saturação na região de evaporação.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Subcooling</h4>
+          <p>
+            Quanto o líquido está abaixo da temperatura de saturação na região de condensação.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Flash gas</h4>
+          <p>
+            Formação de vapor na linha de líquido antes do dispositivo de expansão, prejudicando alimentação.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMO -->
+
+  <div class="card module-summary">
+    <h3>Resumo do Módulo</h3>
+    <p>
+      Superheat e Subcooling são ferramentas fundamentais para interpretar o comportamento do refrigerante.
+      O Superheat ajuda a avaliar a saída do evaporador e a proteção do compressor. O Subcooling ajuda a avaliar
+      a estabilidade da linha de líquido. Ambos devem ser analisados em conjunto com fluxo de ar, condição de carga,
+      limpeza de serpentinas, alarmes e histórico operacional.
+    </p>
+  </div>
+
+  <!-- CHECKLIST -->
+
+  <span id="m2-avaliacao" class="anchor-offset"></span>
+
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>
+      Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.
+    </p>
+
+    <br>
+
+    <label><input type="checkbox" class="modulo02-check"> Entendi o conceito de Superheat.</label>
+    <label><input type="checkbox" class="modulo02-check"> Entendi o conceito de Subcooling.</label>
+    <label><input type="checkbox" class="modulo02-check"> Sei onde medir sucção e linha de líquido.</label>
+    <label><input type="checkbox" class="modulo02-check"> Compreendi os riscos de SH baixo e retorno líquido.</label>
+    <label><input type="checkbox" class="modulo02-check"> Compreendi que SH/SC precisam ser correlacionados com o sistema completo.</label>
+
+    <div id="modulo02-checklist-status" class="checklist-status">
+      Conclua o checklist para liberar a avaliação.
+    </div>
+  </div>
+
+  <!-- BOTÃO QUIZ -->
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>
+      O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.
+    </p>
+
+    <br>
+
+    <button id="go-modulo02-quiz" class="btn btn-primary btn-disabled" type="button" disabled>
+      Ir para avaliação
+    </button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+</section>

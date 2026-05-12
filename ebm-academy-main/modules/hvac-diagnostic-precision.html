@@ -1,0 +1,23 @@
+<section class="section electrical-diagnostic-tool-page hvac-diagnostic-page">
+  <h2 class="section-title">Assistente HVAC — Fancoils / Precisão</h2>
+  <p class="section-subtitle">Ferramenta didática voltada a fan coils de precisão, temperatura de insuflamento, umidade, drenagem, fluxo de ar e elementos de controle como válvula e reheat.</p>
+  <div class="card edt-hero-card"><div class="edt-hero-grid"><div><h3>Foco em resposta térmica e fluxo de ar</h3><p>Use o assistente para organizar hipóteses em sintomas muito comuns de fan coils e selfs de precisão, incluindo baixo fluxo, temperatura alta, condensado, válvula e reheat.</p></div><div class="edt-hero-steps"><div class="edt-step pulse-blue"><span>1</span><small>Sintoma</small></div><div class="edt-step pulse-gold"><span>2</span><small>Ar</small></div><div class="edt-step pulse-green"><span>3</span><small>Válvula / Reheat</small></div><div class="edt-step pulse-red"><span>4</span><small>Diagnóstico</small></div></div></div></div>
+  <div class="grid edt-main-grid">
+    <div class="card edt-form-card"><h3>Entradas da análise</h3>
+      <label>Sintoma principal<select id="pr-symptom"><option value="high_supply_temp">Temperatura de insuflamento alta</option><option value="low_airflow">Baixo fluxo de ar</option><option value="condensate_alarm">Alarme de condensado</option><option value="high_humidity">Umidade alta</option><option value="valve_no_response">Válvula sem resposta</option><option value="reheat_no_heat">Reheat sem aquecimento</option></select></label>
+      <label>Condição dos filtros / fluxo<select id="pr-air"><option value="unknown">Ainda não conferida</option><option value="ok">Normal</option><option value="restricted">Restrito / filtro sujo</option><option value="fan_fault">Falha de ventilador</option></select></label>
+      <label>Status da válvula de água gelada<select id="pr-valve"><option value="unknown">Ainda não conferido</option><option value="ok">Modulando normalmente</option><option value="stuck_closed">Travada / fechada</option><option value="stuck_open">Travada / aberta</option></select></label>
+      <label>Status do dreno / bandeja<select id="pr-drain"><option value="unknown">Ainda não conferido</option><option value="ok">Normal</option><option value="blocked">Drenagem obstruída</option><option value="switch_alarm">Chave / sensor de condensado atuado</option></select></label>
+      <label>Status do reheat<select id="pr-reheat"><option value="unknown">Ainda não conferido</option><option value="ok">Operando normalmente</option><option value="off">Sem atuação</option><option value="trip">Proteção / limite atuado</option></select></label>
+      <div class="tool-actions edt-actions"><button id="pr-run" class="btn btn-primary" type="button">Gerar diagnóstico</button><button id="pr-reset" class="btn btn-secondary" type="button">Limpar</button><button class="btn btn-secondary" onclick="loadTrainingPage('tools')" type="button">Voltar às ferramentas</button></div>
+    </div>
+    <div class="card edt-result-card"><div class="edt-result-header"><h3>Saída da análise</h3><span id="pr-result-badge" class="case-badge warning">Aguardando dados</span></div><div id="pr-result-panel" class="edt-result-panel"><p class="muted">Selecione as condições e clique em <strong>Gerar diagnóstico</strong>.</p></div></div>
+  </div>
+  <div class="card edt-quickcases-card"><h3>Casos rápidos</h3><div class="edt-quickcases-grid">
+    <button type="button" class="pr-quickcase btn btn-secondary" data-symptom="high_supply_temp" data-air="ok" data-valve="stuck_closed" data-drain="ok" data-reheat="off">Insuflamento quente por válvula fechada</button>
+    <button type="button" class="pr-quickcase btn btn-secondary" data-symptom="low_airflow" data-air="restricted" data-valve="ok" data-drain="ok" data-reheat="unknown">Baixo fluxo por filtro sujo</button>
+    <button type="button" class="pr-quickcase btn btn-secondary" data-symptom="condensate_alarm" data-air="ok" data-valve="ok" data-drain="blocked" data-reheat="unknown">Alarme de condensado</button>
+    <button type="button" class="pr-quickcase btn btn-secondary" data-symptom="reheat_no_heat" data-air="ok" data-valve="ok" data-drain="ok" data-reheat="trip">Reheat sem aquecer</button>
+  </div></div>
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+</section>

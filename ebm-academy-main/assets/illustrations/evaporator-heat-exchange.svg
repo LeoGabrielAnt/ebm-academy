@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560">
+<defs><filter id="s"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter></defs>
+<rect width="1200" height="560" rx="32" fill="#071018"/>
+<rect x="32" y="32" width="1136" height="496" rx="28" fill="#0f1724" stroke="rgba(255,255,255,.10)"/>
+<text x="62" y="84" fill="#60a5fa" font-family="Arial" font-size="31" font-weight="800">Evaporador — Troca de Calor</text>
+<text x="62" y="122" fill="#cbd5e1" font-family="Arial" font-size="17">Diagrama didático EBM Academy</text>
+<rect x="80" y="210" width="220" height="140" rx="24" fill="#111827" stroke="#60a5fa" stroke-width="4" filter="url(#s)"/>
+<text x="190" y="270" fill="#60a5fa" font-family="Arial" font-size="24" font-weight="700" text-anchor="middle">Entrada</text>
+<text x="190" y="304" fill="#cbd5e1" font-family="Arial" font-size="16" text-anchor="middle">Condição inicial</text>
+<rect x="490" y="170" width="250" height="220" rx="28" fill="#111827" stroke="#60a5fa" stroke-width="4" filter="url(#s)"/>
+<text x="615" y="238" fill="#60a5fa" font-family="Arial" font-size="24" font-weight="700" text-anchor="middle">Processo</text>
+<text x="615" y="278" fill="#cbd5e1" font-family="Arial" font-size="16" text-anchor="middle">Troca • controle</text>
+<text x="615" y="312" fill="#cbd5e1" font-family="Arial" font-size="16" text-anchor="middle">Medição • ação</text>
+<rect x="900" y="210" width="220" height="140" rx="24" fill="#111827" stroke="#22c55e" stroke-width="4" filter="url(#s)"/>
+<text x="1010" y="270" fill="#22c55e" font-family="Arial" font-size="24" font-weight="700" text-anchor="middle">Saída</text>
+<text x="1010" y="304" fill="#cbd5e1" font-family="Arial" font-size="16" text-anchor="middle">Condição final</text>
+<path d="M300 280 H490" stroke="#60a5fa" stroke-width="12" stroke-linecap="round"/>
+<path d="M740 280 H900" stroke="#22c55e" stroke-width="12" stroke-linecap="round"/>
+<text x="600" y="480" fill="#94a3b8" font-family="Arial" font-size="17" text-anchor="middle">Use este diagrama para apoiar a leitura técnica e o troubleshooting.</text>
+</svg>

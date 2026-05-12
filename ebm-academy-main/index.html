@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>EBM Academy HVAC Crítico</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="css/gamification-core-v1.css"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  >
+
+</head>
+
+<body>
+
+  <!-- LOGIN -->
+
+  <section id="login-screen" class="login-screen">
+
+    <div class="login-card auth-login-card">
+
+      <div class="language-switcher login-language-switcher" aria-label="Idioma / Language">
+        <button type="button" class="language-btn" data-lang="pt" title="Português">🇧🇷</button>
+        <button type="button" class="language-btn" data-lang="es" title="Español">🇪🇸</button>
+        <button type="button" class="language-btn" data-lang="en" title="English">🇺🇸</button>
+      </div>
+
+      <img
+        src="assets/logo/ebm-logo.png"
+        alt="EBM Academy"
+      >
+
+      <h1>
+        EBM <span>Academy</span>
+      </h1>
+
+      <p>
+        Acesse a plataforma com seu usuário para estudar as trilhas de HVAC Crítico e Elétrica Aplicada a HVAC.
+      </p>
+
+      <div id="firebase-config-alert" class="auth-config-alert hidden">
+        <h3><i class="fa-solid fa-triangle-exclamation"></i> Configuração necessária</h3>
+        <p>Para ativar o login real, preencha o arquivo <strong>js/firebase-config.js</strong> com as credenciais do seu projeto Firebase.</p>
+      </div>
+
+      <form id="auth-form" class="auth-form" onsubmit="return false;">
+        <label>
+          E-mail
+          <input
+            id="auth-email"
+            type="email"
+            autocomplete="email"
+            placeholder="seu.email@empresa.com"
+            required
+          >
+        </label>
+
+        <label>
+          Senha
+          <input
+            id="auth-password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Digite sua senha"
+            required
+          >
+        </label>
+
+        <div id="auth-message" class="auth-message hidden"></div>
+
+        <button
+          id="login-button"
+          class="btn btn-primary auth-main-btn"
+          type="button"
+        >
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Entrar
+        </button>
+
+        <div class="auth-secondary-actions">
+          <button id="register-button" class="auth-link-btn" type="button">
+            Criar conta
+          </button>
+          <button id="reset-password-button" class="auth-link-btn" type="button">
+            Esqueci minha senha
+          </button>
+        </div>
+      </form>
+
+      <div class="auth-footnote">
+        <i class="fa-solid fa-lock"></i>
+        Login real via Firebase Authentication.
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PORTAL / HOME PRINCIPAL -->
+
+  <section id="portal-shell" class="portal-shell hidden">
+
+    <header class="portal-topbar">
+
+      <div class="portal-brand">
+
+        <img
+          src="assets/logo/ebm-logo.png"
+          alt="EBM Academy"
+        >
+
+        <span>EBM Academy</span>
+
+      </div>
+
+      <div class="portal-actions">
+
+        <button
+          id="portal-theme-toggle"
+          class="theme-toggle-btn"
+          type="button"
+        >
+          <i class="fa-solid fa-sun"></i>
+          <span>Modo Claro</span>
+        </button>
+
+        <div class="language-switcher" aria-label="Idioma / Language">
+          <button type="button" class="language-btn" data-lang="pt" title="Português">🇧🇷</button>
+          <button type="button" class="language-btn" data-lang="es" title="Español">🇪🇸</button>
+          <button type="button" class="language-btn" data-lang="en" title="English">🇺🇸</button>
+        </div>
+
+        <span id="portal-user-label" class="auth-user-label"></span>
+
+        <button
+          id="logout-button"
+          class="btn btn-secondary"
+          type="button"
+        >
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          Sair
+        </button>
+
+      </div>
+
+    </header>
+
+    <main
+      id="portal-content"
+      class="portal-main"
+    ></main>
+
+  </section>
+
+  <!-- ÁREA DE TREINAMENTO -->
+
+  <section id="training-shell" class="hidden">
+
+    <div class="layout">
+
+      <!-- SIDEBAR -->
+
+      <aside class="sidebar">
+
+        <div class="logo">
+
+          <img
+            src="assets/logo/ebm-logo.png"
+            alt="EBM Logo"
+          >
+
+        </div>
+
+        <h2>TRILHA HVAC CRÍTICO</h2>
+
+        <nav class="menu">
+
+          <a href="#" data-page="training-home" class="active">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Home Treinamento</span>
+          </a>
+
+          <a href="#" data-page="modulo01">
+            <i class="fa-solid fa-snowflake"></i>
+            <span>Ciclo Frigorífico</span>
+          </a>
+
+          <a href="#" data-page="modulo02">
+            <i class="fa-solid fa-temperature-high"></i>
+            <span>SH & SC</span>
+          </a>
+
+          <a href="#" data-page="modulo03">
+            <i class="fa-solid fa-wind"></i>
+            <span>Psicrometria</span>
+          </a>
+
+          <a href="#" data-page="modulo04">
+            <i class="fa-solid fa-box"></i>
+            <span>Self Contained DX</span>
+          </a>
+
+          <a href="#" data-page="modulo05">
+            <i class="fa-solid fa-microchip"></i>
+            <span>Selfs de Precisão</span>
+          </a>
+
+          <a href="#" data-page="modulo06">
+            <i class="fa-solid fa-fan"></i>
+            <span>Fancoils de Precisão</span>
+          </a>
+
+          <a href="#" data-page="modulo07">
+            <i class="fa-solid fa-water"></i>
+            <span>Central Água Gelada</span>
+          </a>
+
+          <a href="#" data-page="modulo08">
+            <i class="fa-solid fa-circle-nodes"></i>
+            <span>Bombas e Válvulas</span>
+          </a>
+
+          <a href="#" data-page="modulo09">
+            <i class="fa-solid fa-sitemap"></i>
+            <span>Automação e BMS</span>
+          </a>
+
+          <a href="#" data-page="modulo10">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <span>Alarmes e Troubleshooting</span>
+          </a>
+
+          <a href="#" data-page="modulo11">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Módulo 11</span>
+          </a>
+
+          <a href="#" data-page="modulo12">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Módulo 12</span>
+          </a>
+
+        </nav>
+
+      </aside>
+
+      <!-- MAIN -->
+
+      <main class="main">
+
+        <header class="topbar">
+
+          <div class="topbar-left">
+
+            <h2>EBM Academy</h2>
+
+          </div>
+
+          <div class="topbar-right">
+
+            <button
+              id="training-theme-toggle"
+              class="theme-toggle-btn"
+              type="button"
+            >
+              <i class="fa-solid fa-sun"></i>
+              <span>Modo Claro</span>
+            </button>
+
+            <div class="language-switcher" aria-label="Idioma / Language">
+              <button type="button" class="language-btn" data-lang="pt" title="Português">🇧🇷</button>
+              <button type="button" class="language-btn" data-lang="es" title="Español">🇪🇸</button>
+              <button type="button" class="language-btn" data-lang="en" title="English">🇺🇸</button>
+            </div>
+
+            <span id="training-user-label" class="auth-user-label"></span>
+
+            <button
+              id="back-portal-button"
+              class="btn btn-secondary"
+              type="button"
+            >
+              <i class="fa-solid fa-house"></i>
+              Home
+            </button>
+
+            <div class="progress-box">
+
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
+              </div>
+
+              <div class="progress-text">
+                0% concluído
+              </div>
+
+            </div>
+
+          </div>
+
+        </header>
+
+        <div id="app-content"></div>
+
+      </main>
+
+    </div>
+
+  </section>
+
+  <!-- SCRIPTS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/firebase-auth.js"></script>
+  <script src="js/firebase-sync.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/modules.js"></script>
+  <script src="js/gamification-core-v1.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/modulo06-pid-sim.js"></script>
+
+</body>
+
+</html>

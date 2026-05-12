@@ -1,0 +1,40 @@
+<section class="section final-assessment-page">
+  <h2 class="section-title">Avaliação Final — Trilha HVAC Crítico</h2>
+  <p class="section-subtitle">
+    Avaliação de consolidação da trilha HVAC Crítico. A cada tentativa, uma nova seleção de questões é gerada automaticamente.
+  </p>
+
+  <div class="card final-assessment-intro">
+    <div class="final-assessment-grid">
+      <div>
+        <h3>Avaliação final da trilha</h3>
+        <p>Responda com atenção. Ao enviar, as respostas incorretas exibirão uma justificativa técnica para revisão do conteúdo.</p>
+      </div>
+      <div class="final-kpi-grid final-kpi-grid-clean">
+        <div class="final-kpi"><strong>20</strong><span>Questões</span></div>
+        <div class="final-kpi"><strong>75%</strong><span>Aproveitamento mínimo</span></div>
+        <div class="final-kpi"><strong>Auto</strong><span>Sorteio por tentativa</span></div>
+      </div>
+    </div>
+  </div>
+
+  <form id="hvac-final-form" class="quiz-form" onsubmit="return false;">
+    <div id="hvac-final-questions"></div>
+    <div class="quiz-actions final-actions">
+      <button type="button" id="submit-hvac-final" class="btn btn-primary">Enviar avaliação final</button>
+      <button type="button" id="retry-hvac-final" class="btn btn-secondary">Sortear nova avaliação</button>
+      <button type="button" onclick="loadTrainingPage('training-home')" class="btn btn-secondary">Voltar para Home HVAC</button>
+    </div>
+  </form>
+
+  <div id="hvac-final-result"></div>
+
+  <div id="hvac-final-certificate" class="certificate-card hidden final-certificate">
+    <div class="certificate-seal"><i class="fa-solid fa-award"></i></div>
+    <h3>Certificado Final — Trilha HVAC Crítico</h3>
+    <p>O aluno atingiu o aproveitamento mínimo na avaliação final de consolidação da trilha HVAC Crítico.</p>
+    <div class="certificate-meta"><span>EBM Academy</span><span>HVAC Crítico</span><span>Avaliação Final</span></div>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+</section>

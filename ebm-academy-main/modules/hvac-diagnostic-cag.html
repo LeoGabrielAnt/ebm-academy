@@ -1,0 +1,23 @@
+<section class="section electrical-diagnostic-tool-page hvac-diagnostic-page">
+  <h2 class="section-title">Assistente HVAC — CAG / Água Gelada</h2>
+  <p class="section-subtitle">Ferramenta didática para investigar sintomas em sistemas de água gelada, incluindo ΔT, vazão, bombas, válvulas e permissivos hidráulicos.</p>
+  <div class="card edt-hero-card"><div class="edt-hero-grid"><div><h3>Diagnóstico hidráulico orientado</h3><p>Escolha o sintoma principal e as condições observadas. O assistente ajuda a organizar hipóteses relacionadas a vazão, carga térmica, bypass, válvulas e componentes do circuito de água gelada.</p></div><div class="edt-hero-steps"><div class="edt-step pulse-blue"><span>1</span><small>Sintoma</small></div><div class="edt-step pulse-gold"><span>2</span><small>ΔT</small></div><div class="edt-step pulse-green"><span>3</span><small>Vazão / Válvula</small></div><div class="edt-step pulse-red"><span>4</span><small>Diagnóstico</small></div></div></div></div>
+  <div class="grid edt-main-grid">
+    <div class="card edt-form-card"><h3>Entradas da análise</h3>
+      <label>Sintoma principal<select id="cag-symptom"><option value="low_dt">ΔT baixo</option><option value="high_dt">ΔT alto</option><option value="low_capacity">Baixa capacidade de resfriamento</option><option value="flow_alarm">Alarme de fluxo / vazão</option><option value="pump_no_start">Bomba não parte</option><option value="hot_return">Retorno quente persistente</option></select></label>
+      <label>Condição do ΔT<select id="cag-dt"><option value="unknown">Ainda não medido</option><option value="low">Baixo</option><option value="normal">Intermediário</option><option value="high">Alto</option></select></label>
+      <label>Condição de vazão<select id="cag-flow"><option value="unknown">Ainda não conferida</option><option value="ok">Normal</option><option value="low">Baixa</option><option value="high">Alta</option></select></label>
+      <label>Posição / resposta da válvula<select id="cag-valve"><option value="unknown">Ainda não conferida</option><option value="modulating">Modulando normalmente</option><option value="too_open">Muito aberta</option><option value="restricted">Restrita / pouca abertura</option><option value="bypass">Suspeita de bypass</option></select></label>
+      <label>Status da bomba / permissivos<select id="cag-pump"><option value="unknown">Ainda não conferido</option><option value="ok">Operando normalmente</option><option value="fault">Falha / alarme</option><option value="off">Não parte</option></select></label>
+      <div class="tool-actions edt-actions"><button id="cag-run" class="btn btn-primary" type="button">Gerar diagnóstico</button><button id="cag-reset" class="btn btn-secondary" type="button">Limpar</button><button class="btn btn-secondary" onclick="loadTrainingPage('tools')" type="button">Voltar às ferramentas</button></div>
+    </div>
+    <div class="card edt-result-card"><div class="edt-result-header"><h3>Saída da análise</h3><span id="cag-result-badge" class="case-badge warning">Aguardando dados</span></div><div id="cag-result-panel" class="edt-result-panel"><p class="muted">Selecione as condições e clique em <strong>Gerar diagnóstico</strong>.</p></div></div>
+  </div>
+  <div class="card edt-quickcases-card"><h3>Casos rápidos</h3><div class="edt-quickcases-grid">
+    <button type="button" class="cag-quickcase btn btn-secondary" data-symptom="low_dt" data-dt="low" data-flow="high" data-valve="too_open" data-pump="ok">ΔT baixo com excesso de vazão</button>
+    <button type="button" class="cag-quickcase btn btn-secondary" data-symptom="high_dt" data-dt="high" data-flow="low" data-valve="restricted" data-pump="ok">ΔT alto com baixa vazão</button>
+    <button type="button" class="cag-quickcase btn btn-secondary" data-symptom="flow_alarm" data-dt="unknown" data-flow="low" data-valve="unknown" data-pump="fault">Alarme de fluxo</button>
+    <button type="button" class="cag-quickcase btn btn-secondary" data-symptom="pump_no_start" data-dt="unknown" data-flow="low" data-valve="unknown" data-pump="off">Bomba não parte</button>
+  </div></div>
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+</section>

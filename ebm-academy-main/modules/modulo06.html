@@ -1,0 +1,831 @@
+<section class="section module-lesson">
+
+  <h2 class="section-title">
+    Módulo 06 — Fancoils de Precisão
+  </h2>
+
+  <p class="section-subtitle">
+    Aula teórica completa sobre Fancoils de Precisão aplicados a sistemas de água gelada,
+    com foco em serpentina CW, válvula modulante, vazão de água, Delta T, Delta P, airflow,
+    filtros, ventiladores EC, alarmes e troubleshooting em ambientes críticos.
+  </p>
+
+  <nav class="module-nav">
+    <a href="#m6-conceito">Conceito</a>
+    <a href="#m6-arquitetura">Arquitetura</a>
+    <a href="#m6-hidraulica">Hidráulica</a>
+    <a href="#m6-valvula">Válvula</a>
+    <a href="#m6-pid">Simulação PID</a>
+    <a href="#m6-airflow">Airflow</a>
+    <a href="#m6-parametros">Parâmetros</a>
+    <a href="#m6-troubleshooting">Troubleshooting</a>
+    <a href="#m6-avaliacao">Avaliação</a>
+  </nav>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-bullseye"></i>
+      </div>
+
+      <div>
+        <h3>Objetivos de Aprendizagem</h3>
+        <p class="reading-subtitle">
+          O que o aluno deverá compreender ao final deste módulo
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <ul class="tech-list">
+        <li>Compreender o conceito de Fancoil de Precisão em sistemas de água gelada.</li>
+        <li>Diferenciar Fancoil CW de equipamentos DX com circuito frigorífico próprio.</li>
+        <li>Interpretar serpentina de água gelada, válvula modulante, atuador, vazão, Delta T e Delta P.</li>
+        <li>Relacionar airflow, filtros, pressão estática e ventiladores EC com a capacidade térmica.</li>
+        <li>Reconhecer alarmes típicos de fluxo, filtro, alta temperatura e baixa capacidade.</li>
+        <li>Aplicar troubleshooting estruturado correlacionando lado do ar, lado hidráulico e controle.</li>
+      </ul>
+    </div>
+  </div>
+
+  <span id="m6-conceito" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-fan"></i>
+      </div>
+
+      <div>
+        <h3>1. Conceito de Fancoil de Precisão</h3>
+        <p class="reading-subtitle">
+          Unidade terminal para climatização crítica com água gelada
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O Fancoil de Precisão é uma unidade de climatização dedicada ao controle ambiental de
+        salas críticas, normalmente alimentada por água gelada proveniente de uma planta central.
+        Diferente de um equipamento DX, o fancoil não depende de evaporação direta de refrigerante
+        dentro da unidade; a troca térmica ocorre entre o ar e a serpentina de água gelada.
+      </p>
+
+      <br>
+
+      <p>
+        Em aplicações como data centers, telecom, salas UPS, salas técnicas e ambientes industriais
+        críticos, o fancoil precisa manter fluxo de ar, temperatura e estabilidade operacional.
+        Para diagnosticar corretamente, o técnico deve avaliar o lado do ar, o lado hidráulico,
+        a válvula modulante, os sensores, os filtros, o controle e o histórico de alarmes.
+      </p>
+
+      <div class="reading-highlight">
+        <h4>Leitura técnica importante</h4>
+        <p>
+          Em Fancoils de Precisão, baixa capacidade nem sempre significa problema na planta de água gelada.
+          A causa pode estar no filtro, airflow, válvula, atuador, sensor, balanceamento hidráulico,
+          baixa vazão ou controle.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m6-arquitetura" class="anchor-offset"></span>
+
+  <div class="card technical-reading fancoil-architecture-card">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-diagram-project"></i>
+      </div>
+
+      <div>
+        <h3>2. Arquitetura Funcional do Fancoil CW</h3>
+        <p class="reading-subtitle">
+          Fluxo de ar, serpentina, água gelada e insuflamento
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O diagrama abaixo representa a lógica funcional do Fancoil de Precisão. O ar quente retorna
+        da sala, passa pelos filtros e pela serpentina de água gelada, perde calor e é insuflado
+        novamente no ambiente. A válvula modulante regula a vazão de água conforme a demanda térmica.
+      </p>
+
+      <div class="fancoil-system-diagram">
+
+        <div class="fancoil-zone return-zone">
+          <span class="zone-label">Retorno da sala</span>
+          <div class="fancoil-air-card warm">
+            <i class="fa-solid fa-temperature-high"></i>
+            <h4>Ar quente</h4>
+            <p>Retorna carregando a carga térmica do ambiente.</p>
+          </div>
+        </div>
+
+        <div class="fancoil-arrow air-return">
+          <span></span>
+        </div>
+
+        <div class="fancoil-unit">
+          <div class="unit-title">
+            <i class="fa-solid fa-fan"></i>
+            Fancoil de Precisão
+          </div>
+
+          <div class="fancoil-unit-grid">
+            <div class="fancoil-component filter-comp">
+              <i class="fa-solid fa-filter"></i>
+              <h4>Filtros</h4>
+              <p>Protegem a serpentina e influenciam a vazão de ar.</p>
+            </div>
+
+            <div class="fancoil-component coil-comp">
+              <i class="fa-solid fa-water"></i>
+              <h4>Serpentina CW</h4>
+              <p>Troca calor entre ar e água gelada.</p>
+            </div>
+
+            <div class="fancoil-component fan-comp">
+              <i class="fa-solid fa-wind"></i>
+              <h4>Ventiladores EC</h4>
+              <p>Controlam airflow e pressão estática.</p>
+            </div>
+
+            <div class="fancoil-component control-comp">
+              <i class="fa-solid fa-microchip"></i>
+              <h4>Controle</h4>
+              <p>Setpoints, sensores, alarmes e BMS.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fancoil-arrow air-supply">
+          <span></span>
+        </div>
+
+        <div class="fancoil-zone supply-zone">
+          <span class="zone-label">Insuflamento</span>
+          <div class="fancoil-air-card cold">
+            <i class="fa-solid fa-snowflake"></i>
+            <h4>Ar resfriado</h4>
+            <p>Retorna ao ambiente com menor temperatura.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="fancoil-hydronic-strip">
+        <div class="hydronic-item cold-water">
+          <span>Água gelada entra</span>
+          Alimentação da serpentina
+        </div>
+
+        <div class="hydronic-item valve-water">
+          <span>Válvula modulante</span>
+          Controla vazão conforme demanda
+        </div>
+
+        <div class="hydronic-item warm-water">
+          <span>Água retorna mais quente</span>
+          Após absorver calor do ar
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m6-hidraulica" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-water"></i>
+      </div>
+
+      <div>
+        <h3>3. Hidráulica Aplicada ao Fancoil</h3>
+        <p class="reading-subtitle">
+          Água gelada, vazão, Delta T e Delta P
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        A capacidade térmica do fancoil depende da água gelada disponível em temperatura e vazão
+        adequadas. Mesmo que o ventilador esteja funcionando, a unidade pode apresentar baixa
+        capacidade se a vazão de água estiver limitada, se houver ar na serpentina, filtro Y obstruído,
+        bomba insuficiente ou válvula parcialmente travada.
+      </p>
+
+      <div class="hydraulic-diagram">
+
+        <div class="hydraulic-card supply">
+          <i class="fa-solid fa-arrow-right"></i>
+          <h4>Entrada de água gelada</h4>
+          <p>Temperatura menor, vinda da planta.</p>
+        </div>
+
+        <div class="hydraulic-line cold">
+          <span></span>
+        </div>
+
+        <div class="hydraulic-card coil">
+          <i class="fa-solid fa-grip-lines"></i>
+          <h4>Serpentina</h4>
+          <p>Água absorve calor do ar.</p>
+        </div>
+
+        <div class="hydraulic-line warm">
+          <span></span>
+        </div>
+
+        <div class="hydraulic-card return">
+          <i class="fa-solid fa-arrow-left"></i>
+          <h4>Retorno de água</h4>
+          <p>Água retorna mais quente.</p>
+        </div>
+
+      </div>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Delta T hidráulico</h4>
+          <p>
+            Diferença entre temperatura de entrada e saída da água. Ajuda a avaliar a troca térmica.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Delta P</h4>
+          <p>
+            Diferença de pressão entre pontos hidráulicos. Ajuda a avaliar vazão, restrição e balanceamento.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Vazão</h4>
+          <p>
+            Quantidade de água passando pela serpentina. Vazão insuficiente limita capacidade.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Balanceamento</h4>
+          <p>
+            Garante distribuição adequada de água entre unidades, evitando excesso em uma e falta em outra.
+          </p>
+        </div>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Interpretação rápida</h4>
+        <p>
+          Delta T hidráulico muito alto pode indicar baixa vazão ou restrição. Delta T muito baixo pode
+          indicar excesso de vazão, baixa carga térmica ou baixa transferência de calor do lado do ar.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m6-valvula" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-sliders"></i>
+      </div>
+
+      <div>
+        <h3>4. Válvula Modulante e Atuador</h3>
+        <p class="reading-subtitle">
+          Controle proporcional da vazão de água gelada
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        A válvula modulante é um dos principais elementos de controle do fancoil. O controlador
+        compara a temperatura medida com o setpoint e envia um sinal ao atuador para abrir ou fechar
+        a válvula, aumentando ou reduzindo a vazão de água gelada pela serpentina.
+      </p>
+
+      <div class="valve-control-diagram">
+
+        <div class="valve-control-card">
+          <i class="fa-solid fa-temperature-half"></i>
+          <h4>Sensor</h4>
+          <p>Lê retorno, insuflamento ou ponto remoto.</p>
+        </div>
+
+        <div class="valve-signal-line blue">
+          <span></span>
+        </div>
+
+        <div class="valve-control-card controller">
+          <i class="fa-solid fa-microchip"></i>
+          <h4>Controlador</h4>
+          <p>Calcula demanda e envia sinal proporcional.</p>
+        </div>
+
+        <div class="valve-signal-line yellow">
+          <span></span>
+        </div>
+
+        <div class="valve-assembly">
+          <div class="valve-body">
+            <div class="valve-actuator"></div>
+            <div class="valve-pipe"></div>
+            <div class="valve-symbol"></div>
+            <div class="valve-label">Válvula 0–100%</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Condição</th>
+              <th>Comportamento esperado</th>
+              <th>Possível problema</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ambiente acima do setpoint</td>
+              <td>Válvula abre para aumentar capacidade</td>
+              <td>Atuador sem alimentação, sinal ausente, válvula travada ou baixa vazão</td>
+            </tr>
+            <tr>
+              <td>Ambiente próximo ao setpoint</td>
+              <td>Válvula modula parcialmente</td>
+              <td>PID/banda mal ajustado pode gerar oscilação</td>
+            </tr>
+            <tr>
+              <td>Comando 100% e baixa capacidade</td>
+              <td>Deveria haver máxima vazão</td>
+              <td>Filtro Y obstruído, ar na linha, baixo Delta P, válvula travada ou bomba insuficiente</td>
+            </tr>
+            <tr>
+              <td>Ambiente abaixo do setpoint</td>
+              <td>Válvula reduz abertura</td>
+              <td>Válvula vazando, atuador desalinhado ou sensor incorreto</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <span id="m6-pid" class="anchor-offset"></span>
+
+  <div class="card technical-reading pid-simulation-card">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-wave-square"></i>
+      </div>
+
+      <div>
+        <h3>5. Simulação PID da Modulação da Válvula</h3>
+        <p class="reading-subtitle">
+          Exemplo didático de como o controlador ajusta a abertura da válvula para aproximar a temperatura do setpoint
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        Nesta simulação, o aluno pode alterar a <strong>temperatura inicial do ambiente</strong> e iniciar
+        o processo de controle. O controlador compara o valor medido com o setpoint, calcula o erro e
+        ajusta a saída PID, modulando a válvula de 0 a 100%.
+      </p>
+
+      <div class="pid-sim-layout">
+
+        <div class="pid-control-panel">
+
+          <div class="pid-slider-box">
+            <label for="pidTempSlider">
+              Temperatura inicial do ambiente:
+              <strong><span id="pidSliderValue">26.0</span> °C</strong>
+            </label>
+
+            <input
+              id="pidTempSlider"
+              type="range"
+              min="18"
+              max="30"
+              step="0.1"
+              value="26"
+              oninput="modulo06PIDUpdateSlider(this.value)"
+            >
+          </div>
+
+          <div class="pid-actions">
+            <button type="button" class="btn btn-primary" onclick="modulo06PIDStart()">
+              Iniciar simulação
+            </button>
+
+            <button type="button" class="btn btn-secondary" onclick="modulo06PIDReset()">
+              Reiniciar
+            </button>
+          </div>
+
+          <div class="pid-stats-grid">
+            <div class="pid-stat-card">
+              <span>Setpoint</span>
+              <strong id="pidSP">22.0 °C</strong>
+            </div>
+
+            <div class="pid-stat-card">
+              <span>Temperatura medida (PV)</span>
+              <strong id="pidPV">26.0 °C</strong>
+            </div>
+
+            <div class="pid-stat-card">
+              <span>Erro</span>
+              <strong id="pidError">+4.0 °C</strong>
+            </div>
+
+            <div class="pid-stat-card">
+              <span>Saída PID</span>
+              <strong id="pidOutput">0 %</strong>
+            </div>
+
+            <div class="pid-stat-card">
+              <span>Abertura da válvula</span>
+              <strong id="pidValveOpen">0 %</strong>
+            </div>
+
+            <div class="pid-stat-card">
+              <span>Estado</span>
+              <strong id="pidState">Aguardando início</strong>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="pid-visual-panel">
+
+          <div class="pid-valve-box">
+            <div class="pid-valve-graphic">
+              <div class="pid-valve-actuator"></div>
+              <div class="pid-valve-pipe"></div>
+              <div id="pidValveGate" class="pid-valve-gate"></div>
+            </div>
+
+            <div class="pid-valve-meter">
+              <div class="pid-meter-track">
+                <div id="pidMeterFill" class="pid-meter-fill" style="width:0%;"></div>
+              </div>
+              <div class="pid-meter-label">
+                Abertura da válvula: <strong id="pidMeterText">0%</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="pid-trend-box">
+            <svg id="pidTrendSvg" viewBox="0 0 640 250" class="pid-trend-svg" role="img" aria-label="Gráfico simplificado da temperatura aproximando do setpoint">
+              <rect x="0" y="0" width="640" height="250" rx="18" fill="transparent"></rect>
+
+              <g stroke="rgba(148,163,184,0.16)" stroke-width="1">
+                <line x1="40" y1="40" x2="40" y2="210"></line>
+                <line x1="120" y1="40" x2="120" y2="210"></line>
+                <line x1="200" y1="40" x2="200" y2="210"></line>
+                <line x1="280" y1="40" x2="280" y2="210"></line>
+                <line x1="360" y1="40" x2="360" y2="210"></line>
+                <line x1="440" y1="40" x2="440" y2="210"></line>
+                <line x1="520" y1="40" x2="520" y2="210"></line>
+                <line x1="600" y1="40" x2="600" y2="210"></line>
+
+                <line x1="40" y1="40" x2="600" y2="40"></line>
+                <line x1="40" y1="82.5" x2="600" y2="82.5"></line>
+                <line x1="40" y1="125" x2="600" y2="125"></line>
+                <line x1="40" y1="167.5" x2="600" y2="167.5"></line>
+                <line x1="40" y1="210" x2="600" y2="210"></line>
+              </g>
+
+              <line x1="40" y1="153.5" x2="600" y2="153.5" stroke="#f4c542" stroke-width="3" stroke-dasharray="8 6"></line>
+              <text x="608" y="157" fill="#f4c542" font-size="14" font-weight="700">SP 22°C</text>
+
+              <polyline id="pidTrendLine" fill="none" stroke="#60a5fa" stroke-width="4" points="40,68 120,80 200,92 280,103 360,114 440,123 520,132 600,140"></polyline>
+              <circle id="pidTrendDot" cx="600" cy="140" r="6" fill="#60a5fa"></circle>
+
+              <text x="40" y="25" fill="#cbd5e1" font-size="16" font-weight="700">Tendência da temperatura (PV)</text>
+              <text x="40" y="232" fill="#94a3b8" font-size="13">tempo</text>
+              <text x="8" y="48" fill="#94a3b8" font-size="13">30</text>
+              <text x="8" y="90" fill="#94a3b8" font-size="13">27</text>
+              <text x="8" y="132" fill="#94a3b8" font-size="13">24</text>
+              <text x="8" y="175" fill="#94a3b8" font-size="13">21</text>
+              <text x="8" y="214" fill="#94a3b8" font-size="13">18</text>
+            </svg>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Como interpretar a simulação</h4>
+        <p>
+          Quando a temperatura medida está acima do setpoint, o erro é positivo e a saída PID tende a abrir mais a válvula.
+          À medida que a temperatura se aproxima do setpoint, a abertura vai sendo reduzida, evitando oscilação excessiva.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m6-airflow" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-wind"></i>
+      </div>
+
+      <div>
+        <h3>6. Airflow, Filtros e Ventiladores EC</h3>
+        <p class="reading-subtitle">
+          O lado do ar define a troca térmica real
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <p>
+        O lado do ar é tão importante quanto o lado hidráulico. Filtros saturados, serpentina suja,
+        ventiladores com baixa rotação, obstruções em piso elevado, dutos ou grelhas podem limitar
+        airflow e reduzir a capacidade térmica mesmo com água gelada disponível.
+      </p>
+
+      <div class="airflow-diagram">
+
+        <div class="airflow-card filter-card">
+          <i class="fa-solid fa-filter"></i>
+          <h4>Filtro</h4>
+          <p>Perda de carga aumenta com saturação.</p>
+        </div>
+
+        <div class="airflow-line">
+          <span></span>
+        </div>
+
+        <div class="airflow-card fan-card">
+          <i class="fa-solid fa-fan"></i>
+          <h4>Ventilador EC</h4>
+          <p>Modula vazão, rotação e pressão estática.</p>
+        </div>
+
+        <div class="airflow-line cold">
+          <span></span>
+        </div>
+
+        <div class="airflow-card room-card">
+          <i class="fa-solid fa-server"></i>
+          <h4>Sala crítica</h4>
+          <p>Recebe ar condicionado com vazão adequada.</p>
+        </div>
+
+      </div>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h4>Filtro saturado</h4>
+          <p>
+            Aumenta perda de carga, reduz vazão e pode gerar alarme diferencial.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>EC Fan</h4>
+          <p>
+            Permite controle proporcional, eficiência energética e resposta conforme demanda.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Pressão estática</h4>
+          <p>
+            Indica capacidade de distribuir ar para piso elevado, corredores, dutos ou racks.
+          </p>
+        </div>
+
+        <div class="mini-card">
+          <h4>Hotspots</h4>
+          <p>
+            Podem ocorrer mesmo com temperatura média aceitável se a distribuição de ar for ruim.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m6-parametros" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-table"></i>
+      </div>
+
+      <div>
+        <h3>7. Parâmetros de Controle e Leitura Técnica</h3>
+        <p class="reading-subtitle">
+          O que registrar para avaliar desempenho e tendência
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Parâmetro</th>
+              <th>Função</th>
+              <th>Interpretação técnica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Temperatura de retorno</td>
+              <td>Indica carga térmica chegando ao equipamento</td>
+              <td>Comparar com insuflamento para Delta T de ar</td>
+            </tr>
+            <tr>
+              <td>Temperatura de insuflamento</td>
+              <td>Mostra condição do ar após a serpentina</td>
+              <td>Ajuda a avaliar capacidade real e risco de condensação</td>
+            </tr>
+            <tr>
+              <td>Temperatura de água entrada</td>
+              <td>Indica água gelada disponível</td>
+              <td>Água quente reduz capacidade</td>
+            </tr>
+            <tr>
+              <td>Temperatura de água saída</td>
+              <td>Mostra aquecimento da água após a serpentina</td>
+              <td>Permite calcular Delta T hidráulico</td>
+            </tr>
+            <tr>
+              <td>Posição da válvula</td>
+              <td>Mostra demanda do controlador</td>
+              <td>100% com baixa capacidade sugere limitação hidráulica ou de troca</td>
+            </tr>
+            <tr>
+              <td>Pressão diferencial do filtro</td>
+              <td>Indica perda de carga no lado do ar</td>
+              <td>Valor crescente indica saturação ou obstrução</td>
+            </tr>
+            <tr>
+              <td>Velocidade do ventilador</td>
+              <td>Mostra comando e resposta do EC Fan</td>
+              <td>Baixa rotação pode limitar airflow</td>
+            </tr>
+            <tr>
+              <td>Alarmes ativos</td>
+              <td>Indicam proteção ou condição anormal</td>
+              <td>Devem ser correlacionados com histórico e medições</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Boas práticas de registro</h4>
+        <p>
+          Registre sempre retorno, insuflamento, água de entrada, água de saída, posição da válvula,
+          velocidade dos ventiladores, diferencial dos filtros e alarmes. Sem tendência, o diagnóstico
+          fica limitado a uma foto instantânea do sistema.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m6-troubleshooting" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </div>
+
+      <div>
+        <h3>8. Troubleshooting Aplicado</h3>
+        <p class="reading-subtitle">
+          Correlação entre lado hidráulico, lado do ar e controle
+        </p>
+      </div>
+    </div>
+
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th>Sintoma / Alarme</th>
+              <th>Possíveis causas</th>
+              <th>Verificações iniciais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Alta temperatura ambiente</td>
+              <td>Baixa vazão de água, válvula travada, filtro sujo, baixo airflow ou água quente</td>
+              <td>Setpoint, retorno, insuflamento, posição de válvula, água entrada/saída e filtros</td>
+            </tr>
+            <tr>
+              <td>Baixa capacidade</td>
+              <td>Serpentina suja, vazão insuficiente, ar na linha, sensor incorreto ou baixo airflow</td>
+              <td>Delta T de ar, Delta T hidráulico, Delta P, filtro Y, válvula e tendência</td>
+            </tr>
+            <tr>
+              <td>Alarme de filtro</td>
+              <td>Filtro saturado, pressostato diferencial mal ajustado ou sensor com falha</td>
+              <td>Inspeção do filtro, medição diferencial, ajuste e histórico de troca</td>
+            </tr>
+            <tr>
+              <td>Alarme de fluxo de ar</td>
+              <td>Ventilador parado, baixa rotação, obstrução, filtro saturado ou sensor defeituoso</td>
+              <td>Comando do EC fan, alimentação, sinal, RPM, filtro e obstruções</td>
+            </tr>
+            <tr>
+              <td>Válvula não modula</td>
+              <td>Atuador sem alimentação, sinal ausente, controlador sem demanda ou válvula travada</td>
+              <td>Sinal 0–10 V, alimentação, posição física, demanda e atuação manual</td>
+            </tr>
+            <tr>
+              <td>Condensação ou excesso de água</td>
+              <td>Alta umidade, serpentina muito fria, dreno obstruído ou bandeja suja</td>
+              <td>Ponto de orvalho, UR, dreno, bandeja, temperatura de água e isolamento</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Sequência recomendada de diagnóstico</h4>
+        <p>
+          Comece pela condição ambiente e alarmes, depois avalie airflow, filtros e ventiladores.
+          Em seguida, confirme água gelada, Delta T, Delta P, posição da válvula e histórico.
+          Só depois conclua sobre falhas de componentes.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card module-summary">
+    <h3>Resumo do Módulo</h3>
+    <p>
+      Fancoils de Precisão dependem da integração entre água gelada, válvula modulante, serpentina,
+      airflow, sensores, ventiladores e controle. O diagnóstico correto exige leitura conjunta do lado
+      hidráulico, lado do ar, tendência operacional e alarmes.
+    </p>
+  </div>
+
+  <span id="m6-avaliacao" class="anchor-offset"></span>
+
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>
+      Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.
+    </p>
+
+    <br>
+
+    <label><input type="checkbox" class="modulo06-check"> Entendi o conceito de Fancoil de Precisão em água gelada.</label>
+    <label><input type="checkbox" class="modulo06-check"> Compreendi a função da serpentina, válvula modulante e ventiladores EC.</label>
+    <label><input type="checkbox" class="modulo06-check"> Sei interpretar Delta T hidráulico, Delta P e posição de válvula.</label>
+    <label><input type="checkbox" class="modulo06-check"> Compreendi como filtros e airflow afetam a capacidade do equipamento.</label>
+    <label><input type="checkbox" class="modulo06-check"> Compreendi a lógica de troubleshooting correlacionando ar, água e controle.</label>
+
+    <div id="modulo06-checklist-status" class="checklist-status">
+      Conclua o checklist para liberar a avaliação.
+    </div>
+  </div>
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>
+      O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.
+    </p>
+
+    <br>
+
+    <button id="go-modulo06-quiz" class="btn btn-primary btn-disabled" type="button" disabled>
+      Ir para avaliação
+    </button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+</section>

@@ -1,0 +1,97 @@
+<section class="section electrical-diagnostic-tool-page">
+  <h2 class="section-title">Assistente de Diagnóstico Elétrico HVAC</h2>
+  <p class="section-subtitle">Ferramenta didática para organizar raciocínio, medições sugeridas e hipóteses iniciais de falha. Use como apoio de treinamento — sempre confirme com medições reais, procedimento interno e documentação do fabricante.</p>
+
+  <div class="card edt-hero-card">
+    <div class="edt-hero-grid">
+      <div>
+        <h3>Como utilizar</h3>
+        <p>Selecione o tipo de equipamento, o sintoma principal e as evidências já observadas em campo. A ferramenta monta uma linha inicial de troubleshooting para apoiar o técnico na investigação.</p>
+      </div>
+      <div class="edt-hero-steps">
+        <div class="edt-step pulse-blue"><span>1</span><small>Equipamento</small></div>
+        <div class="edt-step pulse-gold"><span>2</span><small>Sintoma</small></div>
+        <div class="edt-step pulse-green"><span>3</span><small>Evidências</small></div>
+        <div class="edt-step pulse-red"><span>4</span><small>Diagnóstico</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid edt-main-grid">
+    <div class="card edt-form-card">
+      <h3>Entradas da análise</h3>
+      <label>Equipamento
+        <select id="edt-equipment">
+          <option value="motor_bomba">Motor / bomba</option>
+          <option value="ventilador_ec">Ventilador EC</option>
+          <option value="resistencia">Resistência elétrica / reheat</option>
+          <option value="softstarter">Soft-starter</option>
+          <option value="ats">ATS / transferência automática</option>
+          <option value="painel_comando">Painel de comando / contator</option>
+        </select>
+      </label>
+      <label>Sintoma principal
+        <select id="edt-symptom"></select>
+      </label>
+      <label>Potência principal disponível?
+        <select id="edt-power">
+          <option value="yes">Sim</option>
+          <option value="no">Não</option>
+          <option value="unknown">Ainda não conferido</option>
+        </select>
+      </label>
+      <label>Tensão de comando / bobina / enable presente?
+        <select id="edt-command">
+          <option value="unknown">Ainda não conferido</option>
+          <option value="yes">Sim</option>
+          <option value="no">Não</option>
+          <option value="na">Não se aplica / não identificado</option>
+        </select>
+      </label>
+      <label>Proteção / relé térmico / falha elétrica atuada?
+        <select id="edt-protection">
+          <option value="unknown">Ainda não conferido</option>
+          <option value="tripped">Sim, proteção atuada</option>
+          <option value="ok">Não, sem atuação visível</option>
+        </select>
+      </label>
+      <label>Existe alarme ou código de falha disponível?
+        <select id="edt-alarm">
+          <option value="unknown">Ainda não conferido</option>
+          <option value="yes">Sim</option>
+          <option value="no">Não</option>
+        </select>
+      </label>
+      <div class="tool-actions edt-actions">
+        <button id="edt-run" class="btn btn-primary" type="button">Gerar diagnóstico</button>
+        <button id="edt-reset" class="btn btn-secondary" type="button">Limpar</button>
+      </div>
+      <div class="reading-highlight edt-disclaimer"><h4>Importante</h4><p>Essa ferramenta é de apoio didático. Ela não substitui LOTO, análise de risco, leitura de diagramas, procedimentos internos e consulta aos manuais específicos do equipamento.</p></div>
+    </div>
+
+    <div class="card edt-result-card">
+      <div class="edt-result-header">
+        <h3>Saída da análise</h3>
+        <span id="edt-result-badge" class="case-badge warning">Aguardando dados</span>
+      </div>
+      <div id="edt-result-panel" class="edt-result-panel">
+        <p class="muted">Escolha os parâmetros e clique em <strong>Gerar diagnóstico</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card edt-quickcases-card">
+    <h3>Casos rápidos</h3>
+    <p>Use os atalhos abaixo para simular cenários frequentes da rotina HVAC.</p>
+    <div class="edt-quickcases-grid">
+      <button type="button" class="edt-quickcase btn btn-secondary" data-equipment="motor_bomba" data-symptom="nao_liga" data-power="yes" data-command="no" data-protection="ok" data-alarm="no">Bomba não liga com potência presente</button>
+      <button type="button" class="edt-quickcase btn btn-secondary" data-equipment="ventilador_ec" data-symptom="alarme_drive" data-power="yes" data-command="yes" data-protection="ok" data-alarm="yes">EC fan com alarme</button>
+      <button type="button" class="edt-quickcase btn btn-secondary" data-equipment="resistencia" data-symptom="sem_aquecimento" data-power="yes" data-command="yes" data-protection="ok" data-alarm="no">Reheat sem aquecimento</button>
+      <button type="button" class="edt-quickcase btn btn-secondary" data-equipment="softstarter" data-symptom="em_falha" data-power="yes" data-command="yes" data-protection="tripped" data-alarm="yes">Soft-starter em falha</button>
+      <button type="button" class="edt-quickcase btn btn-secondary" data-equipment="ats" data-symptom="sem_transferencia" data-power="yes" data-command="na" data-protection="ok" data-alarm="yes">ATS sem transferência</button>
+      <button type="button" class="edt-quickcase btn btn-secondary" data-equipment="painel_comando" data-symptom="parte_e_solta" data-power="yes" data-command="yes" data-protection="ok" data-alarm="no">Contator parte e solta</button>
+    </div>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+</section>

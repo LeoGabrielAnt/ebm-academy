@@ -1,0 +1,50 @@
+<section class="section electrical-diagnostic-tool-page hvac-diagnostic-page">
+  <h2 class="section-title">Assistente HVAC — DX / Refrigeração</h2>
+  <p class="section-subtitle">Ferramenta didática para organizar hipóteses, leituras e sequência de análise em sistemas DX, ciclo frigorífico e sintomas típicos de refrigeração.</p>
+  <div class="card edt-hero-card">
+    <div class="edt-hero-grid">
+      <div>
+        <h3>Leitura orientada por sintoma</h3>
+        <p>Selecione o sintoma principal e as evidências observadas em campo. O assistente ajuda a priorizar hipóteses para evaporador, expansão, carga, condensação e comportamento do compressor.</p>
+      </div>
+      <div class="edt-hero-steps">
+        <div class="edt-step pulse-blue"><span>1</span><small>Sintoma</small></div>
+        <div class="edt-step pulse-gold"><span>2</span><small>SH / SC</small></div>
+        <div class="edt-step pulse-green"><span>3</span><small>Ar / Condensação</small></div>
+        <div class="edt-step pulse-red"><span>4</span><small>Diagnóstico</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="grid edt-main-grid">
+    <div class="card edt-form-card">
+      <h3>Entradas da análise</h3>
+      <label>Sintoma principal<select id="dx-symptom">
+        <option value="high_sh">Superheat alto</option>
+        <option value="low_sh">Superheat baixo</option>
+        <option value="high_sc">Subcooling alto</option>
+        <option value="low_sc">Subcooling baixo</option>
+        <option value="low_suction">Baixa sucção / baixa evaporação</option>
+        <option value="high_head">Alta pressão de condensação</option>
+        <option value="freeze">Congelamento de evaporador</option>
+        <option value="short_cycle">Compressor ligando e desligando</option>
+      </select></label>
+      <label>Condição do superheat<select id="dx-sh">
+        <option value="unknown">Ainda não medido</option><option value="low">Baixo</option><option value="normal">Intermediário</option><option value="high">Alto</option>
+      </select></label>
+      <label>Condição do subcooling<select id="dx-sc">
+        <option value="unknown">Ainda não medido</option><option value="low">Baixo</option><option value="normal">Intermediário</option><option value="high">Alto</option>
+      </select></label>
+      <label>Fluxo de ar no evaporador<select id="dx-airflow"><option value="unknown">Ainda não conferido</option><option value="ok">Normal</option><option value="low">Baixo</option></select></label>
+      <label>Condição da condensação<select id="dx-cond"><option value="unknown">Ainda não conferida</option><option value="ok">Normal</option><option value="dirty">Condensador sujo / ventilação ruim</option><option value="high_ambient">Ambiente muito quente</option></select></label>
+      <div class="tool-actions edt-actions"><button id="dx-run" class="btn btn-primary" type="button">Gerar diagnóstico</button><button id="dx-reset" class="btn btn-secondary" type="button">Limpar</button><button class="btn btn-secondary" onclick="loadTrainingPage('tools')" type="button">Voltar às ferramentas</button></div>
+    </div>
+    <div class="card edt-result-card"><div class="edt-result-header"><h3>Saída da análise</h3><span id="dx-result-badge" class="case-badge warning">Aguardando dados</span></div><div id="dx-result-panel" class="edt-result-panel"><p class="muted">Selecione as condições e clique em <strong>Gerar diagnóstico</strong>.</p></div></div>
+  </div>
+  <div class="card edt-quickcases-card"><h3>Casos rápidos</h3><p>Use estes atalhos para praticar leituras clássicas de refrigeração.</p><div class="edt-quickcases-grid">
+    <button type="button" class="dx-quickcase btn btn-secondary" data-symptom="high_sh" data-sh="high" data-sc="low" data-airflow="ok" data-cond="ok">SH alto + SC baixo</button>
+    <button type="button" class="dx-quickcase btn btn-secondary" data-symptom="low_sh" data-sh="low" data-sc="high" data-airflow="ok" data-cond="ok">SH baixo + SC alto</button>
+    <button type="button" class="dx-quickcase btn btn-secondary" data-symptom="high_head" data-sh="normal" data-sc="high" data-airflow="ok" data-cond="dirty">Alta condensação</button>
+    <button type="button" class="dx-quickcase btn btn-secondary" data-symptom="freeze" data-sh="low" data-sc="normal" data-airflow="low" data-cond="ok">Evaporador congelando</button>
+  </div></div>
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+</section>

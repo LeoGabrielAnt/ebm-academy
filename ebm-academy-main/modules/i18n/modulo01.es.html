@@ -1,0 +1,343 @@
+<section class="section module-lesson">
+<h2 class="section-title">
+    Módulo 01 — Fundamentos del Ciclo de Refrigeración
+  </h2>
+<p class="section-subtitle">
+    Clase teórica completa sobre el ciclo de refrigeración, el comportamiento del refrigerante, la transferencia térmica y su aplicación en sistemas HVAC críticos.
+  </p><nav class="module-nav">
+<a href="#conceito">Concepto</a>
+<a href="#termodinamica">Termodinámica</a>
+<a href="#ciclo">Ciclo</a>
+<a href="#componentes">Componentes</a>
+<a href="#troubleshooting">Troubleshooting</a>
+<a href="#glossario">Glosario</a>
+<a href="#avaliacao">Evaluación</a>
+</nav><div class="card technical-reading">
+<div class="reading-header">
+<div class="reading-icon">
+<i class="fa-solid fa-bullseye"></i>
+</div>
+<div>
+<h3>Objetivos de Aprendizaje</h3>
+<p class="reading-subtitle">
+          Lo que el alumno deberá comprender al finalizar este módulo
+        </p>
+</div>
+</div>
+<div class="reading-content">
+<ul class="tech-list">
+<li>Comprender la finalidad del ciclo de refrigeración en sistemas de climatización DX.</li>
+<li>Comprender los cuatro procesos principales: compresión, condensación, expansión y evaporación.</li>
+<li>Diferenciar calor sensible, calor latente, saturación, evaporación y condensación.</li>
+<li>Interpretar el comportamiento básico del refrigerante en alta y baja presión.</li>
+<li>Relacionar fallas operativas iniciales con los componentes principales del ciclo.</li>
+<li>Comprender por qué el diagnóstico técnico exige correlacionar presión, temperatura y condición operativa.</li>
+</ul>
+</div>
+</div><span class="anchor-offset" id="conceito"></span>
+<div class="card technical-reading">
+<div class="reading-header">
+<div class="reading-icon">
+<i class="fa-solid fa-book-open"></i>
+</div>
+<div>
+<h3>1. Concepto del Ciclo de Refrigeración</h3>
+<p class="reading-subtitle">
+          Fundamento de la climatización mecánica
+        </p>
+</div>
+</div>
+<div class="reading-content">
+<p>
+        El ciclo de refrigeración es un proceso termodinámico utilizado para retirar calor de un ambiente y rechazarlo hacia otro lugar. En sistemas HVAC de expansión directa (DX), esta transferencia de calor se realiza mediante un fluido refrigerante que circula continuamente por los componentes principales del sistema.
+      </p>
+<br/>
+<p>
+        En términos prácticos, el refrigerante absorbe calor en el evaporador, es comprimido por el compresor, rechaza calor en el condensador y atraviesa una reducción de presión en el dispositivo de expansión para reiniciar el proceso. Este comportamiento es la base técnica de prácticamente todo análisis operativo en refrigeración.
+      </p>
+<div class="reading-highlight">
+<h4>Lectura técnica importante</h4>
+<p>
+          El sistema no “genera frío”; retira calor de un punto y lo transporta hacia otro. Esta es una de las ideas más importantes para el técnico de HVAC.
+        </p>
+</div>
+</div>
+</div><span class="anchor-offset" id="termodinamica"></span>
+<div class="card technical-reading">
+<div class="reading-header">
+<div class="reading-icon">
+<i class="fa-solid fa-temperature-half"></i>
+</div>
+<div>
+<h3>2. Fundamentos Termodinámicos</h3>
+<p class="reading-subtitle">
+          Presión, temperatura y cambio de estado
+        </p>
+</div>
+</div>
+<div class="reading-content">
+<p>
+        El comportamiento del refrigerante depende directamente de la relación entre presión y temperatura. Cuando la presión aumenta, la temperatura de saturación también aumenta. Cuando la presión disminuye, la temperatura de saturación también baja. Esta relación es esencial para interpretar el ciclo.
+      </p>
+<br/>
+<div class="grid">
+<div class="mini-card">
+<h4>Alta presión</h4>
+<p>
+            Región del ciclo por la que circula el refrigerante después de la compresión y antes de la expansión. Normalmente se asocia con la descarga del compresor y la línea de líquido.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Baja presión</h4>
+<p>
+            Región donde el refrigerante se evapora y regresa al compresor. Se asocia con el evaporador y la línea de succión.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Evaporación</h4>
+<p>
+            Proceso en el que el refrigerante absorbe calor y cambia de líquido a vapor, principalmente en el evaporador.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Condensación</h4>
+<p>
+            Proceso en el que el refrigerante rechaza calor y cambia de vapor a líquido, principalmente en el condensador.
+          </p>
+</div>
+</div>
+<br/>
+<p>
+        Todo técnico que desee avanzar en diagnóstico debe entender que el refrigerante cambia de estado físico en función de la transferencia de calor y de la diferencia de presión existente en el circuito.
+      </p>
+</div>
+</div><span class="anchor-offset" id="ciclo"></span>
+<div class="card technical-reading cycle-lesson-card cycle-simlab-embed-card">
+<div class="reading-header">
+<div class="reading-icon">
+<i class="fa-solid fa-rotate"></i>
+</div>
+<div>
+<h3>3. Ciclo de Refrigeración Ilustrado</h3>
+<p class="reading-subtitle">
+          Simulador visual integrado al Módulo 01
+        </p>
+</div>
+</div>
+<div class="reading-content">
+<p>
+        El simulador a continuación presenta la secuencia básica del ciclo de refrigeración con una animación continua del refrigerante. Se incorporó como base visual del módulo y está preparado para evolucionar en las próximas versiones.
+      </p>
+<div class="module01-simlab-frame-wrap">
+<iframe class="module01-simlab-frame" id="module01-simlab-frame" loading="lazy" src="simulators/ciclo-basico/index.html?embed=1&amp;lang=es" title="Simulador del ciclo básico de refrigeración"></iframe>
+</div>
+</div>
+</div><span class="anchor-offset" id="componentes"></span>
+<div class="card technical-reading">
+<div class="reading-header">
+<div class="reading-icon">
+<i class="fa-solid fa-diagram-project"></i>
+</div>
+<div>
+<h3>4. Componentes Principales</h3>
+<p class="reading-subtitle">
+          El papel técnico de cada elemento del sistema
+        </p>
+</div>
+</div>
+<div class="reading-content">
+<div class="grid">
+<div class="mini-card">
+<h4>Compresor</h4>
+<p>
+            Considerado el “corazón” del sistema. Es responsable de mover el refrigerante y elevar su condición energética.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Condensador</h4>
+<p>
+            Responsable del rechazo térmico. Su eficiencia depende de la limpieza, del caudal de aire o de un intercambio adecuado con el medio de condensación.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Dispositivo de expansión</h4>
+<p>
+            Controla la alimentación del evaporador y genera la reducción de presión necesaria para el proceso de evaporación.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Evaporador</h4>
+<p>
+            Lugar donde ocurre la principal absorción de calor del ambiente climatizado. Su desempeño depende en gran medida del caudal de aire y de la limpieza del serpentín.
+          </p>
+</div>
+</div>
+<br/>
+<div class="table-wrapper">
+<table class="tech-table">
+<thead>
+<tr>
+<th>Componente</th>
+<th>Función principal</th>
+<th>Síntoma de falla común</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compresor</td>
+<td>Elevar la presión y mover el refrigerante</td>
+<td>Baja capacidad, falla de arranque, sobrecorriente</td>
+</tr>
+<tr>
+<td>Condensador</td>
+<td>Rechazar calor</td>
+<td>Alta presión, alta temperatura de descarga</td>
+</tr>
+<tr>
+<td>Expansión</td>
+<td>Controlar la alimentación del evaporador</td>
+<td>Baja alimentación, SH alto, inestabilidad</td>
+</tr>
+<tr>
+<td>Evaporador</td>
+<td>Absorber calor del ambiente</td>
+<td>Bajo intercambio térmico, congelamiento, baja presión</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><span class="anchor-offset" id="troubleshooting"></span>
+<div class="card technical-reading">
+<div class="reading-header">
+<div class="reading-icon">
+<i class="fa-solid fa-screwdriver-wrench"></i>
+</div>
+<div>
+<h3>5. Lectura Inicial de Troubleshooting</h3>
+<p class="reading-subtitle">
+          Cómo iniciar un razonamiento técnico
+        </p>
+</div>
+</div>
+<div class="reading-content">
+<p>
+        Uno de los mayores errores en refrigeración es diagnosticar una falla solo con base en la presión. La lectura correcta exige correlacionar:
+      </p>
+<ul class="tech-list">
+<li>presión de succión y descarga;</li>
+<li>temperaturas reales en las líneas;</li>
+<li>sobrecalentamiento y subenfriamiento;</li>
+<li>caudal de aire en evaporador y condensador;</li>
+<li>carga térmica del ambiente;</li>
+<li>historial operativo y alarmas.</li>
+</ul>
+<div class="reading-highlight">
+<h4>Buenas prácticas</h4>
+<p>
+          Antes de concluir “baja carga” o “falla del compresor”, verifique las condiciones del serpentín, filtros, ventilación, sensores, alimentación eléctrica y secuencia operativa.
+        </p>
+</div>
+<br/>
+<div class="grid">
+<div class="mini-card">
+<h4>Baja presión</h4>
+<p>
+            Puede estar relacionada con baja carga, bajo caudal de aire, restricción o baja carga térmica.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Alta presión</h4>
+<p>
+            Puede indicar condensador sucio, ventilación deficiente, exceso de refrigerante o alta temperatura externa.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Retorno de líquido</h4>
+<p>
+            Condición crítica para el compresor. Normalmente se asocia con SH muy bajo y alimentación excesiva del evaporador.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Baja capacidad</h4>
+<p>
+            Requiere un análisis completo del flujo de aire, intercambiadores, circuito de refrigeración, setpoints y condición real de carga.
+          </p>
+</div>
+</div>
+</div>
+</div><span class="anchor-offset" id="glossario"></span>
+<div class="card technical-reading">
+<div class="reading-header">
+<div class="reading-icon">
+<i class="fa-solid fa-book"></i>
+</div>
+<div>
+<h3>6. Glosario Técnico Esencial</h3>
+<p class="reading-subtitle">
+          Términos fundamentales del módulo
+        </p>
+</div>
+</div>
+<div class="reading-content">
+<div class="grid">
+<div class="mini-card">
+<h4>Saturación</h4>
+<p>
+            Condición en la que líquido y vapor coexisten en equilibrio para una determinada presión.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Superheat</h4>
+<p>
+            Diferencia entre la temperatura real del vapor y la temperatura de saturación en la succión.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Subcooling</h4>
+<p>
+            Diferencia entre la temperatura de saturación en la condensación y la temperatura real de la línea de líquido.
+          </p>
+</div>
+<div class="mini-card">
+<h4>Delta T</h4>
+<p>
+            Diferencia de temperatura entre dos puntos, muy utilizada en aire y en agua helada.
+          </p>
+</div>
+</div>
+</div>
+</div><div class="card module-summary">
+<h3>Resumen del Módulo</h3>
+<p>
+      El ciclo de refrigeración es la base de la refrigeración mecánica. El técnico debe comprender la función de cada componente, la circulación del refrigerante, la diferencia entre alta y baja presión y la lógica del intercambio térmico. Esta base será indispensable para los próximos módulos, especialmente Superheat, Subcooling y troubleshooting avanzado.
+    </p>
+</div><span class="anchor-offset" id="avaliacao"></span>
+<div class="card learning-checklist">
+<h3>Checklist de Aprendizaje</h3>
+<p>
+      Antes de acceder a la evaluación, confirme que comprendió los puntos principales del módulo.
+    </p>
+<br/>
+<label><input class="module01-check" type="checkbox"/> Comprendí la finalidad del ciclo de refrigeración.</label>
+<label><input class="module01-check" type="checkbox"/> Comprendí los procesos de compresión, condensación, expansión y evaporación.</label>
+<label><input class="module01-check" type="checkbox"/> Sé diferenciar la región de alta presión y baja presión.</label>
+<label><input class="module01-check" type="checkbox"/> Entendí la función de los cuatro componentes principales.</label>
+<label><input class="module01-check" type="checkbox"/> Comprendí por qué el diagnóstico no debe realizarse solo por la presión.</label>
+<div class="checklist-status" id="module01-checklist-status">
+  Complete el checklist para liberar la evaluación.
+</div>
+</div><div class="card assessment-callout">
+<h3>Evaluación del Módulo</h3>
+<p>
+      El sistema seleccionará 5 preguntas aleatorias. Para avanzar, es necesario acertar al menos 3 de 5.
+    </p>
+<br/>
+<button class="btn btn-primary btn-disabled" disabled="" id="go-module01-quiz" type="button">
+  Ir a la evaluación
+</button>
+</div>
+<button class="back-to-top" id="back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>
+</button>
+</section>

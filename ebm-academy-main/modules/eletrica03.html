@@ -1,0 +1,148 @@
+<section class="section module-lesson eletrica03-lesson">
+  <h2 class="section-title">Módulo E03 — Instrumentos de Medição e Testes</h2>
+  <p class="section-subtitle">
+    Este módulo desenvolve a didática de medição elétrica em equipamentos HVAC: qual instrumento escolher,
+    onde medir, como interpretar o valor encontrado e quais erros de aplicação geram diagnóstico falso ou risco ao técnico.
+  </p>
+
+  <nav class="module-nav">
+    <a href="#e03-selecao">Seleção</a>
+    <a href="#e03-multimetro">Multímetro</a>
+    <a href="#e03-alicate">Alicate</a>
+    <a href="#e03-megger">Megômetro</a>
+    <a href="#e03-pontos">Pontos de medição</a>
+    <a href="#e03-interpretacao">Interpretação</a>
+    <a href="#e03-cases">Cases</a>
+    <a href="#e03-avaliacao">Avaliação</a>
+  </nav>
+
+  <span id="e03-selecao" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-toolbox"></i></div><div><h3>1. Seleção do instrumento</h3><p class="reading-subtitle">Não existe instrumento universal; existe o instrumento adequado para a pergunta certa</p></div></div>
+    <div class="reading-content">
+      <p>Antes de medir, defina a pergunta: quero saber se há tensão, quanta corrente a carga consome, se existe continuidade, se o isolamento está íntegro ou se a sequência de fase está correta? A partir disso, escolha o instrumento.</p>
+      <div class="grid">
+        <div class="mini-card"><h4>Presença de tensão</h4><p>Multímetro ou detector de tensão para triagem. Para diagnóstico confiável, prefira medição formal com multímetro adequado.</p></div>
+        <div class="mini-card"><h4>Corrente de carga</h4><p>Alicate amperímetro em um condutor por vez, comparando fases quando aplicável.</p></div>
+        <div class="mini-card"><h4>Continuidade / resistência</h4><p>Multímetro com circuito desenergizado. Usado para contatos, bobinas, fusíveis e resistências.</p></div>
+        <div class="mini-card"><h4>Isolamento</h4><p>Megômetro, apenas quando o procedimento permitir e com eletrônicos protegidos ou desconectados.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e03-multimetro" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-wave-square"></i></div><div><h3>2. Multímetro</h3><p class="reading-subtitle">O instrumento base para tensão, resistência e continuidade</p></div></div>
+    <div class="reading-content">
+      <div class="e03-meter-scene">
+        <div class="meter-body pulse-blue"><div class="meter-display">V~ / Ω / 🔔</div><div class="meter-knob"></div></div>
+        <div class="meter-points">
+          <div class="meter-point live">Entrada de painel</div>
+          <div class="meter-point">Saída de proteção</div>
+          <div class="meter-point">Bobina do contator</div>
+          <div class="meter-point safe">Circuito isolado</div>
+        </div>
+      </div>
+      <div class="reading-highlight"><h4>Leitura didática</h4><p>Com o multímetro, você pode comparar alimentação na entrada, saída de dispositivo e presença de tensão na bobina. Para resistência e continuidade, o circuito deve estar desenergizado.</p></div>
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Medição</th><th>Onde aplicar</th><th>Cuidados</th></tr></thead>
+          <tbody>
+            <tr><td>Tensão AC</td><td>Entrada/saída de dispositivos, fases, comando AC</td><td>Escala e categoria corretas</td></tr>
+            <tr><td>Tensão DC</td><td>Fontes eletrônicas, sinais e controles</td><td>Respeitar polaridade</td></tr>
+            <tr><td>Resistência</td><td>Bobinas, resistências, cabos e sensores passivos</td><td>Circuito isolado e sem tensão</td></tr>
+            <tr><td>Continuidade</td><td>Fusíveis, contatos e trilhas simples</td><td>Não usar em circuito energizado</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="e03-alicate" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-arrows-turn-to-dots"></i></div><div><h3>3. Alicate amperímetro</h3><p class="reading-subtitle">Corrente é uma das evidências mais fortes de estado da carga</p></div></div>
+    <div class="reading-content">
+      <p>Em motores, bombas, ventiladores, resistências e umidificadores, a corrente ajuda a entender se a carga está operando, sobrecarregada, com perda de fase ou abaixo da carga esperada.</p>
+      <div class="e03-current-bars">
+        <div class="current-bar"><span>Fase A</span><div class="bar pulse-green" style="width:80%"></div></div>
+        <div class="current-bar"><span>Fase B</span><div class="bar pulse-green" style="width:78%"></div></div>
+        <div class="current-bar"><span>Fase C</span><div class="bar pulse-red" style="width:28%"></div></div>
+      </div>
+      <div class="reading-highlight"><h4>Interpretação</h4><p>Comparar as fases ajuda a perceber desequilíbrio, perda parcial de alimentação, problema mecânico ou comportamento anormal do motor. Medir o cabo errado ou abraçar mais de um condutor pode invalidar a leitura.</p></div>
+    </div>
+  </div>
+
+  <span id="e03-megger" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-battery-full"></i></div><div><h3>4. Megômetro e testes de isolamento</h3><p class="reading-subtitle">Ferramenta poderosa, porém muito sensível ao procedimento correto</p></div></div>
+    <div class="reading-content">
+      <p>O megômetro é usado para avaliar isolamento de motores, cabos e cargas adequadas ao teste. Em HVAC, é essencial respeitar o procedimento do fabricante e proteger ou desconectar eletrônicos, placas, VFDs e componentes que não devem receber esse ensaio.</p>
+      <div class="grid">
+        <div class="mini-card"><h4>Quando usar</h4><p>Suspeita de fuga à terra, umidade em motor/cabos, falha recorrente de isolamento ou comissionamento específico.</p></div>
+        <div class="mini-card"><h4>Quando evitar</h4><p>Com eletrônicos conectados, placas de controle, sensores sensíveis e circuitos sem autorização de procedimento.</p></div>
+        <div class="mini-card"><h4>O que comparar</h4><p>Resultado por fase, tendência histórica, condições ambientais e limite do procedimento adotado.</p></div>
+        <div class="mini-card"><h4>Mensagem-chave</h4><p>Megômetro não substitui raciocínio. Ele confirma condição de isolamento de um circuito adequadamente preparado para o teste.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e03-pontos" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-map-location-dot"></i></div><div><h3>5. Pontos de medição em HVAC</h3><p class="reading-subtitle">Aprender onde medir é tão importante quanto escolher o instrumento</p></div></div>
+    <div class="reading-content">
+      <div class="e03-point-grid">
+        <div class="e03-point-card"><h4>Alimentação principal</h4><p>Entrada do painel, bornes de força, seccionadora, disjuntor e barramento.</p></div>
+        <div class="e03-point-card"><h4>Saída de proteção</h4><p>Saída de fusível, relé térmico, disjuntor e contatores.</p></div>
+        <div class="e03-point-card"><h4>Comando</h4><p>Bobina do contator, bornes de enable, fonte de controle e contatos de intertravamento.</p></div>
+        <div class="e03-point-card"><h4>Carga</h4><p>Motor, resistência, EC fan, transformador, atuador e cabos de ligação.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="e03-interpretacao" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div><div><h3>6. Como interpretar leituras</h3><p class="reading-subtitle">Medir é só metade do trabalho; a outra metade é transformar valor em hipótese</p></div></div>
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Leitura</th><th>Significado possível</th><th>Próximo passo</th></tr></thead>
+          <tbody>
+            <tr><td>Tensão presente na entrada, ausente na saída</td><td>Dispositivo aberto ou falhado</td><td>Checar estado mecânico/elétrico do componente</td></tr>
+            <tr><td>Bobina sem tensão</td><td>Comando interrompido</td><td>Seguir a cadeia de permissivos e proteção</td></tr>
+            <tr><td>Corrente alta em uma fase</td><td>Desequilíbrio, travamento ou defeito na carga</td><td>Comparar fases e avaliar condição mecânica</td></tr>
+            <tr><td>Continuidade aberta em fusível</td><td>Fusível interrompido</td><td>Investigar causa antes da substituição</td></tr>
+            <tr><td>Baixo isolamento</td><td>Fuga, umidade ou degradação</td><td>Aplicar procedimento de secagem/reparo conforme caso</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="e03-cases" class="anchor-offset"></span>
+  <div class="card technical-reading">
+    <div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-clipboard-question"></i></div><div><h3>7. Cases didáticos de medição</h3><p class="reading-subtitle">Situações comuns em equipamentos HVAC</p></div></div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Contator não fecha</h4><p>Comece medindo tensão na bobina. Se não há tensão, o problema está no comando. Se há tensão e não fecha, suspeite da bobina/contator.</p></div>
+        <div class="mini-card"><h4>Motor aquece e desarma</h4><p>Meça corrente por fase. Depois compare com placa, ajuste de proteção e condição mecânica.</p></div>
+        <div class="mini-card"><h4>Resistência de reheat sem aquecimento</h4><p>Confirme comando, tensão na carga, continuidade da resistência e estado dos limites térmicos.</p></div>
+        <div class="mini-card"><h4>ATS sem transferência</h4><p>Verifique monitoramento de fontes, tensão presente, lógica de permissão e contatos auxiliares.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card technical-reading"><div class="reading-header"><div class="reading-icon"><i class="fa-solid fa-book-open"></i></div><div><h3>Resumo do Módulo</h3><p class="reading-subtitle">Base de medição antes do diagnóstico completo</p></div></div><div class="reading-content"><p>Instrumento correto, ponto correto e interpretação coerente. Essa tríade reduz erro de diagnóstico e prepara o técnico para fechar hipóteses com mais segurança no próximo módulo.</p></div></div>
+
+  <span id="e03-avaliacao" class="anchor-offset"></span>
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3><p>Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.</p><br>
+    <label><input type="checkbox" class="eletrica03-check"> Sei escolher entre multímetro, alicate amperímetro, detector de tensão e megômetro.</label>
+    <label><input type="checkbox" class="eletrica03-check"> Entendo que resistência e continuidade exigem circuito desenergizado.</label>
+    <label><input type="checkbox" class="eletrica03-check"> Consigo medir corrente corretamente em um condutor por vez.</label>
+    <label><input type="checkbox" class="eletrica03-check"> Sei apontar pontos típicos de medição em potência e comando.</label>
+    <label><input type="checkbox" class="eletrica03-check"> Consigo interpretar leituras básicas e definir o próximo passo do diagnóstico.</label>
+    <div id="eletrica03-checklist-status" class="checklist-status">Conclua o checklist para liberar a avaliação.</div>
+  </div>
+  <div class="card assessment-callout"><h3>Avaliação do Módulo</h3><p>O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.</p><br><button id="go-eletrica03-quiz" class="btn btn-primary btn-disabled" type="button" disabled>Ir para avaliação</button></div>
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+</section>

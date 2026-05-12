@@ -1,0 +1,41 @@
+<section class="section module-quiz">
+
+  <h2 class="section-title">Avaliação — Módulo 09</h2>
+
+  <p class="section-subtitle">
+    Quiz técnico sobre automação, CLP, BMS e lógicas de redundância em CAG.
+    O sistema sorteará 5 perguntas aleatórias. Para concluir o módulo, é necessário acertar pelo menos 3 de 5 perguntas.
+  </p>
+
+  <form id="modulo09-quiz-form" class="quiz-form" onsubmit="return false;">
+    <div id="modulo09-quiz-questions"></div>
+    <div class="quiz-actions">
+      <button type="button" id="submit-modulo09-quiz" class="btn btn-primary">Enviar avaliação</button>
+      <button type="button" id="retry-modulo09-quiz" class="btn btn-secondary">Refazer respostas</button>
+      <button type="button" onclick="loadTrainingPage('modulo09')" class="btn btn-secondary">Voltar para teoria</button>
+    </div>
+  </form>
+
+  <div id="modulo09-quiz-result"></div>
+
+  <div class="card module-completion-card">
+    <h3>Conclusão do Módulo</h3>
+    <p>O botão abaixo será liberado somente após aprovação no quiz com pelo menos 3 acertos.</p>
+    <br>
+    <button id="complete-modulo09" data-module="modulo09" class="btn btn-primary btn-disabled" disabled>
+      Concluir Módulo 09
+    </button>
+
+    <div id="modulo09-certificate" class="certificate-card hidden">
+      <div class="certificate-seal"><i class="fa-solid fa-award"></i></div>
+      <h3>Certificado de Conclusão</h3>
+      <p>O aluno concluiu com êxito o Módulo 09 — Automação, CLP, BMS e Lógicas de Redundância em CAG.</p>
+      <div class="certificate-meta">
+        <span>EBM Academy</span>
+        <span>HVAC Crítico</span>
+        <span>Módulo 09</span>
+      </div>
+    </div>
+  </div>
+
+</section>

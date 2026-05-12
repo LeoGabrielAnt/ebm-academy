@@ -1,0 +1,35 @@
+<section class="section module-quiz">
+
+  <h2 class="section-title">Avaliação — Módulo E01</h2>
+
+  <p class="section-subtitle">
+    Quiz técnico sobre fundamentos elétricos aplicados a HVAC. O sistema sorteará 5 perguntas aleatórias.
+    Para concluir o módulo, é necessário acertar pelo menos 3 de 5 perguntas.
+  </p>
+
+  <form id="eletrica01-quiz-form" class="quiz-form" onsubmit="return false;">
+    <div id="eletrica01-quiz-questions"></div>
+    <div class="quiz-actions">
+      <button type="button" id="submit-eletrica01-quiz" class="btn btn-primary">Enviar avaliação</button>
+      <button type="button" id="retry-eletrica01-quiz" class="btn btn-secondary">Refazer respostas</button>
+      <button type="button" onclick="loadTrainingPage('eletrica01')" class="btn btn-secondary">Voltar para teoria</button>
+    </div>
+  </form>
+
+  <div id="eletrica01-quiz-result"></div>
+
+  <div class="card module-completion-card">
+    <h3>Conclusão do Módulo</h3>
+    <p>O botão abaixo será liberado somente após aprovação no quiz com pelo menos 3 acertos.</p>
+    <br>
+    <button id="complete-eletrica01" data-module="eletrica01" class="btn btn-primary btn-disabled" disabled>Concluir Módulo E01</button>
+
+    <div id="eletrica01-certificate" class="certificate-card hidden">
+      <div class="certificate-seal"><i class="fa-solid fa-award"></i></div>
+      <h3>Certificado de Conclusão</h3>
+      <p>O aluno concluiu com êxito o Módulo E01 — Fundamentos Elétricos para HVAC.</p>
+      <div class="certificate-meta"><span>EBM Academy</span><span>Elétrica Aplicada a HVAC</span><span>Módulo E01</span></div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,488 @@
+<section class="section module-lesson modulo08-lesson">
+
+  <h2 class="section-title">Módulo 08 — Bombas, Válvulas e Balanceamento Hidráulico</h2>
+
+  <p class="section-subtitle">
+    Aula técnica sobre circuitos hidráulicos de água gelada em HVAC crítico, com foco em bombas primárias e secundárias,
+    inversores de frequência, válvulas de bloqueio, válvulas de controle, by-pass, pressão diferencial, vazão,
+    balanceamento, redundância, intertravamentos, manutenção preditiva e troubleshooting operacional.
+  </p>
+
+  <nav class="module-nav">
+    <a href="#m8-objetivos">Objetivos</a>
+    <a href="#m8-arquitetura">Arquitetura</a>
+    <a href="#m8-bombas">Bombas</a>
+    <a href="#m8-vfd">Inversores</a>
+    <a href="#m8-valvulas">Válvulas</a>
+    <a href="#m8-dp">Delta P</a>
+    <a href="#m8-balanceamento">Balanceamento</a>
+    <a href="#m8-simulador">Simulador</a>
+    <a href="#m8-sequencia">Sequência</a>
+    <a href="#m8-falhas">Falhas</a>
+    <a href="#m8-manutencao">Manutenção</a>
+    <a href="#m8-troubleshooting">Troubleshooting</a>
+    <a href="#m8-avaliacao">Avaliação</a>
+  </nav>
+
+  <span id="m8-objetivos" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-bullseye"></i></div>
+      <div>
+        <h3>Objetivos de Aprendizagem</h3>
+        <p class="reading-subtitle">O que o aluno deverá compreender ao final deste módulo</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <ul class="tech-list">
+        <li>Entender a função das bombas no transporte de energia térmica em circuitos de água gelada.</li>
+        <li>Diferenciar bomba primária, bomba secundária, bomba reserva e lógica lead/lag.</li>
+        <li>Interpretar vazão, pressão diferencial, frequência do inversor, abertura de válvula e posição de by-pass.</li>
+        <li>Compreender como inversores de frequência modulam bombas para manter setpoint hidráulico.</li>
+        <li>Reconhecer o papel de válvulas de bloqueio, válvulas de controle, atuadores e sensores de pressão.</li>
+        <li>Aplicar diagnóstico estruturado em baixa pressão, excesso de vazão, cavitação, falha de bomba e baixo Delta T.</li>
+      </ul>
+    </div>
+  </div>
+
+  <span id="m8-arquitetura" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <div>
+        <h3>1. Arquitetura Hidráulica da Água Gelada</h3>
+        <p class="reading-subtitle">Produzir água gelada é apenas parte do sistema: é preciso distribuir com estabilidade</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Em uma Central de Água Gelada, as bombas transformam energia elétrica em energia hidráulica para vencer perdas de carga,
+        manter vazão, alimentar consumidores e garantir que o chiller tenha fluxo mínimo seguro. A planta pode ter bombas primárias,
+        secundárias ou arranjos variáveis, dependendo da arquitetura do anel hidráulico e da lógica de automação.
+      </p>
+      <br>
+      <p>
+        Em sistemas críticos, o circuito não deve ser analisado apenas pela temperatura. O operador precisa correlacionar pressão
+        diferencial, vazão, frequência dos inversores, posição de válvulas, status de bombas, abertura de by-pass, quantidade de chillers
+        habilitados e comportamento dos consumidores, como fancoils ou CRAHs.
+      </p>
+
+      <div class="m8-hydraulic-map">
+        <div class="m8-map-node"><i class="fa-solid fa-snowflake"></i><h4>Chiller</h4><p>Produz água gelada e exige fluxo seguro no evaporador.</p></div>
+        <div class="m8-map-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+        <div class="m8-map-node"><i class="fa-solid fa-circle-nodes"></i><h4>Bombas</h4><p>Vencem perdas de carga e mantêm o circuito em circulação.</p></div>
+        <div class="m8-map-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+        <div class="m8-map-node"><i class="fa-solid fa-sliders"></i><h4>Válvulas</h4><p>Isolam, modulam, aliviam pressão e direcionam vazão.</p></div>
+        <div class="m8-map-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+        <div class="m8-map-node"><i class="fa-solid fa-fan"></i><h4>Consumidores</h4><p>Retiram calor do ambiente e devolvem água mais quente.</p></div>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Ideia-chave</h4>
+        <p>
+          A bomba não “faz frio”; ela garante que a água gelada chegue ao ponto certo, com vazão e pressão suficientes para que
+          a troca térmica aconteça de forma estável.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m8-bombas" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+      <div>
+        <h3>2. Bombas Primárias, Secundárias e Redundância</h3>
+        <p class="reading-subtitle">O arranjo hidráulico define quem protege o chiller e quem atende a planta</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="grid">
+        <div class="mini-card"><h4>Bomba Primária</h4><p>Normalmente associada ao circuito do chiller. Garante vazão mínima no evaporador e acompanha a habilitação do equipamento.</p></div>
+        <div class="mini-card"><h4>Bomba Secundária</h4><p>Normalmente associada ao anel de distribuição. Modula para manter pressão, vazão ou diferencial de pressão para os consumidores.</p></div>
+        <div class="mini-card"><h4>Bomba Reserva</h4><p>Assume em caso de falha, rodízio ou necessidade operacional. A reserva sustenta disponibilidade N+1.</p></div>
+        <div class="mini-card"><h4>Lead/Lag</h4><p>Define prioridade de partida, alternância e equilíbrio de horas de operação entre os conjuntos.</p></div>
+      </div>
+      <br>
+      <p>
+        A lógica mais comum em ambientes críticos exige relação mínima entre chiller habilitado e bomba disponível. Se há um chiller em operação,
+        deve existir pelo menos uma bomba associada em operação. Se há dois chillers habilitados, a lógica deve garantir quantidade equivalente
+        de bombas ou a condição mínima definida no projeto.
+      </p>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Variável observada</th><th>O que indica</th><th>Ação técnica inicial</th></tr></thead>
+          <tbody>
+            <tr><td>Frequência do inversor</td><td>Esforço da bomba para atingir setpoint</td><td>Comparar com pressão, vazão, válvulas e demanda</td></tr>
+            <tr><td>Pressão diferencial</td><td>Energia hidráulica disponível entre ida e retorno</td><td>Verificar sensores, by-pass, válvulas e filtros</td></tr>
+            <tr><td>Corrente elétrica</td><td>Carga real no motor</td><td>Comparar com rotação, curva e condição mecânica</td></tr>
+            <tr><td>Vibração e ruído</td><td>Condição mecânica da bomba/motor</td><td>Checar alinhamento, rolamentos, cavitação e base</td></tr>
+            <tr><td>Delta T da água</td><td>Efetividade da troca térmica nos consumidores</td><td>Correlacionar vazão, válvulas e carga térmica</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="m8-vfd" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-wave-square"></i></div>
+      <div>
+        <h3>3. Inversores de Frequência nas Bombas</h3>
+        <p class="reading-subtitle">Velocidade variável, partida suave e controle por feedback</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        O inversor de frequência recebe comando de referência da automação, controla a velocidade do motor e permite que a bomba module
+        conforme a demanda hidráulica. Em vez de ligar a bomba sempre a 100%, a lógica pode acelerar ou desacelerar para manter setpoint de pressão,
+        vazão ou diferencial, reduzindo oscilações e consumo em cargas parciais.
+      </p>
+
+      <div class="grid">
+        <div class="mini-card"><h4>Comando</h4><p>Sinal analógico, comunicação ou referência local indica a velocidade desejada.</p></div>
+        <div class="mini-card"><h4>Feedback</h4><p>Sensores de pressão ou vazão informam se a planta atingiu o setpoint.</p></div>
+        <div class="mini-card"><h4>Proteção</h4><p>O inversor monitora falhas, sobrecorrente, sobretemperatura, perda de fase e estado do motor.</p></div>
+        <div class="mini-card"><h4>Diagnóstico</h4><p>Frequência alta com baixa pressão sugere perda de carga, by-pass, bomba degradada ou válvula incorreta.</p></div>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Segurança elétrica</h4>
+        <p>
+          Inversores devem ser inspecionados e manuseados apenas por pessoal qualificado. Mesmo após a retirada da alimentação,
+          capacitores internos podem manter tensão por algum tempo. Em campo, sempre seguir bloqueio, etiquetagem e procedimento local.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <span id="m8-valvulas" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-sliders"></i></div>
+      <div>
+        <h3>4. Válvulas, Atuadores e By-pass</h3>
+        <p class="reading-subtitle">A válvula correta protege fluxo, isola equipamentos e estabiliza pressão</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Elemento</th><th>Função</th><th>Falha típica</th></tr></thead>
+          <tbody>
+            <tr><td>Válvula de bloqueio do chiller</td><td>Isola ou libera fluxo para o evaporador</td><td>Comando enviado sem confirmação de abertura</td></tr>
+            <tr><td>Válvula de controle 2 vias</td><td>Modula vazão no consumidor conforme demanda</td><td>Fecha demais e eleva pressão diferencial</td></tr>
+            <tr><td>Válvula 3 vias</td><td>Desvia vazão mantendo circulação local</td><td>Bypass excessivo reduz Delta T útil</td></tr>
+            <tr><td>Atuador de by-pass</td><td>Alivia pressão ou equaliza anéis em condição dinâmica</td><td>Abre em excesso e rouba vazão útil do campo</td></tr>
+            <tr><td>Microchave / fim de curso</td><td>Confirma posição de válvula</td><td>Status não confirma e bloqueia sequência</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Regra operacional</h4>
+        <p>
+          O by-pass atua como elemento de alívio e estabilização da pressão diferencial: abre quando há excesso de pressão no anel e fecha quando
+          a demanda do campo aumenta. Antes de ajustar o by-pass, confirme sensores, bombas, válvulas, filtros e condição real de demanda.
+        </p>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Item didático — by-pass e válvulas balanceadoras</h4>
+        <p>
+          O by-pass e a válvula balanceadora não fazem a mesma função. O by-pass cria um caminho alternativo para aliviar ou estabilizar a pressão
+          do anel quando a vazão útil no campo diminui. A válvula balanceadora limita, mede ou estabiliza a vazão em um ramal, consumidor ou
+          equipamento, evitando que um circuito receba água demais e prejudique os demais pontos da instalação.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="mini-card">
+          <h4><i class="fa-solid fa-code-branch"></i> By-pass</h4>
+          <p>Atua como caminho de alívio. Em baixa demanda, pode abrir para evitar excesso de pressão. Em alta demanda, tende a fechar para enviar mais água ao campo.</p>
+        </div>
+        <div class="mini-card">
+          <h4><i class="fa-solid fa-scale-balanced"></i> Balanceadora</h4>
+          <p>Controla ou limita a vazão de um ramal. Ajuda a distribuir água gelada de forma correta entre fancoils, serpentinas e circuitos.</p>
+        </div>
+        <div class="mini-card">
+          <h4><i class="fa-solid fa-triangle-exclamation"></i> Erro comum</h4>
+          <p>Corrigir falta de vazão abrindo by-pass pode mascarar filtro sujo, válvula fechada, bomba limitada, sensor incorreto ou desbalanceamento hidráulico.</p>
+        </div>
+        <div class="mini-card">
+          <h4><i class="fa-solid fa-magnifying-glass-chart"></i> Como diagnosticar</h4>
+          <p>Compare Delta P, abertura do by-pass, posição das válvulas, frequência das bombas, Delta T e vazão real antes de alterar qualquer setpoint.</p>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Componente</th><th>Quando atua</th><th>O que observar</th></tr></thead>
+          <tbody>
+            <tr><td>By-pass de alívio</td><td>Pressão diferencial alta ou baixa demanda no campo</td><td>Abertura excessiva pode roubar vazão útil e reduzir Delta T</td></tr>
+            <tr><td>By-pass de equalização</td><td>Transições, partidas, manobras ou estabilização entre anéis</td><td>Deve evitar golpes e oscilações, sem virar caminho permanente de retorno</td></tr>
+            <tr><td>Válvula balanceadora manual</td><td>Ajuste fixo de vazão por ramal ou equipamento</td><td>Depende de comissionamento e medição correta de vazão ou pressão</td></tr>
+            <tr><td>Válvula balanceadora automática</td><td>Mantém vazão mais estável mesmo com variação de pressão</td><td>Requer faixa correta de operação e diferencial mínimo disponível</td></tr>
+            <tr><td>Válvula de controle com balanceamento</td><td>Modula conforme demanda e limita vazão máxima do consumidor</td><td>Ajuda a evitar excesso de vazão, baixo Delta T e instabilidade de controle</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="m8-dp" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-gauge-high"></i></div>
+      <div>
+        <h3>5. Pressão Diferencial e Controle Hidráulico</h3>
+        <p class="reading-subtitle">Delta P é uma referência de energia hidráulica disponível</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        O controle por pressão diferencial compara pressões entre dois pontos do circuito. A automação pode usar sensores no recalque das bombas,
+        saída dos chillers, alimentação da CAG ou retorno da CAG. Em plantas com redundância de sensores, é comum aplicar média excludente:
+        se um instrumento falha ou fica fora de plausibilidade, ele é retirado do cálculo para não distorcer o PID.
+      </p>
+
+      <div class="m8-formula-strip">
+        <div><span>Delta P</span><strong>Pressão de ida − pressão de retorno</strong></div>
+        <div><span>Resposta esperada</span><strong>Queda de pressão → bombas aceleram</strong></div>
+        <div><span>Risco</span><strong>Sensor ruim → PID comanda errado</strong></div>
+      </div>
+
+      <div class="grid">
+        <div class="mini-card"><h4>Delta P baixo</h4><p>Bomba lenta, falha, filtro obstruído, válvula fechada, excesso de demanda ou by-pass inadequado.</p></div>
+        <div class="mini-card"><h4>Delta P alto</h4><p>Válvulas fechando, baixa demanda, setpoint alto, sensores errados ou falta de alívio por by-pass.</p></div>
+        <div class="mini-card"><h4>PID instável</h4><p>Sensor ruidoso, ganho alto, tempo integral inadequado ou baixa inércia hidráulica.</p></div>
+        <div class="mini-card"><h4>Frequência alta</h4><p>Se a bomba está quase em 100% e o Delta P não sobe, investigue perda de capacidade hidráulica.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m8-balanceamento" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+      <div>
+        <h3>6. Balanceamento Hidráulico</h3>
+        <p class="reading-subtitle">Distribuir vazão de forma correta evita excesso em alguns pontos e falta em outros</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Balancear não é simplesmente “abrir todas as válvulas”. O objetivo é garantir que cada consumidor receba vazão compatível com sua carga e que
+        a central trabalhe com pressão suficiente, sem excesso de bombeamento e sem retorno de água artificialmente frio por curto-circuito hidráulico.
+      </p>
+
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Problema</th><th>Efeito</th><th>Como investigar</th></tr></thead>
+          <tbody>
+            <tr><td>Excesso de vazão</td><td>Baixo Delta T, alto consumo de bombas e retorno frio</td><td>Verificar frequência, válvulas abertas, by-pass e vazão de projeto</td></tr>
+            <tr><td>Falta de vazão</td><td>Alta temperatura em consumidores e alto Delta T local</td><td>Checar filtros, ar no sistema, válvula fechada e bomba limitada</td></tr>
+            <tr><td>By-pass excessivo</td><td>Água gelada retorna sem trocar calor</td><td>Comparar abertura de by-pass, Delta T e pressão diferencial</td></tr>
+            <tr><td>Sensor mal localizado</td><td>PID corrige uma variável que não representa o campo</td><td>Comparar instrumentos locais e leitura no supervisório</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="m8-simulador" class="anchor-offset"></span>
+
+  <div class="card technical-reading m8-sim-card">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-gamepad"></i></div>
+      <div>
+        <h3>7. Simulador Didático de Pressão Diferencial</h3>
+        <p class="reading-subtitle">Ajuste bombas, demanda e by-pass para observar a tendência hidráulica</p>
+      </div>
+    </div>
+
+    <div class="m8-sim-grid">
+      <div class="m8-control-panel">
+        <label>Setpoint Delta P das bombas <strong><span id="m8-sp-label">1.20</span> bar</strong>
+          <input id="m8-sp" type="range" min="0.5" max="2.0" step="0.05" value="1.20">
+        </label>
+        <label>Bombas em operação <strong><span id="m8-pumps-label">2</span></strong>
+          <input id="m8-pumps" type="range" min="1" max="4" step="1" value="2">
+        </label>
+        <label>Demanda dos consumidores <strong><span id="m8-load-label">65</span>%</strong>
+          <input id="m8-load" type="range" min="20" max="100" step="5" value="65">
+        </label>
+        <label>Abertura do by-pass <strong><span id="m8-bypass-label">15</span>%</strong>
+          <input id="m8-bypass" type="range" min="0" max="80" step="5" value="15">
+        </label>
+      </div>
+
+      <div class="m8-dashboard">
+        <div class="m8-kpi"><span>Delta P estimado</span><strong id="m8-dp-result">--</strong></div>
+        <div class="m8-kpi"><span>Comando PID</span><strong id="m8-pid-result">--</strong></div>
+        <div class="m8-kpi"><span>Frequência estimada</span><strong id="m8-hz-result">--</strong></div>
+        <div class="m8-kpi"><span>Estado</span><strong id="m8-state-result">--</strong></div>
+        <div class="m8-meter"><div id="m8-meter-fill"></div></div>
+        <div id="m8-sim-diagnostic" class="reading-highlight"><h4>Interpretação</h4><p>Ajuste os controles para observar o comportamento.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m8-sequencia" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-timeline"></i></div>
+      <div>
+        <h3>8. Sequência de Operação das Bombas</h3>
+        <p class="reading-subtitle">Partida segura exige confirmações antes de habilitar o chiller</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <ol class="tech-list">
+        <li>Validar condição da planta, permissivos, modo automático e ausência de falhas bloqueantes.</li>
+        <li>Abrir válvula de bloqueio do chiller selecionado e aguardar confirmação de fim de curso.</li>
+        <li>Partir a bomba de menor prioridade ou a bomba definida pelo rodízio.</li>
+        <li>Acelerar via inversor até atingir setpoint hidráulico ou condição mínima de fluxo.</li>
+        <li>Confirmar status de bomba ligada, pressão/vazão e ausência de falha do inversor.</li>
+        <li>Enviar habilitação ao chiller e monitorar alarmes, LWT, EWT, Delta P, Delta T e estabilidade.</li>
+        <li>Em caso de falha, bloquear o equipamento, chamar reserva e registrar evento.</li>
+      </ol>
+    </div>
+  </div>
+
+  <span id="m8-falhas" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+      <div>
+        <h3>9. Falhas Comuns em Bombas e Sinais de Automação</h3>
+        <p class="reading-subtitle">Comando sem confirmação deve virar diagnóstico, não tentativa repetida</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Falha</th><th>Como aparece</th><th>Verificação inicial</th></tr></thead>
+          <tbody>
+            <tr><td>Falta de fase</td><td>Relé de falta de fase ou alarme do inversor</td><td>Verificar alimentação trifásica, fusíveis, disjuntor e bornes</td></tr>
+            <tr><td>Falha do inversor</td><td>Contato de alarme do VFD ou mensagem local</td><td>Ler código, histórico, corrente, tensão, temperatura e reset autorizado</td></tr>
+            <tr><td>Falha de status</td><td>Comando enviado, mas bomba não confirma ligada</td><td>Checar relé de corrente, contator, VFD, permissivos e motor</td></tr>
+            <tr><td>Baixa pressão</td><td>PID sobe, frequência aumenta e Delta P não estabiliza</td><td>Verificar bomba reserva, by-pass, filtro, ar, válvulas e sensor</td></tr>
+            <tr><td>Cavitação</td><td>Ruído, vibração, instabilidade e queda de desempenho</td><td>Checar sucção, NPSH, nível, válvula de sucção, filtro e ar no circuito</td></tr>
+            <tr><td>Sensor incoerente</td><td>PID comanda errado ou média excludente retira leitura</td><td>Comparar campo, manômetro, supervisório e calibração</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <span id="m8-manutencao" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+      <div>
+        <h3>10. Manutenção, Vibração e Confiabilidade</h3>
+        <p class="reading-subtitle">A falha hidráulica muitas vezes começa como falha mecânica ou elétrica</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <p>
+        Bombas devem ser avaliadas por inspeção visual, tendência de corrente, temperatura, ruído, vibração, condição de rolamentos,
+        alinhamento, acoplamento, selos, base e limpeza de filtros. Análise de vibração é especialmente útil para identificar desbalanceamento,
+        desalinhamento, folgas, falhas de rolamento e problemas de lubrificação antes da quebra.
+      </p>
+      <br>
+      <div class="grid">
+        <div class="mini-card"><h4>Rolamentos</h4><p>Monitorar temperatura, ruído, envelope de aceleração e sinais de impacto.</p></div>
+        <div class="mini-card"><h4>Desbalanceamento</h4><p>Aumenta vibração e esforço nos mancais; pode aparecer após sujeira, desgaste ou intervenção.</p></div>
+        <div class="mini-card"><h4>Lubrificação</h4><p>Excesso ou falta de lubrificante pode aquecer e acelerar desgaste.</p></div>
+        <div class="mini-card"><h4>Alinhamento</h4><p>Acoplamento desalinhado transfere vibração para motor e bomba.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <span id="m8-troubleshooting" class="anchor-offset"></span>
+
+  <div class="card technical-reading">
+    <div class="reading-header">
+      <div class="reading-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+      <div>
+        <h3>11. Troubleshooting Aplicado</h3>
+        <p class="reading-subtitle">Diagnóstico por sintoma, causa provável e checagem inicial</p>
+      </div>
+    </div>
+    <div class="reading-content">
+      <div class="table-wrapper">
+        <table class="tech-table">
+          <thead><tr><th>Sintoma</th><th>Causa provável</th><th>Primeiras verificações</th></tr></thead>
+          <tbody>
+            <tr><td>Delta P não atinge setpoint</td><td>Bomba limitada, válvula aberta, by-pass, filtro ou sensor</td><td>Frequência, corrente, válvulas, strainers, manômetros e leitura de sensores</td></tr>
+            <tr><td>Delta P alto com baixa demanda</td><td>Válvulas de campo fechadas ou setpoint alto</td><td>Posição dos atuadores, abertura do by-pass e pressão no campo</td></tr>
+            <tr><td>Baixo Delta T da CAG</td><td>Excesso de vazão ou by-pass hidráulico</td><td>Frequência das bombas, abertura de by-pass, válvulas 3 vias e retorno</td></tr>
+            <tr><td>VFD em falha recorrente</td><td>Sobrecorrente, sobretemperatura, tensão, motor ou parametrização</td><td>Código do alarme, ventilação do painel, bornes, aterramento e motor</td></tr>
+            <tr><td>Bomba reserva não assume</td><td>Prioridade, permissivo, falha latente ou comando bloqueado</td><td>Modo automático, falhas, sequência, intertravamentos e IHM</td></tr>
+            <tr><td>Oscilação de pressão</td><td>PID agressivo, sensores ruidosos ou baixa inércia</td><td>Tendência, filtro de sinal, ganho/integral, volume de água e by-pass</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="reading-highlight">
+        <h4>Roteiro rápido</h4>
+        <p>
+          Confirme modo automático, alarmes e permissivos. Depois verifique bomba ligada, frequência, corrente, Delta P real, sensores,
+          válvulas, by-pass, filtros e comportamento térmico. Só então conclua sobre ajuste de PID, falha de inversor ou problema mecânico.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card module-summary">
+    <h3>Resumo do Módulo</h3>
+    <p>
+      Bombas, válvulas e balanceamento hidráulico determinam se a água gelada chegará corretamente aos consumidores.
+      O diagnóstico confiável exige correlação entre pressão diferencial, vazão, frequência, corrente, válvulas, by-pass,
+      sensores, alarmes, vibração e histórico operacional.
+    </p>
+  </div>
+
+  <span id="m8-avaliacao" class="anchor-offset"></span>
+
+  <div class="card learning-checklist">
+    <h3>Checklist de Aprendizagem</h3>
+    <p>Antes de acessar a avaliação, confirme que compreendeu os principais pontos do módulo.</p>
+    <br>
+    <label><input type="checkbox" class="modulo08-check"> Entendi a função das bombas primárias, secundárias e reservas em uma CAG.</label>
+    <label><input type="checkbox" class="modulo08-check"> Compreendi como inversores de frequência modulam bombas por pressão ou vazão.</label>
+    <label><input type="checkbox" class="modulo08-check"> Sei relacionar Delta P, vazão, frequência, válvulas e by-pass.</label>
+    <label><input type="checkbox" class="modulo08-check"> Entendi a importância de sensores redundantes e média excludente.</label>
+    <label><input type="checkbox" class="modulo08-check"> Sei aplicar troubleshooting básico para falhas de bomba, baixa pressão, cavitação e baixo Delta T.</label>
+
+    <div id="modulo08-checklist-status" class="checklist-status">
+      Conclua o checklist para liberar a avaliação.
+    </div>
+  </div>
+
+  <div class="card assessment-callout">
+    <h3>Avaliação do Módulo</h3>
+    <p>O sistema sorteará 5 perguntas aleatórias. Para avançar, é necessário acertar pelo menos 3 de 5.</p>
+    <br>
+    <button id="go-modulo08-quiz" class="btn btn-primary btn-disabled" type="button" disabled>
+      Ir para avaliação
+    </button>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+
+</section>

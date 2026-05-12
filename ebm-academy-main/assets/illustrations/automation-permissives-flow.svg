@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+ <defs><style>.bg{fill:#0f172a}.t{font:700 30px Arial;fill:#e2e8f0}.s{font:400 16px Arial;fill:#cbd5e1}.box{fill:#111827;stroke:#38bdf8;stroke-width:3;rx:18}.yes{fill:#052e16;stroke:#34d399;stroke-width:3;rx:16}.no{fill:#3f1d2e;stroke:#f472b6;stroke-width:3;rx:16}.txt{font:700 19px Arial;fill:#f8fafc}.small{font:400 15px Arial;fill:#d1d5db}.line{stroke:#94a3b8;stroke-width:4;fill:none;marker-end:url(#a)}</style><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/></marker></defs>
+ <rect class="bg" width="1200" height="800"/>
+ <text x="40" y="50" class="t">Fluxo didático de permissivos e intertravamentos</text>
+ <text x="40" y="78" class="s">Exemplo para partida segura de bombas e habilitação de chiller</text>
+ <rect x="430" y="110" width="340" height="72" class="box" rx="18"/><text x="600" y="150" text-anchor="middle" class="txt">Solicitação de operação automática</text>
+ <path class="line" d="M600 182 V225"/>
+ <rect x="390" y="225" width="420" height="88" class="box" rx="18"/><text x="600" y="260" text-anchor="middle" class="txt">1. Modo AUTO ativo e ausência de E-Stop?</text><text x="600" y="286" text-anchor="middle" class="small">Comando local permitido e sem bloqueios de segurança</text>
+ <path class="line" d="M600 313 V355"/>
+ <rect x="390" y="355" width="420" height="88" class="box" rx="18"/><text x="600" y="390" text-anchor="middle" class="txt">2. Sensor / instrumento plausível?</text><text x="600" y="416" text-anchor="middle" class="small">Pressão, temperatura, fluxo e status coerentes</text>
+ <path class="line" d="M600 443 V485"/>
+ <rect x="390" y="485" width="420" height="88" class="box" rx="18"/><text x="600" y="520" text-anchor="middle" class="txt">3. Bomba disponível e VFD sem falha?</text><text x="600" y="546" text-anchor="middle" class="small">Contato de pronto, sem alarme e permissivo elétrico</text>
+ <path class="line" d="M600 573 V615"/>
+ <rect x="390" y="615" width="420" height="88" class="box" rx="18"/><text x="600" y="650" text-anchor="middle" class="txt">4. Fluxo / válvula / ΔP confirmados?</text><text x="600" y="676" text-anchor="middle" class="small">Fluxo no evaporador e válvula liberada para habilitar o chiller</text>
+ <path class="line" d="M390 660 H220"/>
+ <path class="line" d="M810 660 H980"/>
+ <rect x="70" y="618" width="150" height="84" class="no" rx="16"/><text x="145" y="655" text-anchor="middle" class="txt">NÃO</text><text x="145" y="680" text-anchor="middle" class="small">bloqueia e alarma</text>
+ <rect x="980" y="618" width="150" height="84" class="yes" rx="16"/><text x="1055" y="655" text-anchor="middle" class="txt">SIM</text><text x="1055" y="680" text-anchor="middle" class="small">habilita chiller</text>
+</svg>

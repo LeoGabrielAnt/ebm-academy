@@ -1,0 +1,175 @@
+<section class="section tools-page">
+
+<h2 class="section-title">
+Central de Ferramentas HVAC
+</h2>
+
+<p class="section-subtitle">
+Ferramentas didáticas para apoio à análise operacional, leitura de sintomas e organização de diagnósticos em sistemas HVAC.
+</p>
+
+<div class="card hvac-tools-hero-card">
+  <div class="hvac-tools-hero-grid">
+    <div>
+      <h3><i class="fa-solid fa-toolbox"></i> Ferramentas de apoio ao diagnóstico</h3>
+      <p>Além da calculadora de SH/SC, a plataforma agora conta com assistentes HVAC separados por contexto técnico. A proposta é ajudar o aluno a estruturar hipóteses e sequência inicial de verificação.</p>
+    </div>
+    <div class="hvac-tools-pill-row">
+      <span class="electrical-pill"><i class="fa-solid fa-snowflake"></i> DX / Refrigeração</span>
+      <span class="electrical-pill"><i class="fa-solid fa-water"></i> Água Gelada</span>
+      <span class="electrical-pill"><i class="fa-solid fa-fan"></i> Fancoils / Precisão</span>
+      <span class="electrical-pill"><i class="fa-solid fa-bolt"></i> Elétrica HVAC</span>
+    </div>
+  </div>
+</div>
+
+<div class="tool-grid">
+  <div class="tool-card">
+    <div class="tool-icon"><i class="fa-solid fa-snowflake"></i></div>
+    <h3>Assistente DX / Refrigeração</h3>
+    <p>Ajuda a correlacionar sintomas como SH alto/baixo, SC alto/baixo, baixa sucção, alta descarga, congelamento de evaporador e ciclagem de compressor.</p>
+    <br>
+    <button class="btn btn-primary" onclick="loadTrainingPage('hvac-diagnostic-dx')">Abrir ferramenta</button>
+  </div>
+  <div class="tool-card">
+    <div class="tool-icon"><i class="fa-solid fa-water"></i></div>
+    <h3>Assistente CAG / Água Gelada</h3>
+    <p>Organiza leituras de ΔT, vazão, válvulas, bombas e alarmes hidráulicos para investigar baixa capacidade, baixa vazão e comportamento anormal do sistema.</p>
+    <br>
+    <button class="btn btn-primary" onclick="loadTrainingPage('hvac-diagnostic-cag')">Abrir ferramenta</button>
+  </div>
+  <div class="tool-card">
+    <div class="tool-icon"><i class="fa-solid fa-fan"></i></div>
+    <h3>Assistente Fancoils / Precisão</h3>
+    <p>Focado em temperatura de insuflamento, fluxo de ar, drenagem, umidade, válvula de água gelada, reheat e alarmes típicos dos equipamentos de precisão.</p>
+    <br>
+    <button class="btn btn-primary" onclick="loadTrainingPage('hvac-diagnostic-precision')">Abrir ferramenta</button>
+  </div>
+</div>
+
+<div class="card technical-reading">
+
+<div class="reading-header">
+
+<div class="reading-icon">
+<i class="fa-solid fa-calculator"></i>
+</div>
+
+<div>
+<h3>Calculadora de Superheat e Subcooling</h3>
+<p class="reading-subtitle">
+Ferramenta didática para fixação dos conceitos de SH e SC
+</p>
+</div>
+
+</div>
+
+<div class="reading-content">
+
+<p>
+Informe os valores medidos em campo e as temperaturas de saturação obtidas por tabela PT, manifold digital ou aplicativo técnico.
+</p>
+
+<br>
+
+<div class="reading-highlight">
+
+<h4>Fórmulas utilizadas</h4>
+
+<p>
+<strong>SH = Temperatura da linha de sucção − Temperatura de saturação de evaporação</strong>
+</p>
+
+<br>
+
+<p>
+<strong>SC = Temperatura de saturação de condensação − Temperatura da linha de líquido</strong>
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="card electrical-tools-bridge-card">
+<h3><i class="fa-solid fa-bolt"></i> Ferramenta adicional — Elétrica Aplicada a HVAC</h3>
+<p>Além das ferramentas HVAC, esta versão também disponibiliza o <strong>Assistente de Diagnóstico Elétrico HVAC</strong> dentro da trilha elétrica.</p><br>
+<button class="btn btn-primary" onclick="openTrainingTrack('eletrica','eletrica-diagnostic-tool')">Abrir ferramenta elétrica</button>
+</div>
+
+<div class="calculator-grid">
+
+<div class="card calculator-card">
+
+<h3>Superheat</h3>
+
+<p class="calculator-description">
+Utilizado para avaliar alimentação do evaporador e risco de retorno líquido ao compressor.
+</p>
+
+<label>
+Temperatura da linha de sucção °C
+<input type="number" id="sh-line-temp" placeholder="Ex: 12"/>
+</label>
+
+<label>
+Temperatura de saturação de evaporação °C
+<input type="number" id="sh-sat-temp" placeholder="Ex: 5"/>
+</label>
+
+<div class="calc-result">
+<h4>Resultado SH</h4>
+<div id="sh-result" class="calc-value">--</div>
+</div>
+
+</div>
+
+<div class="card calculator-card">
+<h3>Subcooling</h3>
+<p class="calculator-description">
+Utilizado para avaliar estabilidade da linha de líquido e condição de carga refrigerante.
+</p>
+<label>
+Temperatura de saturação de condensação °C
+<input type="number" id="sc-sat-temp" placeholder="Ex: 42"/>
+</label>
+<label>
+Temperatura da linha de líquido °C
+<input type="number" id="sc-line-temp" placeholder="Ex: 35"/>
+</label>
+<div class="calc-result">
+<h4>Resultado SC</h4>
+<div id="sc-result" class="calc-value">--</div>
+</div>
+</div>
+
+</div>
+
+<div class="tool-actions">
+<button id="calculate-sh-sc" class="btn btn-primary" type="button">Calcular SH / SC</button>
+<button id="reset-sh-sc" class="btn btn-secondary" type="button">Limpar dados</button>
+<button onclick="loadTrainingPage('training-home')" class="btn btn-secondary" type="button">Voltar para Home HVAC</button>
+</div>
+
+<div class="card diagnostic-panel">
+<h3>Diagnóstico Didático</h3>
+<p id="tool-diagnostic">Preencha os campos e clique em calcular para visualizar uma interpretação inicial.</p>
+</div>
+
+<div class="card">
+<h3>Faixas Didáticas de Referência</h3>
+<p>As faixas abaixo são apenas educativas. Valores reais devem ser avaliados conforme fabricante, tipo de refrigerante, aplicação, condição operacional e projeto do equipamento.</p>
+<br>
+<div class="table-wrapper">
+<table class="tech-table">
+<tr><th>Parâmetro</th><th>Baixo</th><th>Faixa intermediária</th><th>Alto</th></tr>
+<tr><td>Superheat</td><td>Abaixo de 5 K</td><td>5 K a 14 K</td><td>Acima de 14 K</td></tr>
+<tr><td>Subcooling</td><td>Abaixo de 3 K</td><td>3 K a 12 K</td><td>Acima de 12 K</td></tr>
+</table>
+</div>
+</div>
+
+<button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+
+</section>

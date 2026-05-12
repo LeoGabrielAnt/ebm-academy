@@ -1,0 +1,40 @@
+<section class="section final-assessment-page">
+  <h2 class="section-title">Avaliação Final — Trilha Elétrica Aplicada a HVAC</h2>
+  <p class="section-subtitle">
+    Avaliação de consolidação da trilha Elétrica Aplicada a HVAC. A cada tentativa, uma nova seleção de questões é gerada automaticamente.
+  </p>
+
+  <div class="card final-assessment-intro">
+    <div class="final-assessment-grid">
+      <div>
+        <h3>Avaliação final da trilha</h3>
+        <p>Responda com atenção. Ao enviar, as respostas incorretas exibirão uma justificativa técnica para revisão do conteúdo.</p>
+      </div>
+      <div class="final-kpi-grid final-kpi-grid-clean">
+        <div class="final-kpi"><strong>20</strong><span>Questões</span></div>
+        <div class="final-kpi"><strong>75%</strong><span>Aproveitamento mínimo</span></div>
+        <div class="final-kpi"><strong>Auto</strong><span>Sorteio por tentativa</span></div>
+      </div>
+    </div>
+  </div>
+
+  <form id="eletrica-final-form" class="quiz-form" onsubmit="return false;">
+    <div id="eletrica-final-questions"></div>
+    <div class="quiz-actions final-actions">
+      <button type="button" id="submit-eletrica-final" class="btn btn-primary">Enviar avaliação final</button>
+      <button type="button" id="retry-eletrica-final" class="btn btn-secondary">Sortear nova avaliação</button>
+      <button type="button" onclick="loadTrainingPage('eletrica-home')" class="btn btn-secondary">Voltar para Home Elétrica</button>
+    </div>
+  </form>
+
+  <div id="eletrica-final-result"></div>
+
+  <div id="eletrica-final-certificate" class="certificate-card hidden final-certificate">
+    <div class="certificate-seal"><i class="fa-solid fa-award"></i></div>
+    <h3>Certificado Final — Trilha Elétrica Aplicada a HVAC</h3>
+    <p>O aluno atingiu o aproveitamento mínimo na avaliação final de consolidação da trilha elétrica aplicada a HVAC.</p>
+    <div class="certificate-meta"><span>EBM Academy</span><span>Elétrica Aplicada a HVAC</span><span>Avaliação Final</span></div>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" type="button"><i class="fa-solid fa-arrow-up"></i></button>
+</section>

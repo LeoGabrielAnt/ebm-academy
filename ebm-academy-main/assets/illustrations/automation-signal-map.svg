@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520">
+  <defs><style>.bg{fill:#0b1220}.t{font:700 28px Arial;fill:#e2e8f0}.s{font:400 15px Arial;fill:#a5b4fc}.h{font:700 20px Arial;fill:#fff}.p{font:400 16px Arial;fill:#d1d5db}.b1{fill:#172554;stroke:#60a5fa;stroke-width:3}.b2{fill:#052e16;stroke:#34d399;stroke-width:3}.b3{fill:#3f1d2e;stroke:#f472b6;stroke-width:3}.b4{fill:#3b2f05;stroke:#facc15;stroke-width:3}.k{font:700 17px Arial;fill:#f8fafc}</style></defs>
+  <rect class="bg" width="1200" height="520"/>
+  <text x="40" y="45" class="t">Mapa didático de sinais de automação</text>
+  <text x="40" y="72" class="s">Entradas digitais e analógicas alimentam a lógica; saídas digitais e analógicas comandam o campo</text>
+  <rect x="60" y="110" width="500" height="340" rx="20" class="b1"/>
+  <text x="310" y="150" text-anchor="middle" class="h">Entradas do CLP</text>
+  <rect x="95" y="180" width="200" height="100" rx="14" class="b3"/>
+  <text x="195" y="215" text-anchor="middle" class="k">DI — Entrada digital</text>
+  <text x="110" y="243" class="p">• status bomba em operação</text><text x="110" y="267" class="p">• falha geral do VFD</text>
+  <rect x="325" y="180" width="200" height="100" rx="14" class="b2"/>
+  <text x="425" y="215" text-anchor="middle" class="k">AI — Entrada analógica</text>
+  <text x="340" y="243" class="p">• 4-20 mA de pressão</text><text x="340" y="267" class="p">• temperatura / vazão</text>
+  <rect x="95" y="305" width="430" height="105" rx="14" class="b4"/>
+  <text x="310" y="338" text-anchor="middle" class="k">Uso típico</text>
+  <text x="115" y="367" class="p">Permissivos, intertravamentos, lógica de proteção, PID e alarmes.</text>
+  <rect x="640" y="110" width="500" height="340" rx="20" class="b1"/>
+  <text x="890" y="150" text-anchor="middle" class="h">Saídas do CLP</text>
+  <rect x="675" y="180" width="200" height="100" rx="14" class="b3"/>
+  <text x="775" y="215" text-anchor="middle" class="k">DO — Saída digital</text>
+  <text x="690" y="243" class="p">• ligar bomba</text><text x="690" y="267" class="p">• habilitar chiller</text>
+  <rect x="905" y="180" width="200" height="100" rx="14" class="b2"/>
+  <text x="1005" y="215" text-anchor="middle" class="k">AO — Saída analógica</text>
+  <text x="920" y="243" class="p">• referência 0-10 V ou 4-20 mA</text><text x="920" y="267" class="p">• modulação de válvula / VFD</text>
+  <rect x="675" y="305" width="430" height="105" rx="14" class="b4"/>
+  <text x="890" y="338" text-anchor="middle" class="k">Uso típico</text>
+  <text x="695" y="367" class="p">Acionamentos, comandos remotos, controle proporcional e alívio de pressão.</text>
+</svg>
